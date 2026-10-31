@@ -1,0 +1,15 @@
+name: Feature request / Предложение
+description: Suggest a useful improvement for Fore developers.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What would this help you do? / Какую задачу это решит?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior and examples / Предложение и примеры
+      description: For language changes, include a source documentation link and the platform version if known.

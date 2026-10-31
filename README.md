@@ -2,92 +2,124 @@
 
 [English](README.md) | [Русский](README.ru.md)
 
-Native syntax highlighting, code folding and automatic light/dark palettes for **Foresight Platform Fore** in Notepad++ on Windows x64. The language appears in **Language → F → Fore** and **Settings → Style Configurator → Fore**.
+**Read Fore comfortably in the editor you already use.** Native syntax highlighting, folding and automatic light/dark palettes for **Foresight Platform Fore** and **Prognoz Platform Fore** in Notepad++.
 
-**1.0.0 — first release prepared, not published.** An independent project by [Artyom Nikiforov (rhyots)](https://github.com/rhyots). It is not an official Foresight, Prognoz or Notepad++ product.
+[![Release](https://img.shields.io/github/v/release/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore?color=008787)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) [![Build](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml/badge.svg)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml) [![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) [![License MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
-## Compatibility
+[**Download for Windows x64**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) · [v1.0.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [User guide](docs/USER-GUIDE.md)
 
-| Component | What has been verified |
+## Why use it?
+
+Exported a Fore module? Reviewing a colleague's script? Opening an old Prognoz project? Give the code a structure you can read at a glance.
+
+| What you need | What the plugin gives you |
 |---|---|
-| Notepad++ 8.9.8.1, Windows x64 | Built and tested in the actual editor |
-| Prognoz Platform Fore 8.1 | Language rules derived from 36 original help documents dated March 16, 2016 |
-| Later Foresight Platform Fore versions | Not individually tested or certified |
-| Fore.NET | Not supported as a target language |
-| Other editor versions, x86 and ARM64 | Not tested; only an x64 DLL is provided |
+| Read Fore without a wall of plain text | Keywords, strings, comments and types get their own styles |
+| Navigate long modules | Fold classes, methods, properties, loops and conditional blocks |
+| Switch from daytime to evening work | Light/dark palettes follow the editor background automatically |
+| Keep your preferred appearance | Nonstandard custom colors and font settings stay yours |
+| Open an exported `.txt` script | Conservative content detection can select Fore for eligible plain text |
+| Use familiar editor controls | **Language → F → Fore** and **Style Configurator → Fore** |
 
-The plugin uses ILexer5, introduced in Notepad++ 8.4; **8.9.8.1 x64 is the minimum tested version**. Validation does not include compiling or running programs inside Prognoz Platform or Foresight Platform.
+Everything runs locally. Reading and highlighting files does not require a platform connection or an account.
 
-## Features
+## See it in action
 
-- Case-insensitive highlighting: 66 reserved words, 12 built-in types, constants, identifiers, numbers, operators, strings, character literals and character codes such as `#1040`.
-- Doubled quotes, `//`, `///` and `{ … }` comments; 11 configurable style categories.
-- Folding for classes, interfaces, namespaces, enumerations, methods, properties, conditions, loops, `Select Case`, `Try` and `With`.
-- Method folds include local declarations; interface signatures and delegates do not create false folds. Old and new property declarations are distinguished.
-- LF, CRLF and CR line endings; no source conversion is required.
-- Automatic content detection for eligible plain-text documents, with manual language choices taking priority.
-- Light and dark palettes follow the editor background automatically in both views and after restart. Nonstandard custom colors and font settings are preserved.
-- About includes the author and GitHub profile.
+![Fore code with light, dark and custom palettes](docs/media/themes.gif)
 
-There is no compiler, debugger, IntelliSense or semantic checking. Individual `Case` branches do not have separate folds. Analysis currently scans the whole document and caches it between Lex/Fold calls.
+**Light → dark → custom colors.** Black/gray text, teal keywords, green comments and red strings make different parts of the code easy to distinguish. The custom frame demonstrates a manual override; it is not a third automatic theme.
 
-## Install
+[Static light preview](docs/media/light.png) · [Static dark preview](docs/media/dark.png) · [Custom colors](docs/media/custom.png)
 
-Save your work and close Notepad++ before installing or updating. Extract the **entire** `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip` archive. In PowerShell 7, from the extracted folder:
+![Method bodies folded while their declarations remain visible](docs/media/folding.gif)
 
-```powershell
-pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'
-```
+**Keep the outline, hide the detail.** Method folding begins at the declaration, so local variables belong to the method's fold too. Interface signatures and delegates do not create spurious method folds.
 
-Run PowerShell as Administrator when writing into Program Files. For a portable installation, pass the directory containing `notepad++.exe`. Optional parameters: `-Palette Dark` for the initial base XML, and `-ConfigurationDirectory 'C:\path\to\profile'` for a custom profile.
+These are animated code previews rendered from the plugin's actual lexer results and XML palettes, **not screen recordings of Notepad++**. The first preview uses a real MIT-licensed Fore excerpt from [ForesightPlatform/fap_mcp_server](https://github.com/ForesightPlatform/fap_mcp_server), by Evgeny Bogdanov. [Source and visual provenance](docs/media/README.md).
 
-The installer checks architecture, copies the DLL and XML, backs up previous files and removes only the competing `fore` extension from UDL definitions. Backups and receipts go into `ForeLexerBackups` in the configuration directory. Automatic theme following works with either base preset.
+## Start in three steps
 
-For manual installation, copy `plugins\ForeLexer\ForeLexer.dll` under the Notepad++ installation and a preset from `presets\` to `%APPDATA%\Notepad++\plugins\Config\ForeLexer.xml`. Portable installations use their local `plugins\Config\` folder. An installation-wide XML takes precedence over a user-profile XML. These are external-lexer settings: do not import them as a UDL.
+1. Download the **[Windows x64 plugin ZIP](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip)** from Release 1.0.0 and extract the entire archive.
+2. Save your documents and close Notepad++. In **PowerShell 7**, from the extracted folder, run:
 
-Full instructions: [English](docs/INSTALLATION.md), [Russian](docs/INSTALLATION.ru.md). Existing Fore UDL associations may take precedence over the plugin; remove `fore` from their extension field. Open a `.fore` file and check that its language is **Fore**.
+   ```powershell
+   pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'
+   ```
 
-## Automatic detection
+   Use an administrator PowerShell for Program Files. For portable Notepad++, pass the folder containing its EXE.
+3. Open a `.fore` file. The language in the status bar should be **Fore**. You can also select **Language → F → Fore**.
 
-Content is checked only while the language is **Normal Text**, for `.txt` files (case insensitive), extensionless files and new unsaved tabs. The detector looks for matching named Fore blocks; `Class`, `Begin` and `End` alone are insufficient. Strings and comments are ignored.
+Prefer copying files? Follow the [manual installation guide](docs/USER-GUIDE.md#manual-installation). No PowerShell is required for that method.
 
-Checks run after a 350 ms pause and inspect at most the first 128 KiB. Other extensions and selected languages are preserved. An explicit language choice, including Normal Text, disables detection for that document until it is closed. Text is never modified. Short, incomplete or ambiguous fragments may need manual language selection.
+The installer backs up existing files and removes only the competing `.fore` association from old UDL definitions. **Plugins Admin listing is pending**; use the manual release ZIP for this version.
 
-See [detection details](docs/AUTODETECTION.md) (Russian) and the [TXT example](examples/Fore-autodetect-demo.txt).
+**Still seeing Normal Text?** An old Fore UDL can own the extension. Remove `fore` from its **Ext.** field, then reopen the file. [Troubleshooting](docs/USER-GUIDE.md#troubleshooting).
 
-## Colors and themes
+## What gets highlighted and folded
 
-| Role | Light / white background | Dark / `#1E1E1E` background |
+- **66 reserved words and 12 built-in types**, case insensitive and matched as whole identifiers.
+- Strings, doubled quotes, character literals, codes such as `#1040`, numbers, exponents, constants and operators.
+- `//`, `///` and `{ … }` comments; **11 style categories** available in Style Configurator.
+- Classes, interfaces, namespaces, enums, methods, conditions, loops, `Select Case`, `Try` and `With`.
+- New-style `Property … End Property` blocks and `Get`/`Set` bodies, with old-style declarations handled separately.
+- **LF, CRLF and CR** line endings; there is no need to convert your scripts.
+
+Try the [full syntax sample](examples/Fore-demo.fore), [folding edge cases](examples/Folding-edge-cases.fore) or the [real MCP source excerpt](examples/third-party/mcp-data-sources.fore). The third-party excerpt needs its original module context to run; it is included for reading and highlighting.
+
+## Automatic detection, with you in control
+
+Open or paste Fore into an eligible **Normal Text** document and the plugin can recognize it. Detection is limited to **`.txt`, extensionless files and new unsaved tabs**. It looks for matching named Fore blocks and ignores strings/comments; `Class`, `Begin` and `End` alone are insufficient.
+
+Other extensions and languages are preserved. An explicit language choice, including Normal Text, takes priority until that document is closed. Checks wait 350 ms after editing and examine at most the first 128 KiB. Your text is never changed.
+
+Short or incomplete snippets may need manual selection. [Try the TXT example](examples/Fore-autodetect-demo.txt) · [Detection guide](docs/USER-GUIDE.md#automatic-detection).
+
+## Colors that fit your editor
+
+| Role | Light | Dark on `#1E1E1E` |
 |---|---|---|
 | Text | `#000000` | `#D4D4D4` |
 | Keywords | `#008787` | `#4FD1D1` |
 | Comments | `#008000` | `#6EC76E` |
 | Strings | `#800000` | `#F08080` |
 
-Light colors were sampled from a supplied platform screenshot. Antialiasing means these pixels do not establish the exact configured RGB values in the original IDE. Dark colors preserve those roles; the minimum calculated contrast on `#1E1E1E` is 6.43:1.
+The light palette was sampled from a supplied platform screenshot. The dark palette preserves the same roles, with a minimum calculated contrast of **6.43:1** on `#1E1E1E`. Sampled pixels do not establish the original IDE's exact RGB settings.
 
-Standard role colors adapt to the actual editor background. Nonstandard custom colors and fonts are retained. Style Configurator displays the base XML; runtime theme adaptation does not rewrite it. See [color measurements](docs/PLATFORM-COLORS.md) and [automatic themes](docs/AUTOMATIC-THEMES.md) (Russian).
+Standard colors follow the actual editor background, in both views and after restart. Nonstandard custom colors and font settings are preserved. Style Configurator shows the base XML; runtime theme following does not rewrite it. [Customize colors and fonts](docs/USER-GUIDE.md#colors-and-fonts).
 
-## Validation
+## Compatibility and validation
 
-Local results for the prepared DLL, Notepad++ 8.9.8.1 x64:
-
-| Check | Result |
+| Component | Status |
 |---|---|
-| C++ lexer core | 53/53 assertions |
-| Content detector and filename policy | 104/104 assertions |
-| Native editor integration | 381/381 assertions, 18 scenarios |
-| Native automatic detection | 17/17 scenarios |
-| Native theme changes, both views, restart, custom fonts/colors | 40 checks in four runs |
-| Installer | Isolated portable install/update, hashes, backups and UDL migration |
-| Catalog ZIP | Isolated first-run startup and existing XML preservation |
-| Python release tooling | 16 tests; exact bytes, deterministic archives and source selection |
+| **Notepad++ 8.9.8.1 / Windows x64** | Built and integration-tested in the actual editor |
+| **Prognoz Platform Fore 8.1** | Language rules grounded in 36 original help documents |
+| Later Foresight Platform Fore releases | Not individually certified |
+| Fore.NET, x86 and ARM64 | Not supported targets in this release |
 
-Native tests open the actual Style Configurator and About dialogs. Three additional GitHub Fore examples were opened for local validation; their source text is not redistributed. See [test details](docs/TESTING.md), [validation.json](validation.json) and [ub-mode review](docs/UB-MODE-REVIEW.md). Saved snapshots are evidence of a completed run, not a new run every time they are checked.
+The plugin uses ILexer5 (introduced in Notepad++ 8.4); **8.9.8.1 x64 is the minimum tested version**. The plugin does not compile or execute platform programs.
 
-## Build and test
+Recorded checks: **53** core assertions, **104** detector assertions, **381** native integration assertions across 18 scenarios, **17** native detection scenarios, **40** theme checks, and **16** release-tooling tests. Native checks open the real Style Configurator and About dialogs. [Detailed test report](docs/TESTING.md) · [Machine-readable evidence](validation.json) · [Build workflow](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
 
-Requires Zig 0.13.0, C++17 and PowerShell 7. Pinned SDK headers are included; the build does not download them.
+## Questions before installing?
+
+**Is this for Prognoz, Foresight, Fore or “Foree”?** This is a plugin for **Fore**, the language used by **Prognoz Platform (Прогноз)** and **Foresight Platform (Форсайт)**. “Foree” is a search spelling, not a separate supported language. Fore.NET is outside this release's scope.
+
+**Is it a UDL?** It is a native external lexer DLL. It participates in the regular language menu and Style Configurator. Do not import its XML through “Define your language”.
+
+**Can it replace the platform IDE?** It is for reading and editing code. It does not provide a compiler, debugger, IntelliSense or semantic/type checking. Individual `Case` branches do not have separate folds; analysis currently scans the whole document and caches the result.
+
+**Is it official?** This is an independent community project. Foresight, Prognoz and Notepad++ do not endorse or maintain it.
+
+## Documentation and development
+
+- [User guide](docs/USER-GUIDE.md) / [Руководство пользователя](docs/USER-GUIDE.ru.md)
+- [Installation details](docs/INSTALLATION.md) · [CHANGELOG](CHANGELOG.md)
+- [Build, checks and publication](docs/RELEASING.md) · [Contributing](CONTRIBUTING.md)
+- [Exact-byte LF/CRLF rules](docs/BYTE-STABILITY.md) · [Plugins Admin readiness](docs/PLUGINS-ADMIN-READINESS.md)
+- [Report a reproducible issue](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/issues/new/choose)
+
+<details>
+<summary>Build locally with Zig 0.13.0 or CMake</summary>
 
 ```powershell
 pwsh -File build.ps1 -Zig 'C:\tools\zig-0.13.0\zig.exe'
@@ -96,7 +128,7 @@ python -m pip install -r requirements-dev.txt
 python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
 ```
 
-DLL output: `build\x64\ForeLexer.dll`. CMake is also provided:
+DLL: `build/x64/ForeLexer.dll`. SDK headers are vendored and pinned. CMake:
 
 ```powershell
 cmake -S . -B build/cmake -A x64
@@ -104,18 +136,16 @@ cmake --build build/cmake --config Release
 ctest --test-dir build/cmake -C Release --output-on-failure
 ```
 
-`qa/run.ps1`, `qa/run-autodetect.ps1`, `qa/run-theme.ps1` and `qa/test-install.ps1` use isolated editor copies. `python tools/verify.py` rechecks saved evidence. `python tools/package.py` produces the manual, Plugins Admin and source ZIPs with SHA-256 manifests. [Exact-byte rules](docs/BYTE-STABILITY.md) cover LF/CRLF and real Git checkouts. The prepared GitHub Actions matrix has not yet run on GitHub.
+`qa/run.ps1`, `qa/run-autodetect.ps1` and `qa/run-theme.ps1` test isolated editor copies. `tools/verify.py` rechecks saved snapshots; `tools/package.py` builds deterministic ZIPs with SHA-256 manifests. See the [quality review and its measurement boundaries](docs/UB-MODE-REVIEW.md).
 
-## Publication status
+</details>
 
-Suggested repository: `notepad-plus-plus-syntax-plugin-foresight-platform-fore`.
+## Downloads, author and license
 
-Source and release packages are prepared locally. **No repository, Release or catalog submission has been published.** The [Plugins Admin entry](catalog/plugin-x64.draft.json) remains a draft: replace `OWNER`, publish the exact ZIP after authorization, verify the public download, run the official validator against it and test the complete Plugins Admin install/update/remove cycle. Passing an offline catalog audit does not complete those steps. See [readiness](docs/PLUGINS-ADMIN-READINESS.md).
+[**Download 1.0.0**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [Release notes](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases) · [Source](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore)
 
-## Sources and license
+Choose `*-x64.zip` for manual installation, `*-plugins-admin-x64.zip` for the catalog layout, or `*-source.zip` for the full source tree. Each asset has a SHA-256 sidecar. The explicit source ZIP preserves tested bytes; GitHub's automatic source download is not the Plugins Admin asset.
 
-Rules are based on **Prognoz Platform Fore 8.1**, not Fore.NET. Document paths and hashes are listed in [sources.json](sources.json); proprietary help and platform binaries are not included. `Fore` is the editor language identifier; `ForeLexer.dll` and `ForeLexer.xml` are technical installation filenames.
+**[MIT License](LICENSE)** for original project code, documentation and examples. Third-party SDK/runtime components and the credited community excerpt retain their own licenses. [Third-party notices](THIRD_PARTY_NOTICES.md). Proprietary platform help and platform binaries are not distributed; documentation provenance is recorded in [sources.json](sources.json).
 
-**MIT License** for the original project code, documentation and examples. Copyright (c) 2026 Artyom Nikiforov (rhyots). See [LICENSE](LICENSE).
-
-Third-party SDK and runtime components retain their own licenses; the project's MIT license does not relicense them. Their notices and provenance are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [vendor/provenance.json](vendor/provenance.json).
+Created by **[Artyom Nikiforov (rhyots)](https://github.com/rhyots)**. If it helps your Fore workflow, a star makes the project easier for other Prognoz and Foresight developers to discover.

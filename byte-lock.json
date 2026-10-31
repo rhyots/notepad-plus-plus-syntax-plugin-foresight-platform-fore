@@ -18,6 +18,8 @@
     "examples/Folding-edge-cases.fore": "3cb9b1234c0775c0cb185b669c3a286a4121a75a8da25ebcd79fc8b56b15c16e",
     "examples/Fore-autodetect-demo.txt": "13cff2ef569123b347844748fc7212fc379a7ebcae02b6af3cf931acbdd51757",
     "examples/Fore-demo.fore": "13cff2ef569123b347844748fc7212fc379a7ebcae02b6af3cf931acbdd51757",
+    "examples/third-party/LICENSE.fap_mcp_server.txt": "5fa963a301535e206b8169fa1a2442919fc965b398fb08857e31ccac0e12cf39",
+    "examples/third-party/mcp-data-sources.fore": "558fcd92c1080f0c07961b3172cf82d296a3a74c1fbea421380e7ad8c260ba3f",
     "vendor/LICENSE.Lexilla.txt": "ac32743bd464c837e481beae20df65a9207f84d3ff1912f6003000343e9c753d",
     "vendor/LICENSE.libcxx.txt": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
     "vendor/LICENSE.libcxxabi.txt": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",

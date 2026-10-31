@@ -1,0 +1,60 @@
+{
+  "method": "Actual fore::analyze results and XML palette colors, rendered with Pillow. No simulated Notepad++ UI.",
+  "fonts": "Windows Consolas / Segoe UI; font files are not distributed.",
+  "gifs": {
+    "folding.gif": {
+      "frames": 2,
+      "size": [
+        1440,
+        845
+      ],
+      "bytes": 61156
+    },
+    "folding.ru.gif": {
+      "frames": 2,
+      "size": [
+        1440,
+        845
+      ],
+      "bytes": 62825
+    },
+    "themes.gif": {
+      "frames": 3,
+      "size": [
+        1440,
+        1097
+      ],
+      "bytes": 221979
+    },
+    "themes.ru.gif": {
+      "frames": 3,
+      "size": [
+        1440,
+        1097
+      ],
+      "bytes": 225086
+    }
+  },
+  "sha256": {
+    "community-example.png": "84326e460f3637d3de73be5a5e4a46d1f5006e193f3e32fca3bd63abb840d57d",
+    "community-example.ru.png": "07929dac7cec3c48c7a1a9abf1dbe49892a612e6081e66c902acb55107032be3",
+    "custom.png": "6347f66d2c397deb7afbd266b4ed03019597984b79bcc6195a0175b5db810017",
+    "custom.ru.png": "88bedaebab0cc614203cd9a4d8c2f9a3ab2a99820268a10cab366ab8e31601c0",
+    "dark.png": "0423b45f0f0308a50db33ff793222ab26bcadd8caee3f74dea80c3b280f9a3e1",
+    "dark.ru.png": "372fed7ac4d24ddae55524b5cc350d5f06e46780b586b0744988387b692a8348",
+    "folded.png": "e5c904602e1dcfe2fd2e60dc9d3562e1d120ef47a11f5b72ce82fded59f2190a",
+    "folded.ru.png": "46f686a3a12047c5871e08872ba5e4cc0ea7efb065d14dac4a9e9fc0c263e93a",
+    "folding.gif": "8849a27587d96383d0881eb4ef528c5482c9291db42a29c58bc4851aecad6361",
+    "folding.ru.gif": "ac232f0355663b1a3daa2735e30387a7016e67d3bee50ceec97f0cfe4e16ae01",
+    "light.png": "ebbba06cf9060aa7a45e608971bce661f482888d9f70a4478a4070f365caec28",
+    "light.ru.png": "6388f3c2296f32b8db32fa723ddfe2ce0ded5bdd179f35996392ba51a5ef4353",
+    "themes.gif": "9ba0549068e7404026e206de65cff4ade1dcb323a4251c58ea5eb6ca29479c36",
+    "themes.ru.gif": "ac8dfa93a6165433b40b5fc37f4d25c6530c28079210a81b0b8f298cbc18784b"
+  },
+  "own_fixture_styles_and_folds_match_native_snapshot": true,
+  "lexer_source_sha256": {
+    "src/ForeLexer.cpp": "97369c98dff049473ab4d70da9250b68b599223a693598901616a7436d3adfa0",
+    "src/ForeLexer.h": "332ac770f52171936397c092abbdf345a34440805bdc525d3d8b784f705e1fea",
+    "src/ForeWords.h": "76334892a7d720e37fa4d56a29e12475a858b12bcf354f5d3bd172bfc2845cb6"
+  }
+}

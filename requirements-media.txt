@@ -1,0 +1,2 @@
+# Optional: regenerate the documented code previews on Windows.
+Pillow==12.3.0

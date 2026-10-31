@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/ForesightPlatform/fap_mcp_server",
+  "commit": "cd6e589860225ee6201aadb603d4c586e5e5ea5d",
+  "source_url": "https://raw.githubusercontent.com/ForesightPlatform/fap_mcp_server/cd6e589860225ee6201aadb603d4c586e5e5ea5d/fap_component/mod_mcp_server.fore",
+  "source_sha256": "6fd8f527f7f4af4a6c6c10729d72b84cf8148551655debe9df375f369784faf0",
+  "supplied_source_sha256": "6fd8f527f7f4af4a6c6c10729d72b84cf8148551655debe9df375f369784faf0",
+  "excerpt_lines": [
+    17,
+    60
+  ],
+  "local_excerpt": "examples/third-party/mcp-data-sources.fore",
+  "license": "MIT",
+  "license_url": "https://raw.githubusercontent.com/ForesightPlatform/fap_mcp_server/cd6e589860225ee6201aadb603d4c586e5e5ea5d/LICENSE",
+  "changes": "Excerpt only; LF line endings; no code rewritten. Requires the original module context to execute.",
+  "visuals": "Animated previews rendered from the actual Fore lexical engine and XML palettes; not screen recordings."
+}

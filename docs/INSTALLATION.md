@@ -40,7 +40,7 @@ Open **Settings → Style Configurator → Fore** to customize the base colors a
 
 ## Validation and source code
 
-Recorded results: **53/53 core assertions**, **377/377 native integration and dependency-integrity assertions**, and **18 scenarios** across both presets. The integration test opened the actual Style Configurator and checked its language list. LF/CRLF folding was tested in the editor, with CR also covered by core tests.
+Recorded results: **53/53 core assertions**, **381/381 native integration and dependency-integrity assertions**, and **18 scenarios** across both presets. The integration test opened the actual Style Configurator and checked its language list. LF/CRLF folding was tested in the editor, with CR also covered by core tests.
 
 See `validation.json` and `docs/TESTING.md` (Russian). Programs were not compiled or executed inside either platform during validation.
 
@@ -49,3 +49,5 @@ Project code, documentation and examples: **MIT License**. Third-party component
 ## Automatic detection
 
 Normal Text documents with `.txt` or no extension (including new tabs) are checked after opening or pasting code. Matching named Fore blocks are required; strings and comments are ignored. Other languages/extensions are preserved. Choosing Normal Text explicitly disables detection until the document is closed. The check waits 350 ms and reads at most 128 KiB. Text is never modified. See [details](AUTODETECTION.md) and the binary ZIP's `examples/Fore-autodetect-demo.txt`.
+
+Full [user guide](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/blob/main/docs/USER-GUIDE.md): themes, colors, folding, updates and troubleshooting.

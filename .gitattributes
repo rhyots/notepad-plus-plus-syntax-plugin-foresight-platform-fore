@@ -18,3 +18,5 @@
 *.dll -text
 *.exe -text
 *.zip -text
+*.png -text
+*.gif -text

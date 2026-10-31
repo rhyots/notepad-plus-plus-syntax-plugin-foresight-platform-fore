@@ -4,8 +4,8 @@
 Plugins Admin ZIP bytes. Its `id` hashes the entire ZIP, not the DLL or source tree.
 `folder-name` remains `ForeLexer` to match `ForeLexer.dll`.
 
-**Do not submit this draft yet.** Replace `OWNER` in the public homepage and
-direct ZIP download URL after choosing the actual GitHub repository. The current
+**Do not submit this draft yet.** The homepage and direct ZIP URL point to the rhyots GitHub repository.
+Check the published download before submitting to Plugins Admin. The current
 compatibility floor is the tested Notepad++ 8.9.8.1 x64, not an assertion that all
 earlier ILexer5 editors were tested. Future versions still need testing.
 

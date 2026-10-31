@@ -1,0 +1,24 @@
+name: Bug report / Ошибка
+description: Report a highlighting, folding, detection or color problem.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Versions and environment / Версии и среда
+      description: Plugin version, Notepad++ version, Windows architecture, theme, filename extension and line endings.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps and minimal Fore example / Шаги и минимальный пример
+      description: Share only code you are allowed to publish. Include steps to reproduce.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual behavior / Ожидаемый и фактический результат
+    validations:
+      required: true

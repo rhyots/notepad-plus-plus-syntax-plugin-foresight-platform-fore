@@ -1,51 +1,34 @@
-# Сторонние компоненты
+# Third-party notices
 
-Собственный код проекта, скрипты, документация и примеры распространяются
-по **MIT License**: Copyright (c) 2026 Artyom Nikiforov (rhyots).
-Стандартный текст MIT находится в корневом `LICENSE`
-([источник текста](https://opensource.org/license/mit)).
+[English](THIRD_PARTY_NOTICES.md) | [Русский](THIRD_PARTY_NOTICES.ru.md)
 
-Эта лицензия не заменяет условия сторонних компонентов, перечисленных ниже.
-Их исходные уведомления и полные лицензии сохраняются в исходном и бинарных
-архивах. В частности, заголовки Notepad++ не перелицензируются под MIT.
+Original project code, scripts, documentation and examples are under the **MIT License**, Copyright (c) 2026 Artyom Nikiforov (rhyots). The root LICENSE contains the standard [MIT text](https://opensource.org/license/mit). This does not relicense the third-party components below; their notices and full licenses are preserved.
 
 ## Notepad++ SDK
 
-Заголовки в `vendor/npp-sdk/` взяты из официального репозитория
-[notepad-plus-plus/notepad-plus-plus](https://github.com/notepad-plus-plus/notepad-plus-plus),
-тег **v8.9.8.1**, коммит **dd40fe45598791e9aa38f3aeb200e10fb3d6338a**.
-Исходные уведомления в заголовках сохранены.
+Headers in `vendor/npp-sdk/` come from [notepad-plus-plus/notepad-plus-plus](https://github.com/notepad-plus-plus/notepad-plus-plus), tag v8.9.8.1, commit `dd40fe45598791e9aa38f3aeb200e10fb3d6338a`. Original header notices are retained.
 
-- Заголовки API Notepad++ — GPL-3.0-or-later; полный текст находится в
-  `vendor/LICENSE.Notepad++.txt`.
-- Интерфейсы Scintilla и определения Lexilla — разрешительные лицензии Neil Hodgson
-  и других участников; тексты в `vendor/LICENSE.Scintilla.txt` и
-  `vendor/LICENSE.Lexilla.txt`.
+- Notepad++ API headers: GPL-3.0-or-later; `vendor/LICENSE.Notepad++.txt`.
+- Scintilla interfaces and Lexilla definitions: permissive licenses by Neil Hodgson and other contributors; `vendor/LICENSE.Scintilla.txt` and `vendor/LICENSE.Lexilla.txt`.
 
-Точные пути, URL и SHA-256 каждого файла — в `vendor/provenance.json`.
-Изменение окончаний строк сторонних файлов отключено через `.gitattributes`.
+Original paths, URLs and SHA-256 values are recorded in `vendor/provenance.json`. Git line-ending conversion is disabled for these files.
 
-## Компилятор и стандартная библиотека C++
+## Compiler and C++ runtime
 
-Проверенная DLL собрана **Zig 0.13.0** с поставляемыми им компонентами LLVM
-**libc++**, **libc++abi**, **libunwind**. Уведомления этих компонентов сохранены в:
+The tested DLL is built with Zig 0.13.0 and its LLVM libc++, libc++abi and libunwind components. Their notices are preserved in `vendor/LICENSE.libcxx.txt`, `vendor/LICENSE.libcxxabi.txt` and `vendor/LICENSE.libunwind.txt`, including Apache License 2.0 with LLVM exceptions and historical component notices.
 
-- `vendor/LICENSE.libcxx.txt`;
-- `vendor/LICENSE.libcxxabi.txt`;
-- `vendor/LICENSE.libunwind.txt`.
+The compiler itself is not bundled. Building requires Zig or CMake with a compatible Windows x64 compiler. Complete plugin sources are supplied in the accompanying `*-source.zip`. Binary archives retain the runtime/SDK licenses under `licenses/` or `doc/licenses/`.
 
-Они содержат Apache License 2.0 с LLVM exceptions и относящиеся к компонентам
-исторические уведомления. Компилятор и его исходники в архив проекта не включены.
-Для самостоятельной сборки требуется установленный Zig либо CMake и совместимый
-компилятор Windows x64. Исходники плагина Notepad++ для Foresight Platform Fore поставляются
-отдельным полным архивом `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip` рядом с бинарным архивом.
+## Platform documentation and local validation examples
 
-## Справка Prognoz Platform Fore и дополнительные примеры
+Proprietary Prognoz Platform 8.1 help and platform binaries are not redistributed. Only relative documentation paths, hashes and keyword/type lists are recorded. Product names, documentation and platform rights remain with their owners.
 
-Исходная документация Prognoz Platform 8.1 не включается в проект. Сохранены
-относительные пути, контрольные суммы и перечни ключевых слов и типов.
-Права на платформу, документацию и названия продуктов сохраняются у правообладателей.
+The three original GitHub source files used for local validation are not redistributed. Own fixtures in `examples/` were written for this project. The separately licensed documentation excerpt below is included in the source archive.
 
-Сторонние исходники GitHub использовались как дополнительные локальные входные
-данные теста. Их текст в исходном или бинарном архиве проекта не распространяется.
-Собственные примеры в `examples/` написаны для тестирования этого проекта.
+## Community example used in documentation
+
+`examples/third-party/mcp-data-sources.fore` reproduces lines 17–60 of `fap_component/mod_mcp_server.fore` from [ForesightPlatform/fap_mcp_server](https://github.com/ForesightPlatform/fap_mcp_server), commit `cd6e589860225ee6201aadb603d4c586e5e5ea5d`.
+
+Copyright (c) 2026 **Evgeny Bogdanov**, **MIT License**. The original license is retained alongside the excerpt in `examples/third-party/LICENSE.fap_mcp_server.txt`. The excerpt is included in the source archive and depicted in visual documentation. Source and extraction details: `docs/media/provenance.json`.
+
+Preview images are rendered from lexer output, not screenshots of Notepad++. Consolas/Segoe UI font files are not distributed.

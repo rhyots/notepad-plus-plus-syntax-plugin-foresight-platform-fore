@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checked_on": "2026-10-31",
+  "native_run_this_invocation": false,
+  "previous_native_report": "qa/catalog-install-validation.json",
+  "previous_archive_sha256": "340c276ee73295e73cb56dcb57455318f85cf9d66a75dc61beac232ffa6169b4",
+  "current_archive_sha256": "fcae77c88f80a7a1bc208fb1101544611f80d4f12d3b3430f062effdb888d804",
+  "dll_sha256": "95f01e727c0169502f521c2b6ba1ec2c7dbc4e47e161361936374057efe0a2cd",
+  "dll_and_non_documentation_payload_unchanged": true,
+  "changed_entries": [
+    "SHA256SUMS.txt",
+    "doc/CHANGELOG.md",
+    "doc/README.md",
+    "doc/THIRD_PARTY_NOTICES.md",
+    "doc/THIRD_PARTY_NOTICES.ru.md"
+  ],
+  "note": "Only documentation and its manifest changed. The original editor run is retained with its original archive hash; this check does not repeat the Plugins Admin lifecycle."
+}

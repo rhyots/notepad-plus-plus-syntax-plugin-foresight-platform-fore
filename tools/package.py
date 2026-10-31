@@ -52,6 +52,7 @@ def package_binaries(out):
     assert pe['embedded_light_sha256']==sha((ROOT/'styles/ForeLexer-Light.xml').read_bytes())
     assert pe['embedded_dark_sha256']==sha((ROOT/'styles/ForeLexer-Dark.xml').read_bytes())
     binary={'plugins/ForeLexer/ForeLexer.dll':dll}
+    binary['THIRD_PARTY_NOTICES.ru.md']=(ROOT/'THIRD_PARTY_NOTICES.ru.md').read_bytes()
     binary['docs/AUTOMATIC-THEMES.md']=(ROOT/'docs/AUTOMATIC-THEMES.md').read_bytes()
     binary['qa/theme-validation.json']=(ROOT/'qa/theme-validation.json').read_bytes()
     for p in sorted((ROOT/'styles').glob('*.xml')):binary['presets/'+p.name]=p.read_bytes()
@@ -74,7 +75,7 @@ def package_binaries(out):
     catalog['qa/palette-sampling.json']=(ROOT/'qa/palette-sampling.json').read_bytes()
     catalog['qa/dark-palette-contrast.json']=(ROOT/'qa/dark-palette-contrast.json').read_bytes()
     for p in sorted((ROOT/'styles').glob('*.xml')):catalog['presets/'+p.name]=p.read_bytes()
-    for name in ['LICENSE','THIRD_PARTY_NOTICES.md']:
+    for name in ['LICENSE','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.ru.md']:
         catalog['doc/'+name]=(ROOT/name).read_bytes()
     for p in (ROOT/'vendor').glob('LICENSE*'):catalog['doc/licenses/'+p.name]=p.read_bytes()
     catalog['doc/README.md']=(ROOT/'docs/PLUGINS-ADMIN-INSTALLATION.md').read_bytes()
@@ -84,10 +85,10 @@ def package_binaries(out):
         'folder-name':'ForeLexer','display-name':NAME,'version':VERSION,
         'npp-compatible-versions':'[8.9.8.1,]',
         'id':sha((out/asset).read_bytes()),
-        'repository':f'https://github.com/OWNER/{SLUG}/releases/download/v{VERSION}/{asset}',
+        'repository':f'https://github.com/rhyots/{SLUG}/releases/download/v{VERSION}/{asset}',
         'description':'Native highlighting and code folding for Foresight Platform Fore, based on Prognoz Platform Fore 8.1 documentation. Light/dark presets; content detection for plain TXT and extensionless documents. Windows x64; not Fore.NET.',
         'author':'Artyom Nikiforov (rhyots)',
-        'homepage':f'https://github.com/OWNER/{SLUG}'
+        'homepage':f'https://github.com/rhyots/{SLUG}'
     }
     (ROOT/'catalog/plugin-x64.draft.json').write_text(json.dumps(draft,indent=2)+'\n',encoding='utf-8',newline='\n')
 

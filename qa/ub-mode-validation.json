@@ -112,7 +112,7 @@
     "tests/conftest.py": "23f8bb7a966917c16f0934b97dd7275be2824e9f26e1b51ced441b2d8cff9ba0",
     "tests/test_release_archive.py": "1eac37f5214e79cac83abf0a20b4a7df634e51a8d88975066cf91c1d11a00417",
     "tests/test_release_files.py": "879e66517d778f84d2174cc18779861f8feeb7a1b630638e9c73dc6aac401b74",
-    "tools/package.py": "89c2bd2e96370ee1042a878ba5daff018e60e50ad50d746b2585d5b4a4f855c0",
+    "tools/package.py": "44117297371be1ce969e9164187ae843a7fb8aee17f07578f3bc0f7b59586e7a",
     "tools/release_files.py": "eddffcd91312e40c193136b134532469219c0b80c9815784bf17aab54970936e",
     "tools/verify.py": "84ee18157a954d0cf03e409ad5db0f820d6295ea7800851acc8a12dc14be07f2"
   },
@@ -124,5 +124,12 @@
     "analyzed_cpp_and_python_source_bytes_unchanged": true,
     "quality_metrics_reused_without_rerun": true,
     "fresh_dll_evidence": "validation.json"
+  },
+  "publication_metadata_update": {
+    "change": "Replace OWNER with rhyots in release/homepage URLs; packaging control flow unchanged",
+    "previous_packager_sha256": "89c2bd2e96370ee1042a878ba5daff018e60e50ad50d746b2585d5b4a4f855c0",
+    "current_packager_sha256": "9843834ddb4be0c8685c883b7d2628584f8e288b49811194306e16afc3a11b0b",
+    "metrics_scope_unchanged": "The original C++ runtime and two Python packaging modules; the new preview renderer is outside that earlier audit.",
+    "scope": "Owner URLs and an additional Russian notices payload; existing packaging behavior tests rerun. Prior metrics apply to the originally measured scope, not the media helper."
   }
 }

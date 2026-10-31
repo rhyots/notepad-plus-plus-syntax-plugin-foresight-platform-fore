@@ -20,8 +20,8 @@ for automatic selection. The plugin does not change UDL definitions at startup.
 
 Tested editor: Notepad++ 8.9.8.1 x64. Rules: Prognoz Platform Fore 8.1 help.
 Other platform releases have not been individually tested; Fore.NET is not a target.
-Project code, documentation and examples: MIT License. Third-party components retain their own licenses; see `THIRD_PARTY_NOTICES.md`. Source repository: replace OWNER before publication:
-`https://github.com/OWNER/notepad-plus-plus-syntax-plugin-foresight-platform-fore`.
+Project code, documentation and examples: MIT License. Third-party components retain their own licenses; see `THIRD_PARTY_NOTICES.md`. Source repository:
+`https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore`.
 
 This is an independent project, not an official product of Foresight, Prognoz, or Notepad++.
 

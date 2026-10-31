@@ -1,0 +1,44 @@
+// получение списка доступных для ИИ многомерных источников
+Function MCP_GetDataSources: string;
+Var
+	List: IJsonArrayBuilder;
+	Doc: IJsonDocument;
+	Json, Item: IJsonObjectBuilder;
+	//
+	Db: IDatabaseInstance;
+	Command : IDalCommand;
+	Cursor: IDalCursor;
+	Fields: IDalCursorFields;
+	SQL: string;
+Begin
+	List := New JsonArrayBuilder.Create;
+	Try
+		Db := MetabaseClass.Active.ItemById(DB_META).Open(Null) As IDatabaseInstance;
+		SQL := "select id, name, description, s_type from mcp_sources where active = 1";
+		Command := Db.Connection.CreateCommand(SQL);
+		Command.Parse;
+		Cursor := Command.CreateCursor;
+		Fields := Cursor.Fields;
+		While Not Cursor.Eof Do
+			Item := New JsonObjectBuilder.Create;
+			Item.AddString("id", Fields.Item(0).Value);
+			Item.AddString("name", Fields.Item(1).Value);
+			Item.AddString("description", Fields.Item(2).Value);
+			Item.AddString("type", Fields.Item(3).Value);
+			List.AddObjectBuilder(Item);
+			Cursor.Next;
+		End While;
+		Cursor.Close;
+		Command.Close;
+	Except
+		Item := New JsonObjectBuilder.Create;
+		Item.AddString("error", "Не удалось получить список источников данных");
+		List.AddObjectBuilder(Item);
+	End Try;
+	// итоговый JSON	
+	Json := New JsonObjectBuilder.Create;
+	Json.AddArrayBuilder("data_sources", List);
+	Doc := New JsonDocument.Create;
+	Doc.RootElement := Json.Build;
+	Return Doc.WriteToString(JsonFormatOptions.UnIndented);
+End Function MCP_GetDataSources;
