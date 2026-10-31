@@ -115,6 +115,8 @@ def main() -> int:
             check(theme+': real Style Configurator opened', u['style_dialog_opened'])
             check(theme+': Fore listed in real Style Configurator', u['style_dialog_contains_fore'])
             check(theme+': style customization works', u['custom_style_roundtrip'])
+            check(theme+': real About contains author', u.get('about_author', False))
+            check(theme+': real About contains GitHub profile', u.get('about_github', False))
         else: check(theme+': UI evidence exists',False)
     check('Both themes and both line endings tested', complete == 8)
     fingerprints = {p.relative_to(ROOT).as_posix():digest(p.read_bytes()) for p in sorted((ROOT/'src').glob('*')) if p.is_file()}

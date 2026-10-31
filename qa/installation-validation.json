@@ -1,10 +1,13 @@
 {
   "passed": true,
   "checked_on": "2026-10-31",
-  "environment": "isolated portable Notepad++ 8.9.8.1 x64",
+  "environment": "isolated portable Notepad++ 8.9.8.1 x64; installer exercised without launching editor",
+  "dll_sha256": "a8cbdb02c8741d52805531b5e5662ec2ba885f498c57c6d4c94298d447af283e",
+  "installer_sha256": "5acbab641273ef65f8dcfad1a20ab1727ff33dedbcd770cea433216bc17a36a0",
   "binary_matches_tested_release": true,
-  "native_xml_matches_light_preset": true,
+  "native_xml_matches_light_and_dark_presets": true,
   "udl_backup_created": true,
   "only_fore_extension_removed_from_udl": true,
-  "main_program_files_installation": "blocked by Windows filesystem ACL; no main DLL, XML or UDL extension modified"
+  "previous_configuration_backed_up_on_update": true,
+  "main_user_installation_modified_this_run": false
 }

@@ -2,129 +2,101 @@
 
 [English](README.md) | [Русский](README.ru.md)
 
-**Native syntax highlighting and code folding for Foresight Platform Fore in Notepad++ on Windows x64.**
+Native syntax highlighting, code folding and automatic light/dark palettes for **Foresight Platform Fore** in Notepad++ on Windows x64. The language appears in **Language → F → Fore** and **Settings → Style Configurator → Fore**.
 
-The language appears under **Language → F → Fore**, with configurable colors and fonts under **Settings → Style Configurator → Fore**.
-
-Version **1.0.0**. An independent project by Artyom Nikiforov (rhyots), not an official product of Foresight, Prognoz, or Notepad++.
-
-The project name is **Notepad++ Syntax Plugin for Foresight Platform Fore**. Its language rules come from the original **Prognoz Platform Fore 8.1** documentation. `Fore` is the language identifier used by Notepad++; `ForeLexer.dll` and `ForeLexer.xml` are technical filenames retained for installation compatibility.
+**1.0.0 — first release prepared, not published.** An independent project by [Artyom Nikiforov (rhyots)](https://github.com/rhyots). It is not an official Foresight, Prognoz or Notepad++ product.
 
 ## Compatibility
 
-| Component | Status |
+| Component | What has been verified |
 |---|---|
-| **Notepad++ 8.9.8.1, Windows x64** | Build and integration tested in the actual editor |
-| **Prognoz Platform Fore 8.1** | Rules based on the original 8.1 help dated March 16, 2016 |
-| Later Foresight Platform Fore releases | Not tested individually; compatibility is not certified |
-| Fore.NET | Not a target language |
-| Other Notepad++ releases, x86, ARM64 | Not tested; this release contains an x64 DLL only |
+| Notepad++ 8.9.8.1, Windows x64 | Built and tested in the actual editor |
+| Prognoz Platform Fore 8.1 | Language rules derived from 36 original help documents dated March 16, 2016 |
+| Later Foresight Platform Fore versions | Not individually tested or certified |
+| Fore.NET | Not supported as a target language |
+| Other editor versions, x86 and ARM64 | Not tested; only an x64 DLL is provided |
 
-The plugin uses **ILexer5**, available in Notepad++ since version 8.4. The minimum **tested** editor version is **8.9.8.1 x64**. Programs have not been compiled or executed inside Prognoz Platform or Foresight Platform as part of this project's validation.
+The plugin uses ILexer5, introduced in Notepad++ 8.4; **8.9.8.1 x64 is the minimum tested version**. Validation does not include compiling or running programs inside Prognoz Platform or Foresight Platform.
 
 ## Features
 
-- 66 reserved keywords and 12 built-in types from the Prognoz Platform Fore 8.1 help.
-- Strings, character literals, doubled quotes, and character codes such as `#1040`.
-- Numbers, exponents, operators, and `//`, `///`, and `{ … }` comments.
-- Case-insensitive keywords with identifier boundaries respected.
-- Folding for classes, interfaces, namespaces, enumerations, methods, conditions, loops, `Select Case`, `Try`, and `With`.
-- Method folding starts at `Sub`, `Function`, or `Constructor`, including local declarations. Interface signatures and delegates do not create spurious folds.
-- New-style properties fold from `Property` to `End Property`, with separate `Get`/`Set` bodies. Old-style property declarations are handled separately.
-- Correct fold markers verified with **LF, CRLF, and CR** line endings; converting files to CRLF is unnecessary.
-- 11 configurable style categories, with light and dark presets.
+- Case-insensitive highlighting: 66 reserved words, 12 built-in types, constants, identifiers, numbers, operators, strings, character literals and character codes such as `#1040`.
+- Doubled quotes, `//`, `///` and `{ … }` comments; 11 configurable style categories.
+- Folding for classes, interfaces, namespaces, enumerations, methods, properties, conditions, loops, `Select Case`, `Try` and `With`.
+- Method folds include local declarations; interface signatures and delegates do not create false folds. Old and new property declarations are distinguished.
+- LF, CRLF and CR line endings; no source conversion is required.
+- Automatic content detection for eligible plain-text documents, with manual language choices taking priority.
+- Light and dark palettes follow the editor background automatically in both views and after restart. Nonstandard custom colors and font settings are preserved.
+- About includes the author and GitHub profile.
 
-This editor plugin provides lexical highlighting and folding. It does not include a compiler, IntelliSense, debugger, or type checker. Individual `Case` branches do not yet have separate folds.
+There is no compiler, debugger, IntelliSense or semantic checking. Individual `Case` branches do not have separate folds. Analysis currently scans the whole document and caches it between Lex/Fold calls.
 
-## Installation
+## Install
 
-Save your work and close all Notepad++ windows before installation or update. Extract the **entire** `NotepadPlusPlus-Syntax-Plugin-NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip` archive.
-
-### Install with PowerShell
-
-Requires **PowerShell 7**. To install into `Program Files`, open **PowerShell 7 as Administrator** so Windows permits writing the DLL. From the extracted directory:
+Save your work and close Notepad++ before installing or updating. Extract the **entire** `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip` archive. In PowerShell 7, from the extracted folder:
 
 ```powershell
 pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'
 ```
 
-The initial base XML can be selected with `-Palette Dark`; automatic theme following works with either base preset. For portable Notepad++, pass the directory containing its EXE. For a custom profile location, add `-ConfigurationDirectory 'C:\path\to\Notepad++-profile'`.
+Run PowerShell as Administrator when writing into Program Files. For a portable installation, pass the directory containing `notepad++.exe`. Optional parameters: `-Palette Dark` for the initial base XML, and `-ConfigurationDirectory 'C:\path\to\profile'` for a custom profile.
 
-The installer:
+The installer checks architecture, copies the DLL and XML, backs up previous files and removes only the competing `fore` extension from UDL definitions. Backups and receipts go into `ForeLexerBackups` in the configuration directory. Automatic theme following works with either base preset.
 
-1. Checks the EXE and DLL architecture.
-2. Copies the DLL to `plugins\ForeLexer\ForeLexer.dll` beside the editor EXE.
-3. Places `plugins\Config\ForeLexer.xml` in the **user configuration directory**, allowing regular Notepad++ sessions to save color changes.
-4. Backs up files before changing them.
-5. Removes the `fore` extension association from competing UDL definitions while keeping those definitions available.
+For manual installation, copy `plugins\ForeLexer\ForeLexer.dll` under the Notepad++ installation and a preset from `presets\` to `%APPDATA%\Notepad++\plugins\Config\ForeLexer.xml`. Portable installations use their local `plugins\Config\` folder. An installation-wide XML takes precedence over a user-profile XML. These are external-lexer settings: do not import them as a UDL.
 
-Backups and the installation receipt are stored in `ForeLexerBackups` inside the configuration directory. The script does not close editor windows or change your source files.
+Full instructions: [English](docs/INSTALLATION.md), [Russian](docs/INSTALLATION.ru.md). Existing Fore UDL associations may take precedence over the plugin; remove `fore` from their extension field. Open a `.fore` file and check that its language is **Fore**.
 
-### Manual installation
+## Automatic detection
 
-1. Copy `plugins\ForeLexer\ForeLexer.dll` from the archive into `plugins\ForeLexer\` under the installed Notepad++ directory.
-2. Copy `presets\ForeLexer-Light.xml` or `presets\ForeLexer-Dark.xml` to `%APPDATA%\Notepad++\plugins\Config\ForeLexer.xml`.
-3. For portable Notepad++ with local configuration, use `plugins\Config\ForeLexer.xml` beside the EXE. The filename must be **ForeLexer.xml**.
-4. If an existing Foresight Platform Fore UDL owns the extension, remove `fore` from its **Ext.** field: UDL associations take precedence when selecting the language automatically.
-5. Start Notepad++ and open a `.fore` file. The status bar should show **Fore**.
+Content is checked only while the language is **Normal Text**, for `.txt` files (case insensitive), extensionless files and new unsaved tabs. The detector looks for matching named Fore blocks; `Class`, `Begin` and `End` alone are insufficient. Strings and comments are ignored.
 
-An existing `plugins\Config\ForeLexer.xml` in the editor installation directory takes precedence over the user-profile copy. Back it up and choose which configuration to use before installing another copy.
+Checks run after a 350 ms pause and inspect at most the first 128 KiB. Other extensions and selected languages are preserved. An explicit language choice, including Normal Text, disables detection for that document until it is closed. Text is never modified. Short, incomplete or ambiguous fragments may need manual language selection.
 
-This XML configures an external lexer. Do not import it through **Define your language**.
+See [detection details](docs/AUTODETECTION.md) (Russian) and the [TXT example](examples/Fore-autodetect-demo.txt).
 
-## Automatic content detection
+## Colors and themes
 
-Normal Text documents are checked only when their names end in `.txt` (case
-insensitive), have no extension, or belong to new unsaved tabs. Matching named
-Fore blocks can activate Fore automatically after opening or pasting code.
-Comments and strings are ignored; keywords such as Class/Begin/End alone do not
-trigger detection. Other extensions and other selected languages are preserved.
-The check runs after a 350 ms pause and reads at most the first 128 KiB.
+| Role | Light / white background | Dark / `#1E1E1E` background |
+|---|---|---|
+| Text | `#000000` | `#D4D4D4` |
+| Keywords | `#008787` | `#4FD1D1` |
+| Comments | `#008000` | `#6EC76E` |
+| Strings | `#800000` | `#F08080` |
 
-An explicit language choice takes priority until the document is closed. Choosing
-**Language → Normal Text** disables detection for that open document, including
-when it is already Normal Text. Close and reopen it to allow detection again.
-Text is never changed. Short, incomplete, unusually formatted, or syntactically
-similar code may remain ambiguous. See [details](docs/AUTODETECTION.md) (Russian),
-the [TXT example](examples/Fore-autodetect-demo.txt), and [CHANGELOG.md](CHANGELOG.md).
+Light colors were sampled from a supplied platform screenshot. Antialiasing means these pixels do not establish the exact configured RGB values in the original IDE. Dark colors preserve those roles; the minimum calculated contrast on `#1E1E1E` is 6.43:1.
 
-## Colors and fonts
-
-The light preset uses four colors sampled from a user-provided platform screenshot:
-black `#000000`, teal `#008787`, green `#008000`, and dark red `#800000`.
-These are observed image pixels; antialiasing means they do not prove the exact
-RGB settings inside the platform. See [measurements and mapping](docs/PLATFORM-COLORS.md)
-(Russian). The dark preset preserves the same color roles with light gray
-`#D4D4D4`, teal `#4FD1D1`, green `#6EC76E`, and soft red `#F08080`.
-Its minimum nominal contrast on `#1E1E1E` is 6.43:1; use it with a dark editor theme.
-
-Open **Settings → Style Configurator → Fore**, select a category, set its color, font, and emphasis, then click **Save**. Changes are stored in `ForeLexer.xml`; the installer backs up that file on subsequent installations.
-
-Light and Dark palettes now follow the editor background automatically, including theme changes and restart. Standard role colors are mapped in both views; nonstandard manual colors and fonts are preserved. The base XML remains available in Style Configurator. See [automatic theme behavior](docs/AUTOMATIC-THEMES.md) (Russian).
+Standard role colors adapt to the actual editor background. Nonstandard custom colors and fonts are retained. Style Configurator displays the base XML; runtime theme adaptation does not rewrite it. See [color measurements](docs/PLATFORM-COLORS.md) and [automatic themes](docs/AUTOMATIC-THEMES.md) (Russian).
 
 ## Validation
 
-The recorded validation includes **53/53 core assertions** and **377/377 native integration and dependency-integrity assertions across 18 scenarios**. It checks:
+Local results for the prepared DLL, Notepad++ 8.9.8.1 x64:
 
-- **Language / F / Fore** in the actual Notepad++ menu.
-- **Fore in the actual Style Configurator language list**: the test opens the dialog, reads its controls, and cancels it without saving.
-- Automatic external-lexer selection for `.fore` files.
-- Per-byte styles, colors for all 11 categories, and exact fold-start lines.
-- Both presets, LF/CRLF, and edits to an open buffer; core tests also cover CR.
-- Three real Prognoz/Foresight Platform Fore source files from GitHub: Minesweeper, Russian word inflection, and a database connection handler. Their text is not redistributed in this project.
+| Check | Result |
+|---|---|
+| C++ lexer core | 53/53 assertions |
+| Content detector and filename policy | 104/104 assertions |
+| Native editor integration | 381/381 assertions, 18 scenarios |
+| Native automatic detection | 17/17 scenarios |
+| Native theme changes, both views, restart, custom fonts/colors | 40 checks in four runs |
+| Installer | Isolated portable install/update, hashes, backups and UDL migration |
+| Catalog ZIP | Isolated first-run startup and existing XML preservation |
+| Python release tooling | 16 tests; exact bytes, deterministic archives and source selection |
 
-See [validation.json](validation.json) and the [detailed test report in Russian](docs/TESTING.md). Native snapshots are stored in `qa/results/`. These are editor tests, not certification against every platform release.
+Native tests open the actual Style Configurator and About dialogs. Three additional GitHub Fore examples were opened for local validation; their source text is not redistributed. See [test details](docs/TESTING.md), [validation.json](validation.json) and [ub-mode review](docs/UB-MODE-REVIEW.md). Saved snapshots are evidence of a completed run, not a new run every time they are checked.
 
-## Build from source
+## Build and test
 
-Requires **Zig 0.13.0** and PowerShell 7. SDK headers are vendored and pinned to Notepad++ tag `v8.9.8.1`; the build does not download dependencies.
+Requires Zig 0.13.0, C++17 and PowerShell 7. Pinned SDK headers are included; the build does not download them.
 
 ```powershell
 pwsh -File build.ps1 -Zig 'C:\tools\zig-0.13.0\zig.exe'
 pwsh -File test.ps1 -Zig 'C:\tools\zig-0.13.0\zig.exe'
+python -m pip install -r requirements-dev.txt
+python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
 ```
 
-The output is `build\x64\ForeLexer.dll`. A CMake build is also provided for Windows x64:
+DLL output: `build\x64\ForeLexer.dll`. CMake is also provided:
 
 ```powershell
 cmake -S . -B build/cmake -A x64
@@ -132,29 +104,16 @@ cmake --build build/cmake --config Release
 ctest --test-dir build/cmake -C Release --output-on-failure
 ```
 
-The local release was built with Zig 0.13.0. The prepared GitHub Actions workflow uses CMake; it has not yet been run on GitHub.
+`qa/run.ps1`, `qa/run-autodetect.ps1`, `qa/run-theme.ps1` and `qa/test-install.ps1` use isolated editor copies. `python tools/verify.py` rechecks saved evidence. `python tools/package.py` produces the manual, Plugins Admin and source ZIPs with SHA-256 manifests. [Exact-byte rules](docs/BYTE-STABILITY.md) cover LF/CRLF and real Git checkouts. The prepared GitHub Actions matrix has not yet run on GitHub.
 
-## Run the native Notepad++ test
+## Publication status
 
-```powershell
-pwsh -File qa/run.ps1 `
-  -NotepadDirectory 'C:\Program Files\Notepad++' `
-  -Zig 'C:\tools\zig-0.13.0\zig.exe' `
-  -Python 'python'
-```
+Suggested repository: `notepad-plus-plus-syntax-plugin-foresight-platform-fore`.
 
-The script uses a separate EXE copy in `qa/notepad-test`, its own settings, and a test plugin. It does not modify the working user installation. Pass `-ExtraExamplesDirectory` to include optional GitHub examples. Without it, only the project's own fixtures are used, so the scenario and assertion counts differ from the full recorded run.
-
-`python tools/verify.py` rechecks saved snapshots; it does not launch a new editor session. Use `python tools/package.py` to produce release archives and SHA-256 manifests.
+Source and release packages are prepared locally. **No repository, Release or catalog submission has been published.** The [Plugins Admin entry](catalog/plugin-x64.draft.json) remains a draft: replace `OWNER`, publish the exact ZIP after authorization, verify the public download, run the official validator against it and test the complete Plugins Admin install/update/remove cycle. Passing an offline catalog audit does not complete those steps. See [readiness](docs/PLUGINS-ADMIN-READINESS.md).
 
 ## Sources and license
 
-The language rules are grounded in 36 original HTML documents from the **Prognoz Platform Fore 8.1** help. Relative paths and SHA-256 hashes are recorded in [sources.json](sources.json). The proprietary help files and platform binaries are not redistributed.
+Rules are based on **Prognoz Platform Fore 8.1**, not Fore.NET. Document paths and hashes are listed in [sources.json](sources.json); proprietary help and platform binaries are not included. `Fore` is the editor language identifier; `ForeLexer.dll` and `ForeLexer.xml` are technical installation filenames.
 
-The project is licensed under **GPL-3.0-or-later**. Notepad++ and Scintilla SDK notices are preserved. Pinned versions and hashes are recorded in [vendor/provenance.json](vendor/provenance.json). See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) (Russian).
-
-The lexer analyzes the whole document and caches the result between Lex and Fold. Incremental parsing optimizations for very large files have not yet been implemented.
-
-## Release preparation
-
-Exact-byte rules and real Git checkout tests are described in [BYTE-STABILITY.md](docs/BYTE-STABILITY.md). See the [Plugins Admin readiness report](docs/PLUGINS-ADMIN-READINESS.md) (Russian) and [catalog draft](catalog/README.md). A separate `*-plugins-admin-x64.zip` places the versioned DLL at ZIP root. On first load, the embedded light XML is created only if configuration is absent; existing settings are preserved. The catalog download URL still contains `OWNER`. No release or catalog submission has been published.
+**GPL-3.0-or-later**. SDK and runtime notices are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), [LICENSE](LICENSE) and [vendor/provenance.json](vendor/provenance.json).

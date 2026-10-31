@@ -16,27 +16,33 @@ bool isDark(COLORREF color) {
     return (299*GetRValue(color) + 587*GetGValue(color) + 114*GetBValue(color)) < 128000;
 }
 
+bool managedForeground(COLORREF color, size_t style) {
+    return color == fore::LightColors[style] || color == fore::DarkColors[style];
+}
+bool managedBackground(COLORREF color, COLORREF background) {
+    return color == background || color == previousBackground || color == 0xFFFFFF || color == 0x1E1E1E;
+}
+void applyStyle(HWND view, size_t style, COLORREF color, COLORREF background) {
+    const auto foreground = static_cast<COLORREF>(SendMessageW(view, SCI_STYLEGETFORE, style, 0));
+    if (managedForeground(foreground, style)) SendMessageW(view, SCI_STYLESETFORE, style, color);
+    const auto currentBackground = static_cast<COLORREF>(SendMessageW(view, SCI_STYLEGETBACK, style, 0));
+    if (managedBackground(currentBackground, background)) SendMessageW(view, SCI_STYLESETBACK, style, background);
+}
+void applyView(HWND view, const std::array<unsigned long, 11>& colors, COLORREF background) {
+        char name[80] = {};
+        SendMessageW(view, SCI_GETLEXERLANGUAGE, 0, reinterpret_cast<LPARAM>(name));
+        if (std::strcmp(name, "Fore")) return;
+        for (size_t style = 0; style < colors.size(); ++style) {
+            applyStyle(view, style, colors[style], background);
+        }
+        InvalidateRect(view, nullptr, FALSE);
+}
 void apply() {
     if (!ready || applying) return;
     applying = true;
     const COLORREF background = static_cast<COLORREF>(SendMessageW(npp._nppHandle, NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR, 0, 0));
     const auto& colors = isDark(background) ? fore::DarkColors : fore::LightColors;
-    for (HWND view : {npp._scintillaMainHandle, npp._scintillaSecondHandle}) {
-        char name[80] = {};
-        SendMessageW(view, SCI_GETLEXERLANGUAGE, 0, reinterpret_cast<LPARAM>(name));
-        if (std::strcmp(name, "Fore")) continue;
-        for (size_t style = 0; style < colors.size(); ++style) {
-            const auto foreground = static_cast<COLORREF>(SendMessageW(view, SCI_STYLEGETFORE, style, 0));
-            // Only standard role colors are managed. Preserve nonstandard user overrides.
-            if (foreground == fore::LightColors[style] || foreground == fore::DarkColors[style])
-                SendMessageW(view, SCI_STYLESETFORE, style, colors[style]);
-            const auto currentBackground = static_cast<COLORREF>(SendMessageW(view, SCI_STYLEGETBACK, style, 0));
-            if (currentBackground == background || currentBackground == previousBackground ||
-                currentBackground == 0xFFFFFF || currentBackground == 0x1E1E1E)
-                SendMessageW(view, SCI_STYLESETBACK, style, background);
-        }
-        InvalidateRect(view, nullptr, FALSE);
-    }
+    for (HWND view : {npp._scintillaMainHandle, npp._scintillaSecondHandle}) applyView(view, colors, background);
     previousBackground = background;
     applying = false;
 }
@@ -47,6 +53,11 @@ VOID CALLBACK timer(HWND, UINT, UINT_PTR id, DWORD) {
 void schedule() {
     if (ready && !applying)
         SetTimer(npp._nppHandle, reinterpret_cast<UINT_PTR>(&timer), 50, timer);
+}
+void interfaceUpdated() {
+    if (!ready) return;
+    const auto background = static_cast<COLORREF>(SendMessageW(npp._nppHandle, NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR, 0, 0));
+    if (previousBackground != background) schedule();
 }
 }
 
@@ -65,7 +76,7 @@ void themePaletteNotify(SCNotification* notification) noexcept {
             schedule();
             break;
         case SCN_UPDATEUI:
-            if (ready && previousBackground != static_cast<COLORREF>(SendMessageW(npp._nppHandle, NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR, 0, 0))) schedule();
+            interfaceUpdated();
             break;
         case NPPN_SHUTDOWN:
             ready = false;

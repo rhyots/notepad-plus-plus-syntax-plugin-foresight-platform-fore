@@ -1,0 +1,812 @@
+[
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "buffer()",
+    "line": 19,
+    "complexity": 1
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "scintilla()",
+    "line": 20,
+    "complexity": 2
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "menuLabel( HMENU menu , int position)",
+    "line": 25,
+    "complexity": 5
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "externalForeCommand( HMENU menu , int position)",
+    "line": 32,
+    "complexity": 4
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "foreCommand( HMENU menu)",
+    "line": 37,
+    "complexity": 5
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "eligibleBuffer( UINT_PTR current)",
+    "line": 44,
+    "complexity": 4
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "detectionInput()",
+    "line": 53,
+    "complexity": 2
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "detectCurrent()",
+    "line": 62,
+    "complexity": 7
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "detect( HWND , UINT , UINT_PTR timer , DWORD)",
+    "line": 74,
+    "complexity": 2
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "schedule()",
+    "line": 79,
+    "complexity": 4
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "observe( HWND window , UINT message , WPARAM wParam , LPARAM lParam , UINT_PTR , DWORD_PTR)",
+    "line": 85,
+    "complexity": 7
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "languageChanged( UINT_PTR id)",
+    "line": 94,
+    "complexity": 5
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "textModified( SCNotification * notification)",
+    "line": 99,
+    "complexity": 3
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "autoDetectSetInfo( NppData data)",
+    "line": 105,
+    "complexity": 1
+  },
+  {
+    "file": "src/AutoDetect.cpp",
+    "name": "autoDetectNotify( SCNotification * notification)",
+    "line": 106,
+    "complexity": 9
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::kindOf( std :: string_view word)",
+    "line": 16,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::method( Kind kind)",
+    "line": 24,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::modifier( std :: string_view word)",
+    "line": 27,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::strong( const Scope & scope)",
+    "line": 31,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::bodyBoundary( std :: string_view word)",
+    "line": 35,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::identifier( size_t i) const",
+    "line": 43,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::whitespacePrefix( size_t first) const",
+    "line": 47,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::leading( size_t i , bool modifiers) const",
+    "line": 53,
+    "complexity": 7
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::namedEnd( size_t i) const",
+    "line": 61,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::close( size_t i)",
+    "line": 65,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::noteBody( size_t i)",
+    "line": 74,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::noteField( size_t i)",
+    "line": 78,
+    "complexity": 7
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::heading( size_t i) const",
+    "line": 83,
+    "complexity": 9
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::inInterface() const",
+    "line": 95,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::open( size_t i)",
+    "line": 98,
+    "complexity": 8
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::Detector( std :: string input)",
+    "line": 109,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::Detector::recognized()",
+    "line": 110,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::autoDetectEligible( const std :: wstring & path , bool normalText)",
+    "line": 126,
+    "complexity": 7
+  },
+  {
+    "file": "src/ForeDetect.cpp",
+    "name": "fore::looksLikeFore( const std :: string & input)",
+    "line": 137,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::alpha( unsigned char c)",
+    "line": 10,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::digit( unsigned char c)",
+    "line": 11,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::alnum( unsigned char c)",
+    "line": 12,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::lower( std :: string s)",
+    "line": 13,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::words( const char * s)",
+    "line": 17,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::oneOf( std :: string_view word , std :: initializer_list<std::string_view> choices)",
+    "line": 29,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::sourceLine( const Analysis & analysis , size_t position)",
+    "line": 32,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::nestingChange( std :: string_view word)",
+    "line": 35,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::isNewProperty( const std :: vector<Token> & tokens , size_t i)",
+    "line": 40,
+    "complexity": 6
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::branchApplies( std :: string_view branch , std :: string_view scope)",
+    "line": 53,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::addComments( bool enabled)",
+    "line": 65,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::open( const std :: string & kind , size_t line)",
+    "line": 70,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::close( const std :: string & kind , size_t line)",
+    "line": 74,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::end( size_t & i)",
+    "line": 80,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::branch( const Token & token)",
+    "line": 85,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::method( size_t i)",
+    "line": 91,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::accessor( size_t i)",
+    "line": 96,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::opening( size_t i)",
+    "line": 102,
+    "complexity": 6
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::structural( size_t i) const",
+    "line": 111,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::token( size_t & i)",
+    "line": 115,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::lineLevel( size_t line , int & depth)",
+    "line": 124,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::Folder( Analysis & result , bool foldComments)",
+    "line": 137,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Folder::run()",
+    "line": 138,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::fold( Analysis & analysis , bool foldComments)",
+    "line": 145,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::atLineEnd( size_t i) const",
+    "line": 155,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::lineBreak( size_t i) const",
+    "line": 156,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::lineAt( size_t p) const",
+    "line": 161,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::paint( size_t start , Style style)",
+    "line": 164,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::lineCommentStart() const",
+    "line": 167,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::characterCodeStart() const",
+    "line": 170,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::lineComment()",
+    "line": 173,
+    "complexity": 5
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::braceComment()",
+    "line": 179,
+    "complexity": 6
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::quoted()",
+    "line": 189,
+    "complexity": 7
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::characterCode()",
+    "line": 199,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::digits()",
+    "line": 205,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::decimalFollows() const",
+    "line": 206,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::skipSign( std :: size_t offset) const",
+    "line": 209,
+    "complexity": 4
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::exponent()",
+    "line": 213,
+    "complexity": 7
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::number()",
+    "line": 221,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::wordStyle( const std :: string & word)",
+    "line": 228,
+    "complexity": 6
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::identifier()",
+    "line": 234,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::other()",
+    "line": 241,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::next()",
+    "line": 247,
+    "complexity": 8
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::Scanner( const std :: string & source)",
+    "line": 258,
+    "complexity": 3
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::Scanner::scan()",
+    "line": 263,
+    "complexity": 2
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::analyze( const std :: string & text , bool foldComments)",
+    "line": 270,
+    "complexity": 1
+  },
+  {
+    "file": "src/ForeLexer.cpp",
+    "name": "fore::styleName( int style)",
+    "line": 275,
+    "complexity": 3
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "missingConfiguration()",
+    "line": 20,
+    "complexity": 6
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "createConfiguration( const std :: filesystem :: path & config)",
+    "line": 31,
+    "complexity": 7
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ensureConfiguration()",
+    "line": 45,
+    "complexity": 3
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "about()",
+    "line": 54,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::analyze( Scintilla :: IDocument * doc)",
+    "line": 69,
+    "complexity": 4
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::Version() const",
+    "line": 78,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::Release()",
+    "line": 79,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PropertyNames()",
+    "line": 80,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PropertyType( const char *)",
+    "line": 81,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::DescribeProperty( const char * name)",
+    "line": 82,
+    "complexity": 2
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PropertySet( const char * key , const char * value)",
+    "line": 85,
+    "complexity": 3
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::DescribeWordListSets()",
+    "line": 92,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::WordListSet( int , const char *)",
+    "line": 93,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::Lex( Sci_PositionU , Sci_Position , int , Scintilla :: IDocument * doc)",
+    "line": 94,
+    "complexity": 4
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::Fold( Sci_PositionU , Sci_Position , int , Scintilla :: IDocument * doc)",
+    "line": 102,
+    "complexity": 5
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PrivateCall( int , *)",
+    "line": 110,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::LineEndTypesSupported()",
+    "line": 111,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::AllocateSubStyles( int , int)",
+    "line": 112,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::SubStylesStart( int)",
+    "line": 113,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::SubStylesLength( int)",
+    "line": 114,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::StyleFromSubStyle( int style)",
+    "line": 115,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PrimaryStyleFromStyle( int style)",
+    "line": 116,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::FreeSubStyles()",
+    "line": 117,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::SetIdentifiers( int , const char *)",
+    "line": 118,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::DistanceToSecondaryStyles()",
+    "line": 119,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::GetSubStyleBases()",
+    "line": 120,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::NamedStyles()",
+    "line": 121,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::NameOfStyle( int style)",
+    "line": 122,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::TagsOfStyle( int)",
+    "line": 123,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::DescriptionOfStyle( int style)",
+    "line": 124,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::GetName()",
+    "line": 125,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::GetIdentifier()",
+    "line": 126,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "ForeLexer::PropertyGet( const char * key)",
+    "line": 127,
+    "complexity": 5
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "isUnicode()",
+    "line": 135,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "setInfo( NppData data)",
+    "line": 136,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "getName()",
+    "line": 137,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "getFuncsArray( int * count)",
+    "line": 138,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "beNotified( SCNotification * notification)",
+    "line": 141,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "messageProc( UINT , WPARAM , LPARAM)",
+    "line": 142,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "GetLexerCount()",
+    "line": 143,
+    "complexity": 1
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "GetLexerName( unsigned int index , char * name , int length)",
+    "line": 144,
+    "complexity": 4
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "CreateLexer( const char * name)",
+    "line": 149,
+    "complexity": 4
+  },
+  {
+    "file": "src/Plugin.cpp",
+    "name": "DllMain( HMODULE handle , DWORD reason , LPVOID)",
+    "line": 153,
+    "complexity": 2
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "isDark( COLORREF color)",
+    "line": 14,
+    "complexity": 1
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "managedForeground( COLORREF color , size_t style)",
+    "line": 19,
+    "complexity": 2
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "managedBackground( COLORREF color , COLORREF background)",
+    "line": 22,
+    "complexity": 4
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "applyStyle( HWND view , size_t style , COLORREF color , COLORREF background)",
+    "line": 25,
+    "complexity": 3
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "applyView( HWND view , const std :: array<unsigned long,11> & colors , COLORREF background)",
+    "line": 31,
+    "complexity": 3
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "apply()",
+    "line": 40,
+    "complexity": 5
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "timer( HWND , UINT , UINT_PTR id , DWORD)",
+    "line": 49,
+    "complexity": 2
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "schedule()",
+    "line": 53,
+    "complexity": 3
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "interfaceUpdated()",
+    "line": 57,
+    "complexity": 3
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "themePaletteSetInfo( NppData data)",
+    "line": 64,
+    "complexity": 1
+  },
+  {
+    "file": "src/ThemePalette.cpp",
+    "name": "themePaletteNotify( SCNotification * notification)",
+    "line": 65,
+    "complexity": 9
+  }
+]

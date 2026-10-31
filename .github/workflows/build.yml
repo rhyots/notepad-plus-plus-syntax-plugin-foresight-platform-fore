@@ -18,6 +18,10 @@ jobs:
           python-version: '3.12'
       - name: Verify locked bytes and automation line endings
         run: python tools/check_bytes.py
+      - name: Test source selection and release archives
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
       - name: Exercise real Git checkout and deterministic source packaging
         run: python tools/checkout_audit.py
       - run: cmake -S . -B build/cmake -DCMAKE_BUILD_TYPE=Release

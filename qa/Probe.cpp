@@ -16,6 +16,9 @@ std::wstring directory;
 std::string menuPath;
 bool stylesFound = false;
 bool styleDialogFound = false;
+bool aboutAuthorFound = false;
+bool aboutLinkFound = false;
+UINT aboutCommand = 0;
 bool started = false;
 int phase = 0;
 constexpr UINT_PTR timerId = 0xF04E;
@@ -27,11 +30,28 @@ bool findFore(HMENU menu, const std::string& prefix) {
         std::string text;
         for (wchar_t c : label) { if (!c || c == '\t') break; if (c != '&' && c < 128) text += static_cast<char>(c); }
         std::string path = prefix.empty() ? text : prefix + "/" + text;
-        if (text == "Fore") { menuPath = path; return true; }
+        if (text == "Fore") menuPath = path;
+        if (text == "About Notepad++ Syntax Plugin for Foresight Platform Fore") aboutCommand = GetMenuItemID(menu, i);
         HMENU child = GetSubMenu(menu, i);
-        if (child && findFore(child, path)) return true;
+        if (child) findFore(child, path);
     }
     return false;
+}
+BOOL CALLBACK inspectAboutText(HWND control, LPARAM) {
+    wchar_t text[2048] = {};
+    GetWindowTextW(control, text, 2048);
+    if (wcsstr(text, L"Artyom Nikiforov (rhyots)")) aboutAuthorFound = true;
+    if (wcsstr(text, L"https://github.com/rhyots")) aboutLinkFound = true;
+    return TRUE;
+}
+BOOL CALLBACK inspectAbout(HWND window, LPARAM) {
+    wchar_t title[256] = {};
+    GetWindowTextW(window, title, 256);
+    if (!wcscmp(title, L"Notepad++ Syntax Plugin for Foresight Platform Fore")) {
+        EnumChildWindows(window, inspectAboutText, 0);
+        PostMessageW(window, WM_COMMAND, IDOK, 0);
+    }
+    return TRUE;
 }
 BOOL CALLBACK inspectControl(HWND control, LPARAM) {
     wchar_t cls[80] = {};
@@ -108,19 +128,28 @@ void tests() {
     bool customStyle = SendMessageW(sci, SCI_STYLEGETFORE, 1, 0) == 0x332211;
     FILE* file = _wfopen((directory + L"\\ui.json").c_str(), L"wb");
     if (file) {
-        std::fprintf(file, "{\"menu_path\":\"%s\",\"style_dialog_opened\":%s,\"style_dialog_contains_fore\":%s,\"custom_style_roundtrip\":%s}\n",
-            menuPath.c_str(), styleDialogFound ? "true" : "false", stylesFound ? "true" : "false", customStyle ? "true" : "false");
+        std::fprintf(file, "{\"menu_path\":\"%s\",\"style_dialog_opened\":%s,\"style_dialog_contains_fore\":%s,\"custom_style_roundtrip\":%s,\"about_author\":%s,\"about_github\":%s}\n",
+            menuPath.c_str(), styleDialogFound ? "true" : "false", stylesFound ? "true" : "false", customStyle ? "true" : "false", aboutAuthorFound ? "true" : "false", aboutLinkFound ? "true" : "false");
         std::fclose(file);
     }
     PostMessageW(npp._nppHandle, WM_CLOSE, 0, 0);
 }
 VOID CALLBACK timer(HWND, UINT, UINT_PTR, DWORD) {
     if (phase == 0) {
+        findFore(GetMenu(npp._nppHandle), "");
         phase = 1;
         SendMessageW(npp._nppHandle, NPPM_MENUCOMMAND, 0, IDM_LANGSTYLE_CONFIG_DLG);
     } else if (phase == 1) {
-        phase = 2; KillTimer(npp._nppHandle, timerId);
+        phase = 2;
         EnumThreadWindows(GetCurrentThreadId(), inspectWindow, 0);
+    } else if (phase == 2) {
+        phase = 3;
+        if (aboutCommand) SendMessageW(npp._nppHandle, WM_COMMAND, aboutCommand, 0);
+    } else if (phase == 3) {
+        phase = 4;
+        EnumThreadWindows(GetCurrentThreadId(), inspectAbout, 0);
+    } else if (phase == 4) {
+        KillTimer(npp._nppHandle, timerId);
         tests();
     }
 }

@@ -25,7 +25,7 @@ def main():
         return 0
     expected = json.loads(path.read_text(encoding='utf-8'))['files']
     problems = [name for name in sorted(set(actual) | set(expected)) if actual.get(name) != expected.get(name)]
-    for pattern in ['.github/workflows/*.yml', '.github/workflows/*.yaml', '*.ps1', 'qa/*.ps1', 'tools/*.py', '.gitattributes', '.editorconfig']:
+    for pattern in ['.github/workflows/*.yml', '.github/workflows/*.yaml', '*.ps1', 'qa/*.ps1', 'qa/*.py', 'tests/*.py', 'tools/*.py', 'requirements*.txt', '.gitattributes', '.editorconfig']:
         for file in ROOT.glob(pattern):
             data = file.read_bytes()
             if b'\r' in data or data.startswith(b'\xef\xbb\xbf'):

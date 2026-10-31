@@ -784,6 +784,14 @@
       "passed": true
     },
     {
+      "name": "Light: real About contains author",
+      "passed": true
+    },
+    {
+      "name": "Light: real About contains GitHub profile",
+      "passed": true
+    },
+    {
       "name": "Dark: eleven native styles",
       "passed": true
     },
@@ -1508,6 +1516,14 @@
       "passed": true
     },
     {
+      "name": "Dark: real About contains author",
+      "passed": true
+    },
+    {
+      "name": "Dark: real About contains GitHub profile",
+      "passed": true
+    },
+    {
       "name": "Both themes and both line endings tested",
       "passed": true
     }
@@ -2070,19 +2086,19 @@
     }
   ],
   "native_environment": "Notepad++ 8.9.8.1 x64, Windows",
-  "dll_sha256": "d6f7b0df62eb9634f5b6d0f795823fdfe91f671d5051953a85b167fb59ede177",
+  "dll_sha256": "a8cbdb02c8741d52805531b5e5662ec2ba885f498c57c6d4c94298d447af283e",
   "source_fingerprints": {
-    "src/AutoDetect.cpp": "498fa0ee4204af47e19128a42d2d64455fe0ff8b3c3c1a22195707a25d1e5735",
+    "src/AutoDetect.cpp": "5931d3a658631ee4946f0c7a1f20a797cc29824126c3783fa6e6cfb41f5c9947",
     "src/AutoDetect.h": "fcaa1697f2d886948f289925d3c768d7953d085687dfe09e4cfa3eb2b9afd018",
-    "src/ForeDetect.cpp": "1129e1b2adfa15d8db275041325fff6626236fa5c9bc3ec4d4556d40b261f84d",
+    "src/ForeDetect.cpp": "34ef9338abe6b0a25d182c2f6da26996e22651261ea3b22243005186cf83dab9",
     "src/ForeDetect.h": "d4f8d36ecd3ea0052073145d9b3b187b9912a40c5993a54812f018a2e101d029",
-    "src/ForeLexer.cpp": "aa6494132b972fdaa3e908adccaf8098b0c0d0f66929a6980d8ac4dfcae2622d",
+    "src/ForeLexer.cpp": "97369c98dff049473ab4d70da9250b68b599223a693598901616a7436d3adfa0",
     "src/ForeLexer.h": "332ac770f52171936397c092abbdf345a34440805bdc525d3d8b784f705e1fea",
     "src/ForeLexer.rc": "a2250d9108832b8bfa1af6dcc0ba19bb02acba4b0404aac59644675051039532",
     "src/ForePaletteData.h": "d6c47783576da4329c649bda37d485bc333dfda8ab22f97596a4ac8fb6acd357",
     "src/ForeWords.h": "76334892a7d720e37fa4d56a29e12475a858b12bcf354f5d3bd172bfc2845cb6",
-    "src/Plugin.cpp": "03a229e2af3824f601943b5eb92ff35dc9c924473eae6f6f28bcca762be8fba5",
-    "src/ThemePalette.cpp": "9a01fd555fae5e1b60260d52f4133883f66bd099ec07fe005a21e606e88b7c7c",
+    "src/Plugin.cpp": "de9e594bb53bbc5a4dffd4260c521bedcf0710ed45a79c0c57004a0797099f94",
+    "src/ThemePalette.cpp": "a0391f3def5ba2672f2c63314bc5b3dbd2369c56ec3c81ecf20b01901ae72bd9",
     "src/ThemePalette.h": "e8e876419c2ecd7cd3c30ff28b79556390b656cdaa9e223834519542bbeef298"
   },
   "fore_rules": "Prognoz Platform Fore 8.1 documentation; not Fore.NET",

@@ -22,44 +22,58 @@ HWND scintilla() {
     SendMessageW(npp._nppHandle, NPPM_GETCURRENTSCINTILLA, 0, reinterpret_cast<LPARAM>(&view));
     return view ? npp._scintillaSecondHandle : npp._scintillaMainHandle;
 }
+std::wstring menuLabel(HMENU menu, int position) {
+    wchar_t text[128] = {};
+    GetMenuStringW(menu, position, text, 128, MF_BYPOSITION);
+    std::wstring label;
+    for (wchar_t c : text) { if (!c || c == L'\t') break; if (c != L'&') label += c; }
+    return label;
+}
+int externalForeCommand(HMENU menu, int position) {
+    const int id = GetMenuItemID(menu, position);
+    if (id < IDM_LANG_EXTERNAL || id > IDM_LANG_EXTERNAL_LIMIT) return 0;
+    return menuLabel(menu, position) == L"Fore" ? id : 0;
+}
 int foreCommand(HMENU menu) {
     for (int i = 0; i < GetMenuItemCount(menu); ++i) {
-        int id = GetMenuItemID(menu, i);
-        wchar_t text[128] = {};
-        GetMenuStringW(menu, i, text, 128, MF_BYPOSITION);
-        std::wstring label;
-        for (wchar_t c : text) { if (!c || c == L'\t') break; if (c != L'&') label += c; }
-        if (id >= IDM_LANG_EXTERNAL && id <= IDM_LANG_EXTERNAL_LIMIT && label == L"Fore") return id;
+        if (int id = externalForeCommand(menu, i)) return id;
         if (HMENU child = GetSubMenu(menu, i)) { if (int found = foreCommand(child)) return found; }
     }
     return 0;
 }
-VOID CALLBACK detect(HWND, UINT, UINT_PTR timer, DWORD) {
-    KillTimer(npp._nppHandle, timer);
-    try {
-        const UINT_PTR current = buffer();
-        if (!ready || current != pending || suppressed.count(current)) return;
-        const bool normal = SendMessageW(npp._nppHandle, NPPM_GETBUFFERLANGTYPE, current, 0) == L_TEXT;
-        if (!normal) return;
+bool eligibleBuffer(UINT_PTR current) {
+        if (SendMessageW(npp._nppHandle, NPPM_GETBUFFERLANGTYPE, current, 0) != L_TEXT) return false;
         auto length = SendMessageW(npp._nppHandle, NPPM_GETFULLPATHFROMBUFFERID, current, 0);
-        if (length < 0 || length > 32767) return;
+        if (length < 0 || length > 32767) return false;
         std::wstring path(static_cast<size_t>(length)+1, L'\0');
         SendMessageW(npp._nppHandle, NPPM_GETFULLPATHFROMBUFFERID, current, reinterpret_cast<LPARAM>(path.data()));
         path.resize(wcslen(path.c_str()));
-        if (!fore::autoDetectEligible(path, normal)) return;
+        return fore::autoDetectEligible(path, true);
+}
+std::string detectionInput() {
         HWND sci = scintilla();
         auto size = std::min<LRESULT>(SendMessageW(sci, SCI_GETLENGTH, 0, 0), fore::DetectionLimit);
-        if (size <= 0) return;
+        if (size <= 0) return {};
         std::string text(static_cast<size_t>(size)+1, '\0');
         SendMessageW(sci, SCI_GETTEXT, size+1, reinterpret_cast<LPARAM>(text.data()));
         text.resize(static_cast<size_t>(size));
-        if (!fore::looksLikeFore(text)) return;
+        return text;
+}
+void detectCurrent() {
+        const UINT_PTR current = buffer();
+        if (!ready || current != pending || suppressed.count(current)) return;
+        if (!eligibleBuffer(current)) return;
+        if (!fore::looksLikeFore(detectionInput())) return;
         if (int command = foreCommand(GetMenu(npp._nppHandle))) {
             selecting = true;
             SendMessageW(npp._nppHandle, NPPM_MENUCOMMAND, 0, command);
             selecting = false;
             assigned.insert(current);
         }
+}
+VOID CALLBACK detect(HWND, UINT, UINT_PTR timer, DWORD) {
+    KillTimer(npp._nppHandle, timer);
+    try { detectCurrent();
     } catch (...) { selecting = false; }
 }
 void schedule() {
@@ -76,6 +90,15 @@ LRESULT CALLBACK observe(HWND window, UINT message, WPARAM wParam, LPARAM lParam
         if (explicitText && !selecting) suppressed.insert(buffer());
     } catch (...) {}
     return DefSubclassProc(window, message, wParam, lParam);
+}
+void languageChanged(UINT_PTR id) {
+    if (selecting || !ready) return;
+    if (assigned.count(id) || SendMessageW(npp._nppHandle, NPPM_GETBUFFERLANGTYPE, id, 0) != L_TEXT)
+        suppressed.insert(id);
+}
+void textModified(SCNotification* notification) {
+    if (!(notification->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))) return;
+    if (notification->nmhdr.hwndFrom == scintilla()) schedule();
 }
 }
 
@@ -98,18 +121,14 @@ void autoDetectNotify(SCNotification* notification) noexcept {
             schedule();
             break;
         case NPPN_LANGCHANGED:
-            if (!selecting && ready) {
-                const UINT_PTR id = notification->nmhdr.idFrom;
-                if (assigned.count(id) || SendMessageW(npp._nppHandle, NPPM_GETBUFFERLANGTYPE, id, 0) != L_TEXT)
-                    suppressed.insert(id);
-            }
+            languageChanged(notification->nmhdr.idFrom);
             break;
         case NPPN_FILEBEFORECLOSE:
             suppressed.erase(notification->nmhdr.idFrom);
             assigned.erase(notification->nmhdr.idFrom);
             break;
         case SCN_MODIFIED:
-            if ((notification->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT)) && notification->nmhdr.hwndFrom == scintilla()) schedule();
+            textModified(notification);
             break;
         }
     } catch (...) {}

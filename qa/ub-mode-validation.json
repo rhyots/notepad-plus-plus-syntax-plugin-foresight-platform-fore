@@ -1,0 +1,119 @@
+{
+  "checked_on": "2026-10-31",
+  "scope": "ub-mode review for first unpublished release 1.0.0",
+  "tools": [
+    {
+      "repository": "https://github.com/unclebob/crapper",
+      "commit": "6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d"
+    },
+    {
+      "repository": "https://github.com/unclebob/dryer",
+      "commit": "66ff6d21a42c04afcad89c78a80066176d1294b0"
+    },
+    {
+      "repository": "https://github.com/unclebob/mutator",
+      "commit": "a5a0cb803b66e0cdb8bf471b3b08af701d424a41"
+    }
+  ],
+  "cpp": {
+    "tool": "Lizard 1.24.3",
+    "metric": "Cyclomatic complexity, not CRAP",
+    "functions": 135,
+    "maximum_before": 65,
+    "maximum_after": 9,
+    "crap_measured": false,
+    "mutation_testing_supported_by_companion_tools": false
+  },
+  "python": {
+    "tests_passed": 16,
+    "crap_scope": [
+      "tools/package.py",
+      "tools/release_files.py"
+    ],
+    "functions": [
+      {
+        "function": "tools.package.package_binaries",
+        "complexity": 8,
+        "coverage": 100.0,
+        "crap": 8.0
+      },
+      {
+        "function": "tools.release_files.public_files",
+        "complexity": 5,
+        "coverage": 100.0,
+        "crap": 5.0
+      },
+      {
+        "function": "tools.package.archive",
+        "complexity": 3,
+        "coverage": 100.0,
+        "crap": 3.0
+      },
+      {
+        "function": "tools.package.main",
+        "complexity": 2,
+        "coverage": 100.0,
+        "crap": 2.0
+      },
+      {
+        "function": "tools.release_files.source_directory",
+        "complexity": 2,
+        "coverage": 100.0,
+        "crap": 2.0
+      },
+      {
+        "function": "tools.release_files.source_file",
+        "complexity": 2,
+        "coverage": 100.0,
+        "crap": 2.0
+      },
+      {
+        "function": "tools.package.sha",
+        "complexity": 1,
+        "coverage": 100.0,
+        "crap": 1.0
+      }
+    ],
+    "dryer_scope": "tools/*.py",
+    "dryer_threshold": 0.8,
+    "duplicate_candidates": 0,
+    "mutation_scope": [
+      "tools/package.py",
+      "tools/release_files.py"
+    ],
+    "killed": 69,
+    "survived": 1,
+    "uncovered": 0,
+    "sites": 70,
+    "raw_mutation_score": 0.9857142857142858,
+    "equivalent_survivor": "tools/package.py:21 seconds 0 -> 1; DOS ZIP timestamps store two-second resolution",
+    "equivalent_zip_bytes_identical": true,
+    "equivalence_proof_sha256": "9f5048846cfb466fa7a6b55f1e0bcd0032f00985c845a1b845583d7e7dcc93f4",
+    "windows_adapter": "Read-only official tool logic; private file copies replace symlink overlays, verified by unmutated tests; taskkill handles only timed-out spawned test processes"
+  },
+  "boundaries": [
+    "Crapper, Dryer and Mutator do not support C++ or PowerShell; no C++ CRAP/mutation score is claimed.",
+    "CRAP scores cover the two release modules above, not every Python QA CLI.",
+    "Mutation tool returns exit 3 because the equivalent timestamp mutation survives; this is not reported as an all-killed run."
+  ],
+  "source_sha256": {
+    "src/AutoDetect.cpp": "5931d3a658631ee4946f0c7a1f20a797cc29824126c3783fa6e6cfb41f5c9947",
+    "src/AutoDetect.h": "fcaa1697f2d886948f289925d3c768d7953d085687dfe09e4cfa3eb2b9afd018",
+    "src/ForeDetect.cpp": "34ef9338abe6b0a25d182c2f6da26996e22651261ea3b22243005186cf83dab9",
+    "src/ForeDetect.h": "d4f8d36ecd3ea0052073145d9b3b187b9912a40c5993a54812f018a2e101d029",
+    "src/ForeLexer.cpp": "97369c98dff049473ab4d70da9250b68b599223a693598901616a7436d3adfa0",
+    "src/ForeLexer.h": "332ac770f52171936397c092abbdf345a34440805bdc525d3d8b784f705e1fea",
+    "src/ForeLexer.rc": "a2250d9108832b8bfa1af6dcc0ba19bb02acba4b0404aac59644675051039532",
+    "src/ForePaletteData.h": "d6c47783576da4329c649bda37d485bc333dfda8ab22f97596a4ac8fb6acd357",
+    "src/ForeWords.h": "76334892a7d720e37fa4d56a29e12475a858b12bcf354f5d3bd172bfc2845cb6",
+    "src/Plugin.cpp": "de9e594bb53bbc5a4dffd4260c521bedcf0710ed45a79c0c57004a0797099f94",
+    "src/ThemePalette.cpp": "a0391f3def5ba2672f2c63314bc5b3dbd2369c56ec3c81ecf20b01901ae72bd9",
+    "src/ThemePalette.h": "e8e876419c2ecd7cd3c30ff28b79556390b656cdaa9e223834519542bbeef298",
+    "tests/conftest.py": "23f8bb7a966917c16f0934b97dd7275be2824e9f26e1b51ced441b2d8cff9ba0",
+    "tests/test_release_archive.py": "1eac37f5214e79cac83abf0a20b4a7df634e51a8d88975066cf91c1d11a00417",
+    "tests/test_release_files.py": "879e66517d778f84d2174cc18779861f8feeb7a1b630638e9c73dc6aac401b74",
+    "tools/package.py": "89c2bd2e96370ee1042a878ba5daff018e60e50ad50d746b2585d5b4a4f855c0",
+    "tools/release_files.py": "eddffcd91312e40c193136b134532469219c0b80c9815784bf17aab54970936e",
+    "tools/verify.py": "84ee18157a954d0cf03e409ad5db0f820d6295ea7800851acc8a12dc14be07f2"
+  }
+}

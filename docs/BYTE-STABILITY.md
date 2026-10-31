@@ -6,7 +6,7 @@ different project's packaged JavaScript bundle.
 
 - `.gitattributes` uses LF for maintained text, including YAML workflows and
   PowerShell scripts. PowerShell 7 supports LF.
-- `src/`, `styles/`, `examples/`, `vendor/`, and recorded native snapshots use
+- `src/`, `styles/`, `examples/`, `vendor/`, and recorded native/quality snapshots use
   `-text`: Git must not convert their line endings. `ForeWords.h` deliberately
   retains the generator's CRLF bytes; SDK notices retain their upstream bytes.
 - `.editorconfig` records the intended editor settings.

@@ -1,0 +1,9 @@
+{:entries [
+  {:name "package_binaries", :namespace "tools.package", :complexity 8, :coverage 100.0, :crap 8.0}
+  {:name "public_files", :namespace "tools.release_files", :complexity 5, :coverage 100.0, :crap 5.0}
+  {:name "archive", :namespace "tools.package", :complexity 3, :coverage 100.0, :crap 3.0}
+  {:name "main", :namespace "tools.package", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "source_directory", :namespace "tools.release_files", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "source_file", :namespace "tools.release_files", :complexity 2, :coverage 100.0, :crap 2.0}
+  {:name "sha", :namespace "tools.package", :complexity 1, :coverage 100.0, :crap 1.0}
+]}

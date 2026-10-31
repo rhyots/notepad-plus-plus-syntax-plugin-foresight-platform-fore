@@ -1,0 +1,8 @@
+-r requirements-dev.txt
+coverage==7.17.0
+lizard==1.24.3
+tree-sitter==0.26.0
+tree-sitter-language-pack==1.22.1
+https://codeload.github.com/unclebob/crapper/zip/6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d
+https://codeload.github.com/unclebob/dryer/zip/66ff6d21a42c04afcad89c78a80066176d1294b0
+https://codeload.github.com/unclebob/mutator/zip/a5a0cb803b66e0cdb8bf471b3b08af701d424a41

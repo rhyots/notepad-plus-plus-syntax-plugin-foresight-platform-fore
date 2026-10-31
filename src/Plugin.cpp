@@ -17,38 +17,46 @@ NppData npp;
 HMODULE module;
 FuncItem commands[1];
 
+std::filesystem::path missingConfiguration() {
+    wchar_t executable[32768] = {};
+    if (!GetModuleFileNameW(nullptr, executable, 32768)) return {};
+    const auto global = std::filesystem::path(executable).parent_path()/L"plugins"/L"Config"/L"ForeLexer.xml";
+    if (std::filesystem::exists(global)) return {};
+    wchar_t directory[32768] = {};
+    if (!SendMessageW(npp._nppHandle, NPPM_GETPLUGINSCONFIGDIR, 32768, reinterpret_cast<LPARAM>(directory))) return {};
+    if (!directory[0]) return {};
+    const auto config = std::filesystem::path(directory)/L"ForeLexer.xml";
+    return std::filesystem::exists(config) ? std::filesystem::path{} : config;
+}
+void createConfiguration(const std::filesystem::path& config) {
+    HRSRC resource = FindResourceW(module, MAKEINTRESOURCEW(101), RT_RCDATA);
+    if (!resource) return;
+    const DWORD size = SizeofResource(module, resource);
+    const void* bytes = LockResource(LoadResource(module, resource));
+    if (!bytes || !size) return;
+    std::filesystem::create_directories(config.parent_path());
+    HANDLE file = CreateFileW(config.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (file == INVALID_HANDLE_VALUE) return;
+    DWORD written = 0;
+    const bool ok = WriteFile(file, bytes, size, &written, nullptr) && written == size;
+    CloseHandle(file);
+    if (!ok) DeleteFileW(config.c_str());
+}
 void ensureConfiguration() noexcept {
     try {
-        wchar_t executable[32768] = {};
-        if (!GetModuleFileNameW(nullptr, executable, 32768)) return;
-        const auto global = std::filesystem::path(executable).parent_path() / L"plugins" / L"Config" / L"ForeLexer.xml";
-        if (std::filesystem::exists(global)) return;
-        wchar_t directory[32768] = {};
-        if (!SendMessageW(npp._nppHandle, NPPM_GETPLUGINSCONFIGDIR, 32768, reinterpret_cast<LPARAM>(directory)) || !directory[0]) return;
-        const auto config = std::filesystem::path(directory) / L"ForeLexer.xml";
-        if (std::filesystem::exists(config)) return;
-        HRSRC resource = FindResourceW(module, MAKEINTRESOURCEW(101), RT_RCDATA);
-        if (!resource) return;
-        const DWORD size = SizeofResource(module, resource);
-        const void* bytes = LockResource(LoadResource(module, resource));
-        if (!bytes || !size) return;
-        std::filesystem::create_directories(config.parent_path());
-        // CREATE_NEW preserves existing user settings, including concurrent creation.
-        HANDLE file = CreateFileW(config.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_NEW, FILE_ATTRIBUTE_NORMAL, nullptr);
-        if (file == INVALID_HANDLE_VALUE) return;
-        DWORD written = 0;
-        const bool ok = WriteFile(file, bytes, size, &written, nullptr) && written == size;
-        CloseHandle(file);
-        if (!ok) DeleteFileW(config.c_str());
+        const auto config = missingConfiguration();
+        if (!config.empty()) createConfiguration(config);
     } catch (...) {
-        // The editor will report its normal missing-XML error if creation failed.
+        // The editor reports its normal missing-XML error if creation fails.
     }
 }
+
 void about() {
     MessageBoxW(npp._nppHandle,
         L"Notepad++ Syntax Plugin for Foresight Platform Fore 1.0.0\nSyntax highlighting and folding.\n"
         L"Rules: Prognoz Platform Fore 8.1 documentation.\n"
-        L"Language > F > Fore\nSettings > Style Configurator > Fore",
+        L"Language > F > Fore\nSettings > Style Configurator > Fore\n\n"
+        L"Artyom Nikiforov (rhyots)\nhttps://github.com/rhyots",
         L"Notepad++ Syntax Plugin for Foresight Platform Fore", MB_OK | MB_ICONINFORMATION);
 }
 
