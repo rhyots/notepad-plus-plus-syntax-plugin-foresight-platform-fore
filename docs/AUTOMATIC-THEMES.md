@@ -1,59 +1,33 @@
-# Автоматическое переключение палитры
+# Automatic palette switching
 
-Включено по умолчанию в готовящемся выпуске 1.0.0. Копировать XML при каждой
-смене темы больше не требуется.
+[English](AUTOMATIC-THEMES.md) | [Русский](AUTOMATIC-THEMES.ru.md)
 
-Плагин определяет светлый или тёмный фон через
-`NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR` и реагирует на `NPPN_DARKMODECHANGED`,
-`NPPN_WORDSTYLESUPDATED`, активацию документа и назначение Fore. Переключение
-откладывается на 50 мс, чтобы Notepad++ закончил обновление собственных стилей.
-Изменение фона также проверяется при обновлении интерфейса.
 
-Таким образом, учитывается именно фон текста, а не только цвет панелей:
-тёмная тема редактора при светлом интерфейсе также выбирает тёмную палитру Fore.
-Порог — взвешенная яркость RGB 128/255. Для нестандартных средних или насыщенных
-фонов выбирается одна из двух палитр; индивидуальный контраст всех возможных
-тем этим не гарантируется.
+Enabled by default since release 1.0.0. Copying XML whenever the theme changes is unnecessary.
 
-Обновляются только представления Scintilla с активным лексером Fore, в обоих
-окнах редактора. Другие языки, содержимое документа, его состояние изменения,
-шрифт, размер и начертание плагин не меняет.
+The plugin detects the editor background through `NPPM_GETEDITORDEFAULTBACKGROUNDCOLOR` and responds to `NPPN_DARKMODECHANGED`, `NPPN_WORDSTYLESUPDATED`, document activation and assigning Fore. A 50 ms delay lets Notepad++ finish updating its own styles. Background changes are also checked during UI updates.
 
-## Ручные настройки
+The decision follows the text background, including a dark editor theme with light application chrome. The threshold is weighted RGB brightness 128/255. Unusual medium-brightness or saturated backgrounds select one of the two palettes; this does not guarantee individual contrast for every possible theme.
 
-Для каждой категории автоматически заменяются только цвета, совпадающие с
-соответствующим стандартным цветом Light или Dark. Любой иной выбранный
-пользователем цвет остаётся пользовательским и сохраняется при переключении.
-Если вручную выбрать ровно стандартный цвет одной из двух палитр, он будет
-считаться управляемым автоматикой.
+Only Scintilla views using the Fore lexer are updated, in both editor views. Other languages, document text, modified state, font family, size and emphasis are left as configured.
 
-Аналогично сохраняется нестандартный фиксированный фон категории. Обычный
-наследуемый фон следует за текущей темой. Файл `ForeLexer.xml` при автоматическом
-переключении плагином не перезаписывается; стандартное «Сохранить» в конфигураторе
-может штатно пересохранить XML средствами самого Notepad++.
+## Custom settings
 
-Конфигуратор стилей показывает базовые настройки XML. Автоматическое
-сопоставление стандартных цветов применяется к тексту в редакторе. Изменённые
-через конфигуратор нестандартные цвета остаются доступным способом ручной настройки.
+For each category, automatic mapping replaces only a foreground color equal to that category's standard Light or Dark color. Any other user-selected color is preserved. Selecting exactly a standard palette color opts that category into automatic mapping.
 
-## Источники палитр и проверка
+A nonstandard fixed category background is also preserved. An ordinary inherited background follows the editor theme. Automatic switching does not rewrite `ForeLexer.xml`; the normal Save action in Style Configurator may save the XML through Notepad++ itself.
 
-`styles/ForeLexer-Light.xml` и `styles/ForeLexer-Dark.xml` — исходные палитры.
-`tools/generate_palettes.py` генерирует из них `src/ForePaletteData.h` с BGR-значениями
-для Scintilla; проверка `--check` не допускает расхождения. Обе XML-палитры также
-включены в ресурсы DLL и проверяются по SHA-256.
+Style Configurator displays the base XML settings. Automatic standard-color mapping is applied to text in the editor. Nonstandard colors selected in the configurator remain the way to make custom choices.
 
-`qa/run-theme.ps1` запускает отдельные portable-профили. Тестовый плагин выбирает
-настоящие темы Default и DarkModeDefault в настоящем Style Configurator,
-проверяет цвета всех 11 категорий в двух представлениях, повторные переходы,
-сохранение нестандартного цвета/шрифта, другой активный язык и повторный запуск
-с сохранённой тёмной темой. Результат — [theme-validation.json](../qa/theme-validation.json).
+## Palette sources and validation
+
+`styles/ForeLexer-Light.xml` and `styles/ForeLexer-Dark.xml` are the source palettes. `tools/generate_palettes.py` generates `src/ForePaletteData.h` with Scintilla BGR values; `--check` rejects drift. Both XML presets are embedded in the DLL and verified by SHA-256.
+
+`qa/run-theme.ps1` starts separate portable profiles. Its test plugin selects the real Default and DarkModeDefault themes in the actual Style Configurator. It verifies all 11 style categories in both views, repeated transitions, a custom color/font, another active language and restart with the saved dark theme. Results: [theme-validation.json](../qa/theme-validation.json).
 
 ```powershell
 python tools/generate_palettes.py --check
 pwsh -File qa/run-theme.ps1 -Zig 'C:\tools\zig-0.13.0\zig.exe'
 ```
 
-Использованы официальные
-[уведомления и API Notepad++](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h)
-и [обработчик смены темы](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/WinControls/ColourPicker/WordStyleDlg.cpp).
+Implementation references: official [Notepad++ notifications and API](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h) and [theme-change handler](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/WinControls/ColourPicker/WordStyleDlg.cpp).

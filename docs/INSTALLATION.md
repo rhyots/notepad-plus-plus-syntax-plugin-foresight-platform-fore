@@ -1,14 +1,14 @@
-# Notepad++ Syntax Plugin for Foresight Platform Fore 1.0.0 — Windows x64
+# Notepad++ Syntax Plugin for Foresight Platform Fore 1.1.0 — Windows x64 and x86
 
 [English](INSTALLATION.md) | [Русский](INSTALLATION.ru.md)
 
 Native syntax highlighting and folding for **Foresight Platform Fore**. The language appears under **Language → F → Fore**; colors and fonts are available under **Settings → Style Configurator → Fore**.
 
-Tested in **Notepad++ 8.9.8.1 x64**. Language rules are based on the original **Prognoz Platform Fore 8.1** help. Later platform releases have not been tested individually. Fore.NET is not a target language. This independent project is not an official product of Foresight, Prognoz, or Notepad++.
+Tested in **Notepad++ 8.9.8.1 x64 and x86**. Language rules are based on the original **Prognoz Platform Fore 8.1** help. Later platform releases have not been tested individually. Fore.NET is not a target language. This independent project is not an official product of Foresight, Prognoz, or Notepad++.
 
 ## Installation
 
-1. Extract the **entire** archive into a regular directory.
+1. Choose the archive matching the editor bitness in **? → Debug Info** (x86 for a 32-bit editor, even on Windows x64). Extract the **entire** archive into a regular directory.
 2. Save your work and close all Notepad++ windows.
 3. For an installation into `Program Files`, open **PowerShell 7 as Administrator**.
 4. From the extracted directory, run:
@@ -19,7 +19,7 @@ pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'
 
 The initial base XML can be selected with `-Palette Dark`; automatic theme following works with either base preset. For portable Notepad++, pass the directory containing its EXE. For a custom profile, use `-ConfigurationDirectory 'C:\path\to\profile'`.
 
-The script checks x64 compatibility, backs up files, and installs the DLL and XML. If a UDL owns the `.fore` extension, only that association is removed; the UDL remains available for manual selection. Backups and the installation receipt are saved in `ForeLexerBackups` inside the editor configuration directory.
+The script checks that the DLL architecture matches the editor, backs up files, and installs the DLL and XML. If a UDL owns the `.fore` extension, only that association is removed; the UDL remains available for manual selection. Backups and the installation receipt are saved in `ForeLexerBackups` inside the editor configuration directory.
 
 Start Notepad++ and open a `.fore` file. The status bar should show **Fore**. For manual selection, use **Language → F → Fore**.
 
@@ -40,11 +40,11 @@ Open **Settings → Style Configurator → Fore** to customize the base colors a
 
 ## Validation and source code
 
-Recorded results: **53/53 core assertions**, **381/381 native integration and dependency-integrity assertions**, and **18 scenarios** across both presets. The integration test opened the actual Style Configurator and checked its language list. LF/CRLF folding was tested in the editor, with CR also covered by core tests.
+Recorded results on each architecture: **53/53 core assertions**, **381/381 native integration and dependency-integrity assertions**, and **18 scenarios** across both presets. The integration test opened the actual Style Configurator and checked its language list. LF/CRLF folding was tested in the editor, with CR also covered by core tests.
 
-See `validation.json` and `docs/TESTING.md` (Russian). Programs were not compiled or executed inside either platform during validation.
+See `validation.json` and [English test details](TESTING.md) or [Russian translation](TESTING.ru.md). Programs were not compiled or executed inside either platform during validation.
 
-Project code, documentation and examples: **MIT License**. Third-party components retain their own licenses; see `THIRD_PARTY_NOTICES.md`. Complete source code, build tools, the full bilingual README, and native snapshots are supplied in the accompanying **NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip** archive. Third-party license texts in this binary archive are under `licenses/`.
+Project code, documentation and examples: **MIT License**. Third-party components retain their own licenses; see `THIRD_PARTY_NOTICES.md`. Complete source code, build tools, the full bilingual README, and native snapshots are supplied in the accompanying **NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip** archive. Third-party license texts in this binary archive are under `licenses/`.
 
 ## Automatic detection
 

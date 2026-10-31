@@ -1,13 +1,16 @@
-param([string]$NotepadDirectory='C:\Program Files\Notepad++',[string]$Zig='zig')
+param([string]$NotepadDirectory='C:\Program Files\Notepad++',[string]$Zig='zig',[ValidateSet('x64','x86')][string]$Architecture='x64')
 $ErrorActionPreference='Stop'
 $root=Split-Path -Parent $PSScriptRoot
+$evidence = if ($Architecture -eq 'x64') { $PSScriptRoot } else { Join-Path $PSScriptRoot $Architecture }
+New-Item -ItemType Directory -Force -Path $evidence | Out-Null
+$target = if ($Architecture -eq 'x86') { 'x86-windows-gnu' } else { 'x86_64-windows-gnu' }
 $work=Join-Path $PSScriptRoot ('notepad-theme/'+[guid]::NewGuid().ToString('N'))
 $utf8=[Text.UTF8Encoding]::new($false)
 $env:ZIG_GLOBAL_CACHE_DIR=Join-Path $root 'build/zig-global-cache'
 $env:ZIG_LOCAL_CACHE_DIR=Join-Path $root 'build/zig-cache'
 New-Item -ItemType Directory -Path $work -Force | Out-Null
 $probeDll=Join-Path $work 'ThemeProbe.dll'
-& $Zig c++ -target x86_64-windows-gnu -std=c++17 -O2 -shared ('-I'+(Join-Path $root 'vendor/npp-sdk')) ('-I'+(Join-Path $root 'src')) (Join-Path $PSScriptRoot 'ThemeProbe.cpp') -luser32 -fno-sanitize=undefined -o $probeDll
+& $Zig c++ -target $target -std=c++17 -O2 -shared ('-I'+(Join-Path $root 'vendor/npp-sdk')) ('-I'+(Join-Path $root 'src')) (Join-Path $PSScriptRoot 'ThemeProbe.cpp') -luser32 -fno-sanitize=undefined -o $probeDll
 if($LASTEXITCODE -ne 0){throw 'Theme probe build failed'}
 $runs=@()
 foreach($variant in @('standard','custom')) {
@@ -16,7 +19,7 @@ foreach($variant in @('standard','custom')) {
  New-Item -ItemType Directory -Force -Path $dir,$plugin,$probe,$config,$themes | Out-Null
  foreach($name in @('notepad++.exe','langs.model.xml','stylers.model.xml')){Copy-Item -LiteralPath (Join-Path $NotepadDirectory $name) -Destination (Join-Path $dir $name)}
  Copy-Item -LiteralPath (Join-Path $NotepadDirectory 'themes/DarkModeDefault.xml') -Destination $themes
- Copy-Item -LiteralPath (Join-Path $root 'build/x64/ForeLexer.dll') -Destination (Join-Path $plugin 'ForeLexer.dll')
+ Copy-Item -LiteralPath (Join-Path $root "build/$Architecture/ForeLexer.dll") -Destination (Join-Path $plugin 'ForeLexer.dll')
  Copy-Item -LiteralPath $probeDll -Destination (Join-Path $probe 'ThemeProbe.dll')
  New-Item -ItemType File -Path (Join-Path $dir 'doLocalConf.xml') | Out-Null
  [IO.File]::WriteAllText((Join-Path $dir 'config.xml'),'<NotepadPlus><GUIConfigs><GUIConfig name="langsExcluded" langMenuCompact="yes" /></GUIConfigs></NotepadPlus>',$utf8)
@@ -44,6 +47,6 @@ foreach($variant in @('standard','custom')) {
   $runs+=@{variant=$variant;launch=$launch;result=$report}
  }
 }
-$final=[ordered]@{passed=$true;environment='Notepad++ 8.9.8.1 x64';dll_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'build/x64/ForeLexer.dll')).Hash.ToLowerInvariant();method='Real Style Configurator theme combo, both views, saved theme and actual restart';runs=$runs;lexer_style_attributes_preserved=$true}
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'theme-validation.json'),($final|ConvertTo-Json -Depth 12).Replace("`r`n","`n")+"`n",$utf8)
+$final=[ordered]@{passed=$true;environment="Notepad++ 8.9.8.1 $Architecture";dll_sha256=(Get-FileHash -LiteralPath (Join-Path $root "build/$Architecture/ForeLexer.dll")).Hash.ToLowerInvariant();method='Real Style Configurator theme combo, both views, saved theme and actual restart';runs=$runs;lexer_style_attributes_preserved=$true}
+[IO.File]::WriteAllText((Join-Path $evidence 'theme-validation.json'),($final|ConvertTo-Json -Depth 12).Replace("`r`n","`n")+"`n",$utf8)
 Write-Output ('THEMES: '+$runs.Count+' native runs passed; real theme changes, both views, restart and custom color/font settings verified.')

@@ -4,9 +4,9 @@
 
 **Read Fore comfortably in the editor you already use.** Native syntax highlighting, folding and automatic light/dark palettes for **Foresight Platform Fore** and **Prognoz Platform Fore** in Notepad++.
 
-[![Release](https://img.shields.io/github/v/release/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore?color=008787)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) [![Build](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml/badge.svg)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml) [![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) [![License MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore?color=008787)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) [![Build](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml/badge.svg)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml) [![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip) [![License MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
-[**Download for Windows x64**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) · [v1.0.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [User guide](docs/USER-GUIDE.md)
+[**Download for Notepad++ x64**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip) · [**Download for Notepad++ x86**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip) · [v1.1.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) · [User guide](docs/USER-GUIDE.md)
 
 ## Why use it?
 
@@ -39,7 +39,7 @@ These are animated code previews rendered from the plugin's actual lexer results
 
 ## Start in three steps
 
-1. Download the **[Windows x64 plugin ZIP](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip)** from Release 1.0.0 and extract the entire archive.
+1. Download the **[Windows x64 plugin ZIP](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip)** or **[x86 ZIP](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip)** from Release 1.1.0, matching **Notepad++ → ? → Debug Info → bitness**, and extract the entire archive. A 32-bit editor needs x86 even on 64-bit Windows.
 2. Save your documents and close Notepad++. In **PowerShell 7**, from the extracted folder, run:
 
    ```powershell
@@ -91,14 +91,14 @@ Standard colors follow the actual editor background, in both views and after res
 
 | Component | Status |
 |---|---|
-| **Notepad++ 8.9.8.1 / Windows x64** | Built and integration-tested in the actual editor |
+| **Notepad++ 8.9.8.1 / Windows x64 and x86** | Built and integration-tested in the actual editor |
 | **Prognoz Platform Fore 8.1** | Language rules grounded in 36 original help documents |
 | Later Foresight Platform Fore releases | Not individually certified |
-| Fore.NET, x86 and ARM64 | Not supported targets in this release |
+| Fore.NET and ARM64 | Not supported targets in this release |
 
-The plugin uses ILexer5 (introduced in Notepad++ 8.4); **8.9.8.1 x64 is the minimum tested version**. The plugin does not compile or execute platform programs.
+The plugin uses ILexer5 (introduced in Notepad++ 8.4); **8.9.8.1 x64/x86 is the minimum tested version**. The plugin does not compile or execute platform programs.
 
-Recorded checks: **53** core assertions, **104** detector assertions, **381** native integration assertions across 18 scenarios, **17** native detection scenarios, **40** theme checks, and **16** release-tooling tests. Native checks open the real Style Configurator and About dialogs. [Detailed test report](docs/TESTING.md) · [Machine-readable evidence](validation.json) · [Build workflow](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
+Recorded checks: **53** core assertions, **104** detector assertions, **381** native integration assertions across 18 scenarios, **17** native detection scenarios, **40** theme checks, and automated release-tooling tests. The 381 integration assertions, 17 detection cases and 40 theme checks passed separately on **each architecture**. Native checks open the real Style Configurator and About dialogs. [Detailed test report](docs/TESTING.md) · [Machine-readable evidence](validation.json) · [Build workflow](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
 
 ## Questions before installing?
 
@@ -128,7 +128,7 @@ python -m pip install -r requirements-dev.txt
 python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
 ```
 
-DLL: `build/x64/ForeLexer.dll`. SDK headers are vendored and pinned. CMake:
+DLL: `build/x64/ForeLexer.dll`. Add `-Architecture x86` for `build/x86/ForeLexer.dll`; use CMake `-A Win32` in a separate build directory for x86. SDK headers are vendored and pinned. CMake:
 
 ```powershell
 cmake -S . -B build/cmake -A x64
@@ -142,9 +142,9 @@ ctest --test-dir build/cmake -C Release --output-on-failure
 
 ## Downloads, author and license
 
-[**Download 1.0.0**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [Release notes](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases) · [Source](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore)
+[**Download 1.1.0**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) · [Release notes](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases) · [Source](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore)
 
-Choose `*-x64.zip` for manual installation, `*-plugins-admin-x64.zip` for the catalog layout, or `*-source.zip` for the full source tree. Each asset has a SHA-256 sidecar. The explicit source ZIP preserves tested bytes; GitHub's automatic source download is not the Plugins Admin asset.
+Choose `*-x64.zip` or `*-x86.zip` for manual installation, the matching `*-plugins-admin-x64.zip` / `*-plugins-admin-x86.zip` for the catalog layout, or `*-source.zip` for the full source tree. Each asset has a SHA-256 sidecar. The explicit source ZIP preserves tested bytes; GitHub's automatic source download is not the Plugins Admin asset.
 
 **[MIT License](LICENSE)** for original project code, documentation and examples. Third-party SDK/runtime components and the credited community excerpt retain their own licenses. [Third-party notices](THIRD_PARTY_NOTICES.md). Proprietary platform help and platform binaries are not distributed; documentation provenance is recorded in [sources.json](sources.json).
 

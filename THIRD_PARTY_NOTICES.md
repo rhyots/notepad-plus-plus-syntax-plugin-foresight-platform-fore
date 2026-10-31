@@ -17,7 +17,7 @@ Original paths, URLs and SHA-256 values are recorded in `vendor/provenance.json`
 
 The tested DLL is built with Zig 0.13.0 and its LLVM libc++, libc++abi and libunwind components. Their notices are preserved in `vendor/LICENSE.libcxx.txt`, `vendor/LICENSE.libcxxabi.txt` and `vendor/LICENSE.libunwind.txt`, including Apache License 2.0 with LLVM exceptions and historical component notices.
 
-The compiler itself is not bundled. Building requires Zig or CMake with a compatible Windows x64 compiler. Complete plugin sources are supplied in the accompanying `*-source.zip`. Binary archives retain the runtime/SDK licenses under `licenses/` or `doc/licenses/`.
+The compiler itself is not bundled. Building requires Zig or CMake with a compatible Windows x64 or x86 compiler. Complete plugin sources are supplied in the accompanying `*-source.zip`. Binary archives retain the runtime/SDK licenses under `licenses/` or `doc/licenses/`.
 
 ## Platform documentation and local validation examples
 

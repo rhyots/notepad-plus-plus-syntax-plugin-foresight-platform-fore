@@ -6,6 +6,7 @@ import json
 import re
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from release_files import VERSION
 
 ROOT = Path(__file__).resolve().parents[1]
 HEADERS = {
@@ -23,7 +24,10 @@ def digest(data: bytes) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--native-root', type=Path)
+    parser.add_argument('--architecture', choices=['x64','x86'], default='x64')
     args = parser.parse_args()
+    evidence = ROOT if args.architecture == "x64" else ROOT/"qa"/args.architecture
+    snapshots = ROOT/"qa/results" if args.architecture == "x64" else evidence/"results"
     checks = []
     cases = []
     def check(label: str, ok: bool):
@@ -39,9 +43,9 @@ def main() -> int:
     types = re.search(r'kTypes = "([^"]+)"',header).group(1).split()
     check('Fore source dictionary', len(sources['reserved_keywords']) == 66 and len(sources['built_in_types']) == 12 and
           reserved == sources['reserved_keywords'] and types == sources['built_in_types'])
-    dll = ROOT/'build/x64/ForeLexer.dll'
+    dll = ROOT/f'build/{args.architecture}/ForeLexer.dll'
     dll_sha = digest(dll.read_bytes()) if dll.exists() else None
-    baseline_path = ROOT/'validation.json'
+    baseline_path = evidence/'validation.json'
     baseline = json.loads(baseline_path.read_text(encoding='utf-8')) if baseline_path.exists() else {}
     evidence_dll_sha = dll_sha or baseline.get('dll_sha256')
     complete = 0
@@ -52,7 +56,7 @@ def main() -> int:
         check(theme+': eleven native styles', len(styles) == 11)
         check(theme+': native language registration', ET.parse(config).find('Languages/Language').get('name') == 'Fore')
         for stem in ['demo-lf','edges-lf','demo-crlf','edges-crlf','edit-before','edit-after','minesweeper','declension','db-handler']:
-            file = ROOT/f'qa/results/{theme.lower()}/{stem}.json'
+            file = snapshots/f'{theme.lower()}/{stem}.json'
             if not file.exists():
                 if stem in ['minesweeper','declension','db-handler']: continue
                 check(f'{theme}/{stem}: snapshot exists', False); continue
@@ -108,7 +112,7 @@ def main() -> int:
                     check(label+': inserted comment styled', set(snap['styles'][:len(EDIT_PREFIX)-1]) == {7})
                     check(label+': keywords recovered after edit', styled(b'Sub',1))
             cases.append(dict(theme=theme,file=stem,bytes=snap['length'],fold_headers=actual,input_sha256=snap.get('input_sha256')))
-        ui = ROOT/f'qa/results/{theme.lower()}/ui.json'
+        ui = snapshots/f'{theme.lower()}/ui.json'
         if ui.exists():
             u = json.loads(ui.read_text())
             check(theme+': Language > F > Fore', u['menu_path'].endswith('/F/Fore'))
@@ -122,15 +126,15 @@ def main() -> int:
     fingerprints = {p.relative_to(ROOT).as_posix():digest(p.read_bytes()) for p in sorted((ROOT/'src').glob('*')) if p.is_file()}
     if not args.native_root and baseline.get('source_fingerprints'):
         check('Native evidence belongs to current lexer source', fingerprints == baseline['source_fingerprints'])
-    report = dict(version='1.0.0',checked_on='2026-10-31',passed=all(x['passed'] for x in checks),
+    report = dict(version=VERSION,checked_on='2026-10-31',passed=all(x['passed'] for x in checks),
         checks=checks,native_run_this_invocation=bool(args.native_root),cases=cases,
-        native_environment='Notepad++ 8.9.8.1 x64, Windows',dll_sha256=evidence_dll_sha,
+        native_environment=f'Notepad++ 8.9.8.1 {args.architecture}, Windows',dll_sha256=evidence_dll_sha,
         source_fingerprints=fingerprints,
         fore_rules='Prognoz Platform Fore 8.1 documentation; not Fore.NET',
         platform_compilation_tested=False)
     if args.native_root:
         report['notepad_exe_sha256'] = digest((args.native_root/'notepad++.exe').read_bytes())
-        (ROOT/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
+        (evidence/'validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(f'NATIVE: {sum(c["passed"] for c in checks)}/{len(checks)} checks passed; {len(cases)} cases.')
     return 0 if report['passed'] else 1
 

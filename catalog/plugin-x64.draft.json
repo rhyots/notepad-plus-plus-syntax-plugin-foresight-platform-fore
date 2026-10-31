@@ -1,11 +1,11 @@
 {
   "folder-name": "ForeLexer",
   "display-name": "Notepad++ Syntax Plugin for Foresight Platform Fore",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "npp-compatible-versions": "[8.9.8.1,]",
-  "id": "fcae77c88f80a7a1bc208fb1101544611f80d4f12d3b3430f062effdb888d804",
-  "repository": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-plugins-admin-x64.zip",
-  "description": "Native highlighting and code folding for Foresight Platform Fore, based on Prognoz Platform Fore 8.1 documentation. Light/dark presets; content detection for plain TXT and extensionless documents. Windows x64; not Fore.NET.",
+  "id": "6f909c110181f3f146daac999ca67f9f59e8132269a880989945013bcb1e46ea",
+  "repository": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x64.zip",
+  "description": "Native highlighting and folding for Foresight / Prognoz Platform Fore. Automatic light/dark palettes, custom colors and conservative plain-text detection. Windows x64; not Fore.NET.",
   "author": "Artyom Nikiforov (rhyots)",
   "homepage": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore"
 }

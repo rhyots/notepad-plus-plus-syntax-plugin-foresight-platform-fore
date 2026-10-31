@@ -38,7 +38,7 @@ def test_source_scan_prunes_ignored_trees(tmp_path, monkeypatch):
 
 
 def test_readmes_use_actual_release_asset_names():
-    expected = {ASSET+suffix for suffix in ('-x64.zip', '-source.zip', '-plugins-admin-x64.zip')}
+    expected = {ASSET+suffix for suffix in ('-x64.zip', '-x86.zip', '-source.zip', '-plugins-admin-x64.zip', '-plugins-admin-x86.zip')}
     for name in ('README.md', 'README.ru.md'):
         text = Path(name).read_text(encoding='utf-8')
         mentioned = re.findall(r'NotepadPlusPlus-Syntax-Plugin-[A-Za-z0-9.-]+\.zip', text)

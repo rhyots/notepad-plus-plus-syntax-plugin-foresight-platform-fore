@@ -1,99 +1,65 @@
-# Подготовка к Plugins Admin
+# Plugins Admin readiness
 
-Проверено 31.10.2026. Проект: **Notepad++ Syntax Plugin for Foresight Platform Fore**, версия 1.0.0, Windows x64.
-Выпуск на GitHub: [v1.0.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0). Запрос на включение в Plugins Admin не отправлен; публикация на GitHub и принятие в каталог — отдельные действия.
+[English](PLUGINS-ADMIN-READINESS.md) | [Русский](PLUGINS-ADMIN-READINESS.ru.md)
 
-Цель — каталог сторонних плагинов **Plugins Admin**, который ведёт
-[nppPluginList](https://github.com/notepad-plus-plus/nppPluginList).
-Включение в этот каталог не означает включение в ядро или стандартную поставку Notepad++.
 
-## Официальные источники
+Checked on 2026-10-31. **Notepad++ Syntax Plugin for Foresight Platform Fore 1.1.0**, Windows **x64 and x86**. ARM64 is excluded from the release and required test matrix.
 
-Для воспроизводимости зафиксированы снимки правил, а не только ссылки на изменяемый master:
+GitHub publication and acceptance into the [nppPluginList](https://github.com/notepad-plus-plus/nppPluginList) catalog are separate steps. Catalog inclusion does not make this plugin part of the Notepad++ core or default installation. **Submission is being prepared; maintainer acceptance is pending.**
 
-- [Руководство: правила и локальное тестирование](https://github.com/notepad-plus-plus/npp-usermanual/blob/41d96945ec8d11d4100356293f4f30e60c1418c0/content/docs/plugins.md#rules-for-adding-your-plugins-into-list).
-- [JSON-схема каталога](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/pl.schema).
-- [Официальный валидатор](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/validator.py).
-- [Список x64 на момент аудита](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/src/pl.x64.json).
+## Official sources
 
-URL, коммиты и SHA-256 полученных документов: [catalog/references.json](../catalog/references.json).
-Загруженные документы и зависимости аудита остаются в игнорируемом `build/`.
+Pinned snapshots make the audit reproducible:
 
-## Требования и состояние
+- [Official manual: rules and local testing](https://github.com/notepad-plus-plus/npp-usermanual/blob/41d96945ec8d11d4100356293f4f30e60c1418c0/content/docs/plugins.md#rules-for-adding-your-plugins-into-list).
+- [Catalog schema](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/pl.schema) and [official validator](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/validator.py).
+- [x64 list](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/src/pl.x64.json) and [x86 list](https://github.com/notepad-plus-plus/nppPluginList/blob/9139ebdaa0fc1d26497bad36040f015f84bcf49f/src/pl.x86.json).
 
-| Требование | Результат проверки проекта |
+Source URLs, commits and hashes: [catalog/references.json](../catalog/references.json). Downloaded tooling remains in ignored build directories. No requirement to support every architecture or sign every DLL was found in these sources; this is an interpretation of the cited rules, not a guarantee of acceptance.
+
+## Requirements
+
+| Requirement | Project evidence |
 |---|---|
-| Соответствующая архитектуре запись каталога | Подготовлен только x64; целевой файл `src/pl.x64.json` |
-| Уникальный `folder-name`, совпадающий с DLL | `ForeLexer` / `ForeLexer.dll`; конфликтов в проверенном каталоге нет |
-| DLL в корне ZIP | Исправлено: отдельный архив `*-plugins-admin-x64.zip` |
-| Версия DLL совпадает с записью | Добавлен Windows VERSIONINFO: `1.0.0.0`, запись `1.0.0` |
-| `id` равен SHA-256 готового ZIP | Вычисляется после упаковки, сверяется с байтами всего архива |
-| Обязательные поля JSON | Есть `folder-name`, `display-name`, `version`, `id`, `repository`, `description`, `author`, `homepage` |
-| Доступная прямая ссылка на ZIP | [Release v1.0.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0); адрес и SHA-256 формируются в `catalog/plugin-x64.draft.json` |
-| Совместимость | Указан минимум `8.9.8.1`; это проверенная версия, а не обещание проверки всех выпусков |
-| Локальная проверка через Plugins Admin | Полный цикл ещё предстоит; извлечение ZIP и загрузка плагина проверены отдельно |
+| Architecture-specific entries | `catalog/plugin-x64.draft.json` and `catalog/plugin-x86.draft.json`; target `src/pl.x64.json` and `src/pl.x86.json` |
+| Unique folder name matches DLL | `ForeLexer` / `ForeLexer.dll` |
+| DLL at ZIP root | Separate `*-plugins-admin-x64.zip` and `*-plugins-admin-x86.zip` |
+| DLL version matches catalog | Windows VERSIONINFO `1.1.0.0`, catalog `1.1.0` |
+| Whole-package checksum | `id` is SHA-256 of the final ZIP, not the DLL; recomputed after packaging |
+| Required JSON fields | folder-name, display-name, version, id, repository, description, author, homepage |
+| Download URL | Version-specific GitHub Release asset; verify actual download before submission |
+| Compatibility | `[8.9.8.1,]`, the minimum tested editor version for each architecture |
+| Sources and licenses | Complete source ZIP, MIT for original work, retained third-party terms |
 
-Проверены также Unicode DLL, AMD64, экспорты плагина и ILexer5, встроенная палитра,
-регистрация Fore в меню F и в настоящем «Конфигураторе стилей».
-Собственные и дополнительные примеры дали 381/381 утверждений нативной проверки в 18 сценариях;
-ядро — 53/53. Компиляция программ внутри Prognoz/Foresight Platform не проверялась.
-Автораспознавание: дополнительно 104/104 проверки и 17/17 нативных сценариев;
-ограничения и приоритет ручного выбора — в [AUTODETECTION.md](AUTODETECTION.md).
-Исходники и лицензии сохранены; собственный код, документация и примеры проекта распространяются под MIT License. Лицензии сторонних SDK и компонентов сохранены без изменений; см. THIRD_PARTY_NOTICES.md.
+Unicode exports, machine type, ILexer5 entry points, version and both embedded palettes are checked from the actual DLL. On **each architecture**, real Notepad++ 8.9.8.1 passed 381 native assertions in 18 cases, 17 automatic-detection cases, 40 theme checks and isolated installer validation. Shared core/detector suites passed 53/104 assertions. [Validation details](TESTING.md).
 
-Отдельных x86/ARM64 сборок нет. В проверенных правилах не найдено требования выпускать
-все архитектуры или обязательно подписывать каждую DLL: это вывод по указанным источникам,
-а не обещание решения сопровождающих каталога.
+## Installation, update and removal
 
-## Что исправлено локально
+The official instructions recommend portable Notepad++ plus official Debug Notepad++ and Debug WinGUp with a local test catalog. The isolated setup uses official artifacts, tied to the release's Notepad++ commit. The user's working installation is not modified.
 
-1. DLL получила Windows-ресурс версии и встроенную светлую XML-палитру.
-2. В `setInfo` добавлено создание отсутствующего `ForeLexer.xml` в каталоге,
-   возвращённом Notepad++. Существующая глобальная или пользовательская конфигурация сохраняется.
-3. Подготовлен отдельный каталоговый ZIP с DLL в корне. Скрипт установки для него не требуется.
-4. Создаётся [черновик записи x64](../catalog/plugin-x64.draft.json), привязанный к хешу этого ZIP.
-5. Добавлены правила байтов, реальные проверки Git checkout и детерминированная упаковка:
-   [BYTE-STABILITY.md](BYTE-STABILITY.md).
+The test Plugins Admin dialog was opened and its Available/Updates/Installed tabs observed. Subsequent accessibility and screenshot operations failed with tool timeouts. Therefore a complete mouse-driven Plugins Admin cycle is **not claimed**.
 
-## Что фактически проверено
+The official **WinGUp CLI**, the installation backend used by Plugins Admin, is exercised with public HTTPS release URLs and catalog SHA-256, followed by a real editor restart and the existing native integration probe. The initial x64 1.0.0 installation passed. The 1.0.0 → 1.1.0 update and x86 installation/removal are checked after publishing the immutable 1.1.0 assets; final results will be recorded on the repository's main branch.
 
-- `qa/catalog-install-validation.json` — исходный нативный прогон прежнего ZIP с той же DLL;
-  документация упаковки обновлена позднее. `qa/catalog-package-refresh.json` отдельно
-  сопоставляет DLL и полный состав старого/нового ZIP, не выдавая это за новый запуск редактора.
-  Исходный прогон: извлечение каталогового ZIP в изолированный
-  portable Notepad++, первый запуск без XML, повторный запуск с пользовательской тёмной
-  конфигурацией, сохранение её байтов и реальная регистрация языка/стилей.
-- `qa/catalog-validation.json`: **неизменённый официальный validator.py и его схема**
-  выполнены на одной локальной записи. Только HTTP GET подменён байтами локального ZIP.
-  Версия читается настоящим Windows API через pywin32. Проверка не доказывает доступность публичного URL.
-- `qa/checkout-validation.json`: настоящие Git add/clone/checkout с двумя значениями
-  `core.autocrlf`, совпадение байтов всех публичных файлов и исходных ZIP.
-  Дополнительная порча LF→CRLF должна отвергаться проверкой байтов.
+The payload test independently checks first-run creation of `ForeLexer.xml`, preservation of customized XML, and actual registration in Language → F → Fore and Style Configurator. Native evidence is bound to DLL and palette hashes. A regular APPDATA deployment is not claimed by these portable tests. `-settingsDir` alone is not plugin-profile isolation: [upstream configuration code](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/Parameters.cpp#L1330).
 
-Обычная установка в `%APPDATA%` и полный цикл установки/обновления/удаления через
-debug Notepad++ + debug WinGUp пока не подтверждены. Обычный `-settingsDir` не является
-доказательством изоляции плагинового профиля: в исходниках Notepad++ 8.9.8.1 каталог
-плагиновых настроек вычисляется отдельно от общего каталога настроек
-([Parameters.cpp](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/Parameters.cpp#L1330)).
-Текущий статус удалённых сборок: [GitHub Actions](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml). Матрица: Windows/Linux × `core.autocrlf=false/true`.
+The manual describes relocation of `doc/` to `plugins/doc/ForeLexer/`; the tested WinGUp debug artifact retained it in `plugins/ForeLexer/doc/`. Archive documentation uses version-pinned repository links, so it works in either location.
 
-## Следующие шаги перед отправкой
+## Reproducible checks and submission sequence
 
-1. Выполнить чистую установку в обычный профиль и полный каталоговый цикл
-   установки/обновления/удаления по официальной инструкции, в отдельной тестовой среде.
-2. Для каждого нового выпуска дождаться успешного CI, загрузить окончательный ZIP
-   и проверить публичное скачивание и SHA-256: он должен совпасть с `id`.
-   Если DLL подписывается, упаковывать и хешировать нужно после подписания.
-3. Запустить официальный валидатор с настоящей загрузкой; затем подготовить PR
-   в `nppPluginList`. Принятие записи зависит от сопровождающих.
+1. Build and test x64/x86 independently. Create the two final catalog ZIPs and corresponding JSON entries.
+2. Pass Windows x64/x86 and Linux CI with LF/CRLF checkout coverage. [Workflow](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
+3. Publish immutable assets, download them again and compare whole-ZIP SHA-256 with `id`. If signing is used, sign before packaging/hashing.
+4. Run the unmodified official validator and schema against actual public downloads; complete WinGUp install/update/remove checks and retain the method/limitations in evidence.
+5. Submit only the x64/x86 catalog entries. Acceptance and distribution remain the catalog maintainers' decision.
 
-Для повторения локального аудита в Windows:
+Historical reports for 1.0.0 describe the earlier offline validator and extracted-payload checks. They are not substitutes for new-version public-download or lifecycle evidence. [Byte stability](BYTE-STABILITY.md) covers actual Git checkout tests and rejection of LF→CRLF drift.
+
+To repeat the pinned local audit on Windows:
 
 ```powershell
 python -m pip install --target build/catalog-deps -r requirements-catalog.txt
 python tools/catalog_audit.py --refresh
 ```
 
-`--refresh` скачивает только зафиксированные версии справочных файлов.
-Для проверки новых правил в будущем нужно отдельно обновить коммиты в скрипте
-и повторить аудит; сохранённый снимок не подтверждает неизменность правил в будущем.
+`--refresh` downloads pinned references, not changing master. Refreshing the policy audit in the future requires deliberately updating those commits and repeating the checks.

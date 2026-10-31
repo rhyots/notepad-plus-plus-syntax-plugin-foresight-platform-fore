@@ -20,3 +20,5 @@
 *.zip -text
 *.png -text
 *.gif -text
+
+/qa/x86/results/** -text

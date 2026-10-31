@@ -121,6 +121,6 @@
     }
   ],
   "passed": true,
-  "dll_sha256": "95f01e727c0169502f521c2b6ba1ec2c7dbc4e47e161361936374057efe0a2cd",
+  "dll_sha256": "814687ee6deb3f5a5ddaf987cd165c083c45a3ef48993eb4a09708c53d26fba4",
   "environment": "Notepad++ 8.9.8.1 x64, isolated portable profile"
 }

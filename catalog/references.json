@@ -17,6 +17,11 @@
       "sha256": "4c9be09b6cc87774481d816f78381cb165e83048de0e5f8b7bf82ee96a3cfe65"
     },
     {
+      "file": "src/pl.x86.json",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/nppPluginList/9139ebdaa0fc1d26497bad36040f015f84bcf49f/src/pl.x86.json",
+      "sha256": "81f7833817690f2f8dced7407be3e3b280715d0b3323c48c5b9ab362fe645442"
+    },
+    {
       "file": "plugins.md",
       "url": "https://raw.githubusercontent.com/notepad-plus-plus/npp-usermanual/41d96945ec8d11d4100356293f4f30e60c1418c0/content/docs/plugins.md",
       "sha256": "77b35f3dd31f468c3272194c4a264e83473a90c0621cd2aa0d98937f94d6cca6"

@@ -53,7 +53,7 @@ void ensureConfiguration() noexcept {
 
 void about() {
     MessageBoxW(npp._nppHandle,
-        L"Notepad++ Syntax Plugin for Foresight Platform Fore 1.0.0\nSyntax highlighting and folding.\n"
+        L"Notepad++ Syntax Plugin for Foresight Platform Fore 1.1.0\nSyntax highlighting and folding.\n"
         L"Rules: Prognoz Platform Fore 8.1 documentation.\n"
         L"Language > F > Fore\nSettings > Style Configurator > Fore\n\n"
         L"Artyom Nikiforov (rhyots)\nhttps://github.com/rhyots",

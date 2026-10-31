@@ -1,5 +1,8 @@
 # Exact bytes across Git checkouts
 
+[English](BYTE-STABILITY.md) | [Русский](BYTE-STABILITY.ru.md)
+
+
 The project preserves the raw bytes that native-test evidence fingerprints.
 This prevents the Windows CRLF / Unix LF mismatch previously encountered in a
 different project's packaged JavaScript bundle.

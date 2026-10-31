@@ -1,0 +1,285 @@
+{
+  "passed": true,
+  "environment": "Notepad++ 8.9.8.1 x86",
+  "dll_sha256": "2b0f72c241e137cbbb18683e897c2818c44261dceb9a56425006297e282523fc",
+  "method": "Real Style Configurator theme combo, both views, saved theme and actual restart",
+  "runs": [
+    {
+      "launch": 1,
+      "result": {
+        "startup_dark": false,
+        "custom": false,
+        "cases": [
+          {
+            "case": "startup palette and fonts",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "real light-to-dark theme selection",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real dark-to-light theme selection",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "cloned Fore views",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after dark switch",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after light switch",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "repeat switch is stable",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "other language colors untouched",
+            "passed": true
+          },
+          {
+            "case": "Fore in other view follows theme",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "saved dark theme with other active language",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          }
+        ],
+        "passed": true
+      },
+      "variant": "standard"
+    },
+    {
+      "launch": 2,
+      "result": {
+        "startup_dark": true,
+        "custom": false,
+        "cases": [
+          {
+            "case": "startup palette and fonts",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real light-to-dark theme selection",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real dark-to-light theme selection",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "cloned Fore views",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after dark switch",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after light switch",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "repeat switch is stable",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "other language colors untouched",
+            "passed": true
+          },
+          {
+            "case": "Fore in other view follows theme",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "saved dark theme with other active language",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          }
+        ],
+        "passed": true
+      },
+      "variant": "standard"
+    },
+    {
+      "launch": 1,
+      "result": {
+        "startup_dark": false,
+        "custom": true,
+        "cases": [
+          {
+            "case": "startup palette and fonts",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "real light-to-dark theme selection",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real dark-to-light theme selection",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "cloned Fore views",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after dark switch",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after light switch",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "repeat switch is stable",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "other language colors untouched",
+            "passed": true
+          },
+          {
+            "case": "Fore in other view follows theme",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "saved dark theme with other active language",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          }
+        ],
+        "passed": true
+      },
+      "variant": "custom"
+    },
+    {
+      "launch": 2,
+      "result": {
+        "startup_dark": true,
+        "custom": true,
+        "cases": [
+          {
+            "case": "startup palette and fonts",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real light-to-dark theme selection",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          },
+          {
+            "case": "real dark-to-light theme selection",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "cloned Fore views",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after dark switch",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "both Fore views after light switch",
+            "passed": true,
+            "dark": false,
+            "fore_views": 2
+          },
+          {
+            "case": "repeat switch is stable",
+            "passed": true,
+            "dark": true,
+            "fore_views": 2
+          },
+          {
+            "case": "other language colors untouched",
+            "passed": true
+          },
+          {
+            "case": "Fore in other view follows theme",
+            "passed": true,
+            "dark": false,
+            "fore_views": 1
+          },
+          {
+            "case": "saved dark theme with other active language",
+            "passed": true,
+            "dark": true,
+            "fore_views": 1
+          }
+        ],
+        "passed": true
+      },
+      "variant": "custom"
+    }
+  ],
+  "lexer_style_attributes_preserved": true
+}

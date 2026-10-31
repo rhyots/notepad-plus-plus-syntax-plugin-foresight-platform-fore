@@ -2,20 +2,23 @@ param(
     [string]$NotepadDirectory = 'C:\Program Files\Notepad++',
     [string]$Zig = 'zig',
     [string]$Python = 'python',
-    [string]$ExtraExamplesDirectory = ''
+    [string]$ExtraExamplesDirectory = '',
+    [ValidateSet('x64','x86')][string]$Architecture = 'x64'
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
-$qaRoot = Join-Path $PSScriptRoot 'notepad-test'
-$out = Join-Path $PSScriptRoot 'results'
+$evidence = if ($Architecture -eq 'x64') { $PSScriptRoot } else { Join-Path $PSScriptRoot $Architecture }
+$target = if ($Architecture -eq 'x86') { 'x86-windows-gnu' } else { 'x86_64-windows-gnu' }
+$qaRoot = Join-Path $PSScriptRoot ('notepad-test-' + $Architecture)
+$out = Join-Path $evidence 'results'
 New-Item -ItemType Directory -Force -Path $qaRoot,$out,(Join-Path $qaRoot 'plugins/ForeLexer'),(Join-Path $qaRoot 'plugins/ForeProbe'),(Join-Path $qaRoot 'plugins/Config') | Out-Null
 foreach ($name in @('notepad++.exe','langs.model.xml','stylers.model.xml')) { Copy-Item -LiteralPath (Join-Path $NotepadDirectory $name) -Destination (Join-Path $qaRoot $name) }
 New-Item -ItemType File -Force -Path (Join-Path $qaRoot 'doLocalConf.xml') | Out-Null
 [IO.File]::WriteAllText((Join-Path $qaRoot 'config.xml'), '<NotepadPlus><GUIConfigs><GUIConfig name="langsExcluded" langMenuCompact="yes" /></GUIConfigs></NotepadPlus>', [Text.UTF8Encoding]::new($false))
-Copy-Item -LiteralPath (Join-Path $root 'build/x64/ForeLexer.dll') -Destination (Join-Path $qaRoot 'plugins/ForeLexer/ForeLexer.dll')
+Copy-Item -LiteralPath (Join-Path $root "build/$Architecture/ForeLexer.dll") -Destination (Join-Path $qaRoot 'plugins/ForeLexer/ForeLexer.dll')
 $env:ZIG_GLOBAL_CACHE_DIR = Join-Path $root 'build/zig-global-cache'
 $env:ZIG_LOCAL_CACHE_DIR = Join-Path $root 'build/zig-cache'
-& $Zig c++ -target x86_64-windows-gnu -std=c++17 -O2 -shared ('-I' + (Join-Path $root 'vendor/npp-sdk')) (Join-Path $PSScriptRoot 'Probe.cpp') -luser32 -fno-sanitize=undefined -o (Join-Path $qaRoot 'plugins/ForeProbe/ForeProbe.dll')
+& $Zig c++ -target $target -std=c++17 -O2 -shared ('-I' + (Join-Path $root 'vendor/npp-sdk')) (Join-Path $PSScriptRoot 'Probe.cpp') -luser32 -fno-sanitize=undefined -o (Join-Path $qaRoot 'plugins/ForeProbe/ForeProbe.dll')
 if ($LASTEXITCODE -ne 0) { throw 'Integration probe build failed' }
 foreach ($fixture in @(@('demo','Fore-demo.fore'), @('edges','Folding-edge-cases.fore'))) {
     $text = [IO.File]::ReadAllText((Join-Path $root ('examples/' + $fixture[1]))).Replace("`r`n","`n")
@@ -42,5 +45,5 @@ foreach ($theme in @('Light','Dark')) {
     if (!(Test-Path -LiteralPath (Join-Path $qaRoot 'ui.json'))) { throw 'Integration probe did not complete' }
     Get-ChildItem -LiteralPath $qaRoot -Filter '*.json' -File | Copy-Item -Destination $dest
 }
-& $Python -X utf8 (Join-Path $root 'tools/verify.py') --native-root $qaRoot
+& $Python -X utf8 (Join-Path $root 'tools/verify.py') --native-root $qaRoot --architecture $Architecture
 if ($LASTEXITCODE -ne 0) { throw 'Native integration validation failed' }

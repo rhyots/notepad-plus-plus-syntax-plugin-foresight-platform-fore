@@ -1,19 +1,8 @@
 {
   "passed": true,
-  "public_files_scanned": 160,
-  "relative_markdown_targets_exist": true,
-  "readme_parity": [
-    {
-      "file": "README.md",
-      "sections": 10,
-      "images": 6
-    },
-    {
-      "file": "README.ru.md",
-      "sections": 10,
-      "images": 6
-    }
-  ],
-  "workstation_paths_or_token_patterns_found": false,
-  "media_report": "docs/media/render-validation.json"
+  "markdown_files": 38,
+  "english_russian_pairs": 19,
+  "naming": "English .md; complete Russian translation .ru.md",
+  "checks": "Counterparts, English headings, local file targets. Translation equivalence is manually reviewed.",
+  "errors": {}
 }

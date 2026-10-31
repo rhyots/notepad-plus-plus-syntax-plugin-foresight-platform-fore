@@ -4,9 +4,9 @@
 
 **Читайте Fore с комфортом в привычном редакторе.** Нативная подсветка, сворачивание и автоматические светлая/тёмная палитры для **Foresight Platform Fore** и **Prognoz Platform Fore** в Notepad++.
 
-[![Release](https://img.shields.io/github/v/release/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore?color=008787)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) [![Build](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml/badge.svg)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml) [![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) [![License MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore?color=008787)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) [![Build](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml/badge.svg)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml) [![Windows x64](https://img.shields.io/badge/Windows-x64-2563eb)](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip) [![License MIT](https://img.shields.io/badge/license-MIT-16a34a)](LICENSE)
 
-[**Скачать для Windows x64**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip) · [v1.0.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [Руководство](docs/USER-GUIDE.ru.md)
+[**Скачать для Notepad++ x64**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip) · [**Скачать для Notepad++ x86**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip) · [v1.1.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) · [Руководство](docs/USER-GUIDE.ru.md)
 
 ## Зачем этот плагин?
 
@@ -39,7 +39,7 @@
 
 ## Начните с трёх шагов
 
-1. Скачайте **[ZIP плагина для Windows x64](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.0.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip)** из выпуска 1.0.0 и полностью распакуйте архив.
+1. Скачайте **[ZIP плагина для Windows x64](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip)** или **[ZIP x86](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip)** из выпуска 1.1.0, сверив разрядность в **Notepad++ → ? → Отладочная информация**, и полностью распакуйте архив. 32-разрядному редактору нужна x86 даже на 64-разрядной Windows.
 2. Сохраните документы и закройте Notepad++. В **PowerShell 7**, из распакованной папки, выполните:
 
    ```powershell
@@ -91,14 +91,14 @@
 
 | Компонент | Состояние |
 |---|---|
-| **Notepad++ 8.9.8.1 / Windows x64** | Сборка и интеграционные проверки в настоящем редакторе |
+| **Notepad++ 8.9.8.1 / Windows x64 и x86** | Сборка и интеграционные проверки в настоящем редакторе |
 | **Prognoz Platform Fore 8.1** | Правила языка основаны на 36 исходных документах справки |
 | Поздние версии Foresight Platform Fore | По отдельности не сертифицированы |
-| Fore.NET, x86 и ARM64 | Не являются поддерживаемыми целями этого выпуска |
+| Fore.NET и ARM64 | Не являются поддерживаемыми целями этого выпуска |
 
-Плагин использует ILexer5, появившийся в Notepad++ 8.4; **8.9.8.1 x64 — минимальная проверенная версия**. Плагин не компилирует и не выполняет программы платформы.
+Плагин использует ILexer5, появившийся в Notepad++ 8.4; **8.9.8.1 x64/x86 — минимальная проверенная версия**. Плагин не компилирует и не выполняет программы платформы.
 
-Зафиксированы: **53** проверки ядра, **104** распознавателя, **381** нативной интеграции в 18 сценариях, **17** нативных сценариев распознавания, **40** проверок тем и **16** тестов инструментов выпуска. Нативные проверки открывают настоящие окна Конфигуратора стилей и About. [Подробный отчёт](docs/TESTING.md) · [Машиночитаемые результаты](validation.json) · [Сборка в GitHub Actions](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
+Зафиксированы: **53** проверки ядра, **104** распознавателя, **381** нативной интеграции в 18 сценариях, **17** нативных сценариев распознавания, **40** проверок тем и автоматические тесты инструментов выпуска. 381 интеграционное утверждение, 17 сценариев распознавания и 40 проверок тем прошли отдельно **на каждой архитектуре**. Нативные проверки открывают настоящие окна Конфигуратора стилей и About. [Подробный отчёт](docs/TESTING.ru.md) · [Машиночитаемые результаты](validation.json) · [Сборка в GitHub Actions](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/workflows/build.yml).
 
 ## Вопросы перед установкой?
 
@@ -112,10 +112,10 @@
 
 ## Документация и разработка
 
-- [Руководство пользователя](docs/USER-GUIDE.ru.md) / [User guide](docs/USER-GUIDE.md)
-- [Подробная установка](docs/INSTALLATION.ru.md) · [CHANGELOG](CHANGELOG.md)
+- [Руководство пользователя](docs/USER-GUIDE.ru.md) / [User guide](docs/USER-GUIDE.ru.md)
+- [Подробная установка](docs/INSTALLATION.ru.md) · [CHANGELOG](CHANGELOG.ru.md)
 - [Сборка, проверки и публикация](docs/RELEASING.ru.md) · [Участие в разработке](CONTRIBUTING.ru.md)
-- [Точные байты и LF/CRLF](docs/BYTE-STABILITY.md) · [Готовность к Plugins Admin](docs/PLUGINS-ADMIN-READINESS.md)
+- [Точные байты и LF/CRLF](docs/BYTE-STABILITY.ru.md) · [Готовность к Plugins Admin](docs/PLUGINS-ADMIN-READINESS.ru.md)
 - [Сообщить о воспроизводимой проблеме](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/issues/new/choose)
 
 <details>
@@ -128,7 +128,7 @@ python -m pip install -r requirements-dev.txt
 python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
 ```
 
-DLL: `build/x64/ForeLexer.dll`. Заголовки SDK включены и зафиксированы. CMake:
+DLL: `build/x64/ForeLexer.dll`. Добавьте `-Architecture x86` для `build/x86/ForeLexer.dll`; в CMake используйте `-A Win32` и отдельный каталог сборки для x86. Заголовки SDK включены и зафиксированы. CMake:
 
 ```powershell
 cmake -S . -B build/cmake -A x64
@@ -136,15 +136,15 @@ cmake --build build/cmake --config Release
 ctest --test-dir build/cmake -C Release --output-on-failure
 ```
 
-`qa/run.ps1`, `qa/run-autodetect.ps1` и `qa/run-theme.ps1` проверяют отдельные копии редактора. `tools/verify.py` повторно сверяет сохранённые снимки; `tools/package.py` собирает воспроизводимые ZIP с SHA-256. См. [аудит качества и границы его измерений](docs/UB-MODE-REVIEW.md).
+`qa/run.ps1`, `qa/run-autodetect.ps1` и `qa/run-theme.ps1` проверяют отдельные копии редактора. `tools/verify.py` повторно сверяет сохранённые снимки; `tools/package.py` собирает воспроизводимые ZIP с SHA-256. См. [аудит качества и границы его измерений](docs/UB-MODE-REVIEW.ru.md).
 
 </details>
 
 ## Загрузки, автор и лицензия
 
-[**Скачать 1.0.0**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.0.0) · [Описание выпусков](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases) · [Исходники](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore)
+[**Скачать 1.1.0**](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) · [Описание выпусков](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases) · [Исходники](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore)
 
-Выберите `*-x64.zip` для ручной установки, `*-plugins-admin-x64.zip` для структуры каталога или `*-source.zip` для полного дерева исходников. Рядом с каждым архивом есть SHA-256. Отдельный исходный ZIP сохраняет проверенные байты; автоматический исходный архив GitHub не является архивом для Plugins Admin.
+Выберите `*-x64.zip` или `*-x86.zip` для ручной установки, соответствующий `*-plugins-admin-x64.zip` / `*-plugins-admin-x86.zip` для структуры каталога или `*-source.zip` для полного дерева исходников. Рядом с каждым архивом есть SHA-256. Отдельный исходный ZIP сохраняет проверенные байты; автоматический исходный архив GitHub не является архивом для Plugins Admin.
 
 **[MIT License](LICENSE)** для собственного кода, документации и примеров. Сторонние SDK/компоненты среды выполнения и указанный фрагмент сообщества сохраняют свои лицензии. [Сторонние компоненты](THIRD_PARTY_NOTICES.ru.md). Проприетарная справка и бинарные файлы платформы не распространяются; происхождение документации записано в [sources.json](sources.json).
 

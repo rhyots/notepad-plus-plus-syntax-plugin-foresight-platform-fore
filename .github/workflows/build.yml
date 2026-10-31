@@ -8,6 +8,14 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest]
         autocrlf: ['false', 'true']
+        architecture: [x64]
+        include:
+          - os: windows-latest
+            autocrlf: 'false'
+            architecture: x86
+          - os: windows-latest
+            autocrlf: 'true'
+            architecture: x86
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set checkout conversion mode
@@ -18,17 +26,24 @@ jobs:
           python-version: '3.12'
       - name: Verify locked bytes and automation line endings
         run: python tools/check_bytes.py
+      - name: Check English/Russian documentation and links
+        run: python tools/check_docs.py
       - name: Test source selection and release archives
         run: |
           python -m pip install -r requirements-dev.txt
           python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
       - name: Exercise real Git checkout and deterministic source packaging
         run: python tools/checkout_audit.py
-      - run: cmake -S . -B build/cmake -DCMAKE_BUILD_TYPE=Release
+      - name: Configure Windows
+        if: runner.os == 'Windows'
+        run: cmake -S . -B build/cmake -A ${{ matrix.architecture == 'x86' && 'Win32' || 'x64' }}
+      - name: Configure Linux
+        if: runner.os != 'Windows'
+        run: cmake -S . -B build/cmake -DCMAKE_BUILD_TYPE=Release
       - run: cmake --build build/cmake --config Release
       - run: ctest --test-dir build/cmake -C Release --output-on-failure
       - name: Inspect freshly built Windows DLL
         if: runner.os == 'Windows'
         run: python tools/inspect_binary.py --dll build/cmake/Release/ForeLexer.dll --report build/cmake/pe-validation.json
       - name: Recheck archived native evidence
-        run: python tools/verify.py
+        run: python tools/verify.py --architecture ${{ matrix.architecture }}

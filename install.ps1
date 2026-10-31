@@ -12,7 +12,15 @@ if ([version]$nppVersion -lt [version]'8.4') { throw 'This plugin requires the I
 if (!$ConfigurationDirectory) {
     $ConfigurationDirectory = if (Test-Path -LiteralPath (Join-Path $NotepadDirectory 'doLocalConf.xml')) { $NotepadDirectory } else { Join-Path $env:APPDATA 'Notepad++' }
 }
-$binary = Join-Path $root 'build/x64/ForeLexer.dll'
+function Get-PeMachine([string]$Path) {
+    $data = [IO.File]::ReadAllBytes($Path)
+    $pe = [BitConverter]::ToInt32($data, 0x3c)
+    return [BitConverter]::ToUInt16($data, $pe + 4)
+}
+$machine = Get-PeMachine $exe
+$architecture = @{0x14c='x86'; 0x8664='x64'; 0xaa64='arm64'}[[int]$machine]
+if (!$architecture) { throw 'Unsupported Notepad++ architecture.' }
+$binary = Join-Path $root "build/$architecture/ForeLexer.dll"
 if (!(Test-Path -LiteralPath $binary)) { $binary = Join-Path $root 'plugins/ForeLexer/ForeLexer.dll' }
 $style = Join-Path $root "styles/ForeLexer-$Palette.xml"
 if (!(Test-Path -LiteralPath $style)) { $style = Join-Path $root "presets/ForeLexer-$Palette.xml" }
@@ -24,12 +32,8 @@ if ($globalStyle -ne $targetStyle -and (Test-Path -LiteralPath $globalStyle)) {
     throw "An install-wide XML takes precedence: $globalStyle. Move that existing configuration to a backup first, or use the local configuration directory explicitly."
 }
 # Check the PE machine before copying a DLL into a different architecture editor.
-function Get-PeMachine([string]$Path) {
-    $data = [IO.File]::ReadAllBytes($Path)
-    $pe = [BitConverter]::ToInt32($data, 0x3c)
-    return [BitConverter]::ToUInt16($data, $pe + 4)
-}
-if ((Get-PeMachine $exe) -ne 0x8664 -or (Get-PeMachine $binary) -ne 0x8664) { throw 'Foresight Platform Fore 1.0.0 requires Notepad++ Windows x64.' }
+
+if ((Get-PeMachine $binary) -ne $machine) { throw 'Plugin DLL architecture must match the Notepad++ executable, not the Windows architecture.' }
 if ((Test-Path -LiteralPath $targetBinary) -and @(Get-Process -Name 'notepad++' -ErrorAction SilentlyContinue | Where-Object { $_.Path -eq $exe }).Count) {
     throw 'Close all instances of this Notepad++ before updating an already installed DLL.'
 }
@@ -73,7 +77,7 @@ foreach ($file in $udlFiles) {
     if ($changed) { $xml.Save($file.FullName) }
 }
 $receipt = [ordered]@{
-    version='1.0.0'; palette=$Palette; binary=$targetBinary; style=$targetStyle;
+    version=(Get-Item -LiteralPath $binary).VersionInfo.FileVersion; architecture=$architecture; palette=$Palette; binary=$targetBinary; style=$targetStyle;
     binary_sha256=(Get-FileHash -LiteralPath $targetBinary -Algorithm SHA256).Hash.ToLowerInvariant();
     style_sha256=(Get-FileHash -LiteralPath $targetStyle -Algorithm SHA256).Hash.ToLowerInvariant();
     backups=$changes.ToArray(); restart_required=$true

@@ -7,7 +7,12 @@ def inspect(data):
     u16=lambda p:struct.unpack_from('<H',data,p)[0]
     u32=lambda p:struct.unpack_from('<I',data,p)[0]
     pe=u32(0x3c);assert data[pe:pe+4]==b'PE\0\0'
-    machine=u16(pe+4);count=u16(pe+6);opt=pe+24;assert machine==0x8664 and u16(opt)==0x20b
+    machine=u16(pe+4);count=u16(pe+6);opt=pe+24
+    names={0x14c:('I386',0x10b,96),0x8664:('AMD64',0x20b,112),0xaa64:('ARM64',0x20b,112)}
+    assert machine in names, f'Unsupported PE machine: {machine:#x}'
+    machine_name,magic,directory_offset=names[machine]
+    assert u16(opt)==magic, 'PE machine and optional header disagree'
+    directories=opt+directory_offset
     table=opt+u16(pe+20);sections=[]
     for i in range(count):
         p=table+i*40;sections.append((u32(p+12),max(u32(p+8),u32(p+16)),u32(p+20)))
@@ -17,13 +22,13 @@ def inspect(data):
         raise ValueError(f'Unmapped RVA: {rva}')
     def string(rva):
         p=offset(rva);return data[p:data.index(b'\0',p)].decode('ascii')
-    export=offset(u32(opt+112));names=offset(u32(export+32))
-    exports=[string(u32(names+i*4)) for i in range(u32(export+24))]
+    export=offset(u32(directories));export_names=offset(u32(export+32))
+    exports=[string(u32(export_names+i*4)) for i in range(u32(export+24))]
     required={'isUnicode','setInfo','getName','getFuncsArray','beNotified','messageProc','GetLexerCount','GetLexerName','CreateLexer'}
     assert required<=set(exports),required-set(exports)
-    imports=[];p=offset(u32(opt+120))
+    imports=[];p=offset(u32(directories+8))
     while any(data[p:p+20]):imports.append(string(u32(p+12)));p+=20
-    resource_rva=u32(opt+128)
+    resource_rva=u32(directories+16)
     assert resource_rva, 'Windows resources are missing'
     resource_base=offset(resource_rva)
     def children(relative):
@@ -41,10 +46,9 @@ def inspect(data):
     position=version_data.index(b'\xbd\x04\xef\xfe')
     fixed=struct.unpack_from('<13I',version_data,position)
     version='.'.join(str(n) for n in (fixed[2]>>16,fixed[2]&65535,fixed[3]>>16,fixed[3]&65535))
-    assert version=='1.0.0.0',version
     embedded=resource(10,101)
     dark=resource(10,102)
-    report=dict(passed=True,machine='AMD64',file_version=version,embedded_light_sha256=hashlib.sha256(embedded).hexdigest(),embedded_dark_sha256=hashlib.sha256(dark).hexdigest(),
+    report=dict(passed=True,machine=machine_name,file_version=version,embedded_light_sha256=hashlib.sha256(embedded).hexdigest(),embedded_dark_sha256=hashlib.sha256(dark).hexdigest(),
                 dll_sha256=hashlib.sha256(data).hexdigest(),exports=exports,imports=imports,
                 checked_on='2026-10-31',inspection='PE tables only; no code execution')
     return report

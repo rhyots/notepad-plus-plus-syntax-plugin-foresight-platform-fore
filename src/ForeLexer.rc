@@ -1,8 +1,8 @@
 #include <winver.h>
 
 1 VERSIONINFO
-FILEVERSION 1,0,0,0
-PRODUCTVERSION 1,0,0,0
+FILEVERSION 1,1,0,0
+PRODUCTVERSION 1,1,0,0
 FILEFLAGSMASK 0x3fL
 FILEFLAGS 0
 FILEOS VOS_NT_WINDOWS32
@@ -15,12 +15,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Artyom Nikiforov (rhyots)\0"
             VALUE "FileDescription", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
-            VALUE "FileVersion", "1.0.0.0\0"
+            VALUE "FileVersion", "1.1.0.0\0"
             VALUE "InternalName", "ForeLexer\0"
             VALUE "LegalCopyright", "Copyright (c) 2026 Artyom Nikiforov (rhyots). Project code: MIT License.\0"
             VALUE "OriginalFilename", "ForeLexer.dll\0"
             VALUE "ProductName", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
-            VALUE "ProductVersion", "1.0.0.0\0"
+            VALUE "ProductVersion", "1.1.0.0\0"
         END
     END
     BLOCK "VarFileInfo"

@@ -1,5 +1,8 @@
 # Сторонние компоненты
 
+[English](THIRD_PARTY_NOTICES.md) | [Русский](THIRD_PARTY_NOTICES.ru.md)
+
+
 Собственный код проекта, скрипты, документация и примеры распространяются
 по **MIT License**: Copyright (c) 2026 Artyom Nikiforov (rhyots).
 Стандартный текст MIT находится в корневом `LICENSE`
@@ -37,8 +40,8 @@
 Они содержат Apache License 2.0 с LLVM exceptions и относящиеся к компонентам
 исторические уведомления. Компилятор и его исходники в архив проекта не включены.
 Для самостоятельной сборки требуется установленный Zig либо CMake и совместимый
-компилятор Windows x64. Исходники плагина Notepad++ для Foresight Platform Fore поставляются
-отдельным полным архивом `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip` рядом с бинарным архивом.
+компилятор Windows x64 или x86. Исходники плагина Notepad++ для Foresight Platform Fore поставляются
+отдельным полным архивом `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip` рядом с бинарным архивом.
 
 ## Справка Prognoz Platform Fore и дополнительные примеры
 
@@ -58,3 +61,5 @@
 Copyright (c) 2026 Evgeny Bogdanov, MIT. Исходная лицензия сохранена рядом:
 `examples/third-party/LICENSE.fap_mcp_server.txt`. Код включён в исходный архив
 и показан в визуальной документации. Происхождение: `docs/media/provenance.json`.
+
+В бинарных архивах лицензии библиотек и SDK находятся в `licenses/` или `doc/licenses/`. Изображения построены по результатам лексера и не являются снимками Notepad++. Файлы шрифтов Consolas/Segoe UI не распространяются.

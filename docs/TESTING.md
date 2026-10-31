@@ -1,97 +1,72 @@
-# Проверка Notepad++ Syntax Plugin for Foresight Platform Fore 1.0.0
+# Validation of Notepad++ Syntax Plugin for Foresight Platform Fore
 
-## Автораспознавание
+[English](TESTING.md) | [Русский](TESTING.ru.md)
 
-Отдельный набор: **104/104** проверок распознавателя и фильтра имён с LF/CRLF/CR
-([detection-validation.json](../qa/detection-validation.json)). В настоящем
-Notepad++ прошли **17/17** сценариев: открытие TXT/файла без расширения,
-вставка в TXT/новую вкладку, отрицательные примеры, сохранение другого языка,
-явный выбор обычного текста через API и оконную команду, возврат к обычному
-тексту после распознавания, закрытие и повторное открытие. Проверено отсутствие
-изменения текста распознавателем. Отчёт:
-[autodetect-validation.json](../qa/autodetect-validation.json).
 
-Алгоритм и границы: [AUTODETECTION.md](AUTODETECTION.md).
+## Automatic detection
 
-Дата: **31 октября 2026**. Среда: **Notepad++ 8.9.8.1 x64**, Windows.
-Компилятор: **Zig 0.13.0**, C++17.
+The separate detector and filename-filter suite passed **104/104** checks with LF/CRLF/CR ([detection-validation.json](../qa/detection-validation.json)). Real Notepad++ tests passed **17/17** scenarios: opening TXT/extensionless files, pasting into TXT/new tabs, negative examples, retaining another language, explicit Normal Text selection through the API and window command, returning to Normal Text after detection, closing and reopening. The detector leaves document text unchanged. Report: [autodetect-validation.json](../qa/autodetect-validation.json).
 
-## Ядро лексера
+Algorithm and limits: [AUTODETECTION.md](AUTODETECTION.md).
 
-53 утверждения в `tests/core.cpp`: стили, кавычки, комментарии, числа,
-идентификаторы, сворачивание свойств и методов, прототипы интерфейса, делегаты,
-вложенные процедуры, многострочная фраза End If, ошибочные закрывающие слова.
-Ожидаемые номера fold-маркеров заданы вручную.
+Date: **31 October 2026**. Editor: **Notepad++ 8.9.8.1**, Windows. Compiler: **Zig 0.13.0**, C++17. The original 1.0.0 validation covered x64; 1.1.0 adds separate x86 evidence under `qa/x86/`.
 
-Каждый структурный пример проверяется с **LF, CRLF и CR**.
-В тесте большого документа 471 000 байтов / 36 001 строк; измерение времени
-сохраняется в `qa/core-validation.json`. Это замер конкретной среды, не гарантия
-скорости на любом компьютере.
+## Lexer core
 
-## Интеграция с редактором
+`tests/core.cpp` has 53 assertions covering styles, quotes, comments, numbers, identifiers, property/method folding, interface prototypes, delegates, nested procedures, a multiline End If phrase and incorrect closing words. Expected fold-header line numbers are specified manually.
 
-`qa/Probe.cpp` — отдельный тестовый плагин. Он загружается только в изолированный
-экземпляр и считывает реальные API Scintilla:
+Every structural example is checked with **LF, CRLF and CR**. The large-document fixture has 471,000 bytes and 36,001 lines; its timing is recorded in `qa/core-validation.json`. It measures a particular environment, not a speed guarantee for every computer.
+
+## Editor integration
+
+`qa/Probe.cpp` is a separate test plugin, loaded only into an isolated instance. It reads real Scintilla APIs:
 
 - `SCI_GETLEXERLANGUAGE`, `SCI_GETSTYLEAT`, `SCI_GETFOLDLEVEL`;
-- `SCI_STYLEGETFORE`, `SCI_STYLEGETBACK`, пробное изменение цвета и обратное чтение.
+- `SCI_STYLEGETFORE`, `SCI_STYLEGETBACK`, changing a color and reading it back.
 
-Расположение **Language/F/Fore** считывается из настоящего меню окна.
-Диалог **Style Configurator** открывается штатной командой Notepad++;
-тест проверяет наличие Fore в его ComboBox/ListBox, затем отменяет диалог.
-Это проверка реальных элементов редактора, не только XML или исходников меню.
+The **Language/F/Fore** position is read from the actual window menu. The normal Notepad++ command opens **Style Configurator**; the test checks Fore in its ComboBox/ListBox, then cancels the dialog. It tests real editor controls, not just XML or menu source code.
 
-Проверены обе палитры, два собственных примера с LF и CRLF, два состояния
-редактируемого буфера и три внешних исходника. Всего **18 сценариев**,
-**381 утверждений интеграции и целостности зависимостей**. Результаты: [validation.json](../validation.json).
-На собственных примерах LF и CRLF имеют одинаковые ожидаемые номера fold-маркеров.
+Both palettes, two own examples with LF/CRLF, two states of an edited buffer and three external source files are covered: **18 scenarios** and **381 integration/dependency-integrity assertions**. Results: [validation.json](../validation.json). Own LF/CRLF fixtures have identical expected fold-header line numbers.
 
-Снимки связаны SHA-256 с DLL, XML-палитрой и исходным текстом.
-`python tools/verify.py` лишь повторно проверяет эти данные.
-Новый нативный прогон выполняет `qa/run.ps1`.
+SHA-256 binds snapshots to the DLL, XML palette and input text. `python tools/verify.py` only rechecks this evidence. `qa/run.ps1` performs a fresh native run.
 
-## Дополнительные реальные исходники
+## Additional real source files
 
-Использованы для локальной проверки:
+Local validation used:
 
-- [DarkwingDuck48/mineswapper](https://github.com/DarkwingDuck48/mineswapper),
-  коммит `544262472bdb5e06047588f465615bb514ee3d61` — «Сапёр».
-- [SemenovDaniil/fsightRepo](https://github.com/SemenovDaniil/fsightRepo),
-  коммит `240806c5d3710ecad94dec9349eefea811c5c21a` — склонение слов и обработчик БД.
+- [DarkwingDuck48/mineswapper](https://github.com/DarkwingDuck48/mineswapper), commit `544262472bdb5e06047588f465615bb514ee3d61` — Minesweeper.
+- [SemenovDaniil/fsightRepo](https://github.com/SemenovDaniil/fsightRepo), commit `240806c5d3710ecad94dec9349eefea811c5c21a` — Russian word declension and a database handler.
 
-В публичный исходный архив включены результаты проверки и хеши, без текста
-этих сторонних примеров. Версии платформы, на которых авторы их запускали,
-не установлены; их открытие не является проверкой всех версий Foresight Platform Fore.
+The public source archive includes results and hashes without these third-party source texts. Their authors' platform versions have not been established; opening them does not test all Foresight Platform Fore versions.
 
-## Границы проверки
+## Limits
 
-Не выполнялись компиляция/исполнение программ в платформе, проверка Fore.NET,
-архитектур x86/ARM64 или всех выпусков Notepad++. Плагин реализует лексическую
-подсветку и сворачивание, не семантическую проверку корректности программы.
+Validation did not compile or execute programs in the platform, test Fore.NET or certify every Notepad++ release. ARM64 can be cross-compiled but has no native editor validation on this x64 host. ARM64 is excluded from the release and mandatory test matrix. The plugin provides lexical highlighting and folding, not semantic correctness checks.
 
-## Проверка установки
+## Installation tests
 
-`install.ps1` проверен на отдельной portable-копии: DLL и XML совпадают с проверенной
-сборкой, резервная копия UDL создана, из определения UDL удалено только расширение
-`fore`. Остальные элементы определения совпали с оригиналом.
-Отчёт — [qa/installation-validation.json](../qa/installation-validation.json).
+`install.ps1` was tested in a separate portable copy: DLL/XML match the tested build, a UDL backup is created and only the `fore` extension is removed from the UDL definition. All other definition elements match the original. Report: [installation-validation.json](../qa/installation-validation.json).
 
-Актуальный `qa/test-install.ps1` проверяет первоначальную установку и обновление
-обеих палитр в отдельном portable-каталоге, SHA-256 текущей DLL, резервные копии
-и изменение только привязки расширения UDL. Основная установка пользователя
-этим прогоном не изменяется. Отчёт привязан к хешам DLL и установщика.
+`qa/test-install.ps1` checks initial installation and update of both palettes in a separate portable directory, current DLL SHA-256, backups and the narrowly scoped UDL extension change. It leaves the user's main installation unchanged. The report is bound to the DLL and installer hashes.
 
-## Автоматические темы
+## Automatic themes
 
-Дополнительно выполнены четыре нативных прогона с настоящим выбором тем в Style Configurator: стандартная и пользовательская конфигурации, первый и повторный запуск. Проверены 40 сценариев/снимков, все 11 цветов и фоны в обоих представлениях, сохранение нестандартного ручного цвета и шрифта, другой активный язык и восстановление тёмной темы после перезапуска. [Отчёт](../qa/theme-validation.json), [поведение](AUTOMATIC-THEMES.md).
+Four native runs select real themes in Style Configurator: standard/custom configurations, first launch and restart. They cover 40 checks/snapshots, all 11 foreground/background categories in both views, preserved custom color/font, another active language and restored dark theme after restart. [Report](../qa/theme-validation.json), [behavior](AUTOMATIC-THEMES.md).
 
-## About и подготовка исходников
+## About and source packaging
 
-Интеграционный probe открывает настоящее окно About и читает наличие
-`Artyom Nikiforov (rhyots)` и `https://github.com/rhyots` в обоих прогонах палитр.
+The integration probe opens the actual About dialog and reads `Artyom Nikiforov (rhyots)` and `https://github.com/rhyots` in both palette runs.
 
-16 Python-тестов проверяют исключение рабочих каталогов до их обхода,
-точные байты и контрольные суммы, воспроизводимость ZIP независимо от порядка
-входных файлов, обе структуры бинарных архивов и запрет выпуска при неуспешных отчётах.
-Команда: `python -m pytest -q tests/test_release_files.py tests/test_release_archive.py`.
-Измерения качества и их ограничения: [UB-MODE-REVIEW.md](UB-MODE-REVIEW.md).
+Python tests check exclusion of working directories before traversal, exact bytes and hashes, ZIP reproducibility regardless of input order, both binary archive layouts and prevention of release when required reports fail. The architecture test additionally checks that x86 packaging uses its own DLL and detection evidence.
+
+```powershell
+python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
+```
+
+Quality measurements and their scope: [UB-MODE-REVIEW.md](UB-MODE-REVIEW.md).
+
+## Separate x86 validation
+
+Each architecture passed 381 integration assertions, 17 automatic-detection cases, 40 theme checks and installer validation. [x86 results](../qa/x86/validation.json), [x86 detection](../qa/x86/autodetect-validation.json), [x86 themes](../qa/x86/theme-validation.json), [x86 installation](../qa/x86/installation-validation.json). The x86 editor ran on Windows x64.
+
+PowerShell scripts accept `-Architecture x86`; `tools/verify.py` and `tools/package.py` accept `--architecture x86`. Catalog-installer checks are tracked in [the Plugins Admin report](PLUGINS-ADMIN-READINESS.md).

@@ -1,62 +1,43 @@
-# Автораспознавание Fore
+# Automatic Fore detection
 
-Входит в готовящийся первый выпуск 1.0.0. Это локальная эвристика, а не компиляция
-или гарантированное определение языка для произвольного фрагмента.
+[English](AUTODETECTION.md) | [Русский](AUTODETECTION.ru.md)
 
-## Область применения
 
-Должны одновременно выполняться два условия:
+Included since the first release, 1.0.0. This is a local heuristic; it does not compile code or guarantee identification of arbitrary snippets.
 
-1. Текущий язык документа — **Обычный текст / Normal Text**.
-2. Имя оканчивается на `.txt` (регистр неважен), не имеет расширения или это новая несохранённая вкладка.
+## Eligible documents
 
-Другие расширения, включая `.log`, `.md`, `.sql` и `.py`, исключены даже при
-ручном назначении им обычного текста. Документы с уже выбранным другим языком
-также исключены. Файлы `.fore` по-прежнему получают Fore по расширению.
+Both conditions must hold:
 
-## Признаки и ограничения
+1. The current document language is **Normal Text**.
+2. Its name ends in `.txt` (case insensitive), has no extension, or belongs to a new unsaved tab.
 
-Общие слова Class, Begin и End не являются достаточным основанием.
-Распознаватель использует токены нашего лексера: строки, символьные литералы и
-комментарии в сигнатурах не участвуют. Проверяются:
+Other extensions, including `.log`, `.md`, `.sql` and `.py`, are excluded even if assigned Normal Text manually. Documents already assigned another language are excluded too. `.fore` files continue to select Fore by extension.
 
-- объявление Sub / Function / Constructor, завершающееся точкой с запятой;
-- тело с Begin и именованное завершение того же вида с совпадающим именем;
-- либо именованный класс с родительским типом и типизированным полем.
+## Signals and limits
 
-Начало конструкций должно соответствовать началу строки с допустимыми
-модификаторами. Неполный фрагмент, другой язык со сходной структурой или код
-с нестандартным форматированием может не определиться. Синтаксически близкий
-Fore.NET и другие совместимые с этими шаблонами фрагменты не всегда отличимы:
-распознавание не подтверждает совместимость программы с платформой.
+Common words such as Class, Begin and End are insufficient. Detection uses the lexer's tokens; strings, character literals and comments do not contribute to signatures. It checks for:
 
-После открытия, активации вкладки или изменения текста назначается проверка
-через 350 мс. Анализируется не более первых 128 КиБ активного документа.
-Повторный ввод откладывает проверку. На диск ничего не записывается, сетевых
-запросов нет; текст документа не изменяется.
+- a Sub / Function / Constructor declaration ending with a semicolon;
+- a body starting with Begin and a named ending of the same kind with the matching name;
+- or a named class with a parent type and a typed field.
 
-## Ручной выбор языка
+Constructs must start at the beginning of a line after permitted modifiers. An incomplete snippet, another language with a similar structure or unusual formatting may remain undetected. Syntactically close Fore.NET and other snippets matching these patterns cannot always be distinguished: detection does not certify platform compatibility.
 
-Выбор языка пользователем имеет приоритет. В частности, явный выбор
-**Синтаксисы → Обычный текст** блокирует автораспознавание для этой открытой
-вкладки, даже если язык уже был обычным текстом. Ручной возврат с Fore на обычный
-текст не отменяется последующей вставкой. Ограничение снимается после закрытия
-документа и его повторного открытия; оно не сохраняется между запусками.
+Opening, activating or editing a document schedules a check after 350 ms. At most the first 128 KiB of the active document is scanned. Further typing postpones the check. Nothing is written to disk, no network request is made, and the text is not modified.
 
-## Проверка
+## Manual language choices
 
-`test.ps1` запускает отдельные тесты распознавателя: положительные конструкции,
-Pascal, VB, FreeBASIC, C++, Python, SQL, строки, комментарии, неверные имена
-окончаний, ограничение размера и фильтрацию расширений. Структурные примеры
-проверяются с LF, CRLF и CR. Результат: `qa/detection-validation.json`.
+The user's language selection takes priority. Explicitly choosing **Language → Normal Text** disables detection for that open document, even if it was already Normal Text. Switching from Fore back to Normal Text is not undone by subsequent pasting. Closing and reopening the document removes this restriction; it does not persist across editor sessions.
 
-`qa/run-autodetect.ps1` запускает отдельную portable-копию Notepad++ с
-`qa/AutoProbe.cpp`. Проверяются реальная смена языка при открытии и вставке,
-новая вкладка, сохранение ручного выбора, команды меню, закрытие/повторное
-открытие и отсутствие изменения текста. Результат: `qa/autodetect-validation.json`.
+## Validation
+
+`test.ps1` runs separate detector tests: positive constructs, Pascal, VB, FreeBASIC, C++, Python, SQL, strings, comments, mismatched ending names, size limits and extension filtering. Structural examples are checked with LF, CRLF and CR. Results: `qa/detection-validation.json`.
+
+`qa/run-autodetect.ps1` starts a separate portable Notepad++ with `qa/AutoProbe.cpp`. It verifies real language changes on opening and pasting, a new tab, preserved manual choices, menu commands, closing/reopening and unchanged document text. Results: `qa/autodetect-validation.json`.
 
 ```powershell
 pwsh -File qa/run-autodetect.ps1 -Zig 'C:\tools\zig-0.13.0\zig.exe'
 ```
 
-Пример для ручной проверки: [Fore-autodetect-demo.txt](../examples/Fore-autodetect-demo.txt).
+Manual example: [Fore-autodetect-demo.txt](../examples/Fore-autodetect-demo.txt).

@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 NAME = 'Notepad++ Syntax Plugin for Foresight Platform Fore'
 SLUG = 'notepad-plus-plus-syntax-plugin-foresight-platform-fore'
 ASSET = 'NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-' + VERSION

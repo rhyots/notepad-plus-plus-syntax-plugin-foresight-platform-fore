@@ -6,6 +6,6 @@
   "benchmark": {
     "bytes": 471000,
     "lines": 36001,
-    "milliseconds": 15.55
+    "milliseconds": 14.74
   }
 }

@@ -1,4 +1,4 @@
-param([string]$NotepadDirectory = 'C:\Program Files\Notepad++')
+param([string]$NotepadDirectory = 'C:\Program Files\Notepad++', [ValidateSet('x64','x86')][string]$Architecture='x64')
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 $portable = Join-Path $PSScriptRoot ('notepad-installer/' + [guid]::NewGuid().ToString('N'))
@@ -18,7 +18,7 @@ if ($xml.OuterXml -ne $expected.OuterXml) { throw 'Installer changed more than t
 $backup = @($first.backups | Where-Object { $_.target -eq $udl })
 if ($backup.Count -ne 1 -or (Get-FileHash -LiteralPath $backup[0].backup).Hash -ne $udlHash) { throw 'Original UDL backup missing or changed' }
 $second = (& (Join-Path $root 'install.ps1') -NotepadDirectory $portable -Palette Dark) | ConvertFrom-Json
-$dllHash = (Get-FileHash -LiteralPath (Join-Path $root 'build/x64/ForeLexer.dll')).Hash.ToLowerInvariant()
+$dllHash = (Get-FileHash -LiteralPath (Join-Path $root "build/$Architecture/ForeLexer.dll")).Hash.ToLowerInvariant()
 $lightHash = (Get-FileHash -LiteralPath (Join-Path $root 'styles/ForeLexer-Light.xml')).Hash.ToLowerInvariant()
 $darkHash = (Get-FileHash -LiteralPath (Join-Path $root 'styles/ForeLexer-Dark.xml')).Hash.ToLowerInvariant()
 if ($first.binary_sha256 -ne $dllHash -or $second.binary_sha256 -ne $dllHash) { throw 'Installed DLL differs from the current build' }
@@ -28,7 +28,7 @@ if ($previousStyle.Count -ne 1 -or (Get-FileHash -LiteralPath $previousStyle[0].
 $report = [ordered]@{
     passed = $true
     checked_on = '2026-10-31'
-    environment = 'isolated portable Notepad++ 8.9.8.1 x64; installer exercised without launching editor'
+    environment = "isolated portable Notepad++ 8.9.8.1 $Architecture; installer exercised without launching editor"
     dll_sha256 = $dllHash
     installer_sha256 = (Get-FileHash -LiteralPath (Join-Path $root 'install.ps1')).Hash.ToLowerInvariant()
     binary_matches_tested_release = $true
@@ -38,5 +38,5 @@ $report = [ordered]@{
     previous_configuration_backed_up_on_update = $true
     main_user_installation_modified_this_run = $false
 }
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'installation-validation.json'), (($report | ConvertTo-Json).Replace("`r`n", "`n")+"`n"), $utf8)
+[IO.File]::WriteAllText((Join-Path $PSScriptRoot $(if ($Architecture -eq 'x64') { 'installation-validation.json' } else { 'x86/installation-validation.json' })), (($report | ConvertTo-Json).Replace("`r`n", "`n")+"`n"), $utf8)
 Write-Output 'INSTALLER: isolated install/update, both presets, byte hashes and UDL migration passed.'

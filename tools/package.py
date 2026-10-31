@@ -3,6 +3,9 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
+import posixpath
+import re
+from urllib.parse import quote
 import subprocess
 import sys
 import zipfile
@@ -28,68 +31,100 @@ def archive(path, payload):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--source-only',action='store_true',help='Package verified source without requiring a local DLL')
+    parser.add_argument('--architecture',choices=['x64','x86'],default='x64')
     args=parser.parse_args()
     subprocess.run([sys.executable,str(ROOT/'tools/check_bytes.py')],check=True)
     subprocess.run([sys.executable,str(ROOT/'tools/generate_palettes.py'),'--check'],check=True)
-    subprocess.run([sys.executable,str(ROOT/'tools/verify.py')],check=True)
+    subprocess.run([sys.executable,str(ROOT/'tools/verify.py'),'--architecture',args.architecture],check=True)
     out=ROOT/'dist';out.mkdir(exist_ok=True)
     if not args.source_only:
-        package_binaries(out)
+        package_binaries(out,args.architecture)
     source={SLUG+'/'+p.relative_to(ROOT).as_posix():p.read_bytes() for p in public_files()}
     archive(out/(ASSET+'-source.zip'),source)
 
 
-def package_binaries(out):
-    core=json.loads((ROOT/'qa/core-validation.json').read_text());assert core['passed']
-    detection=json.loads((ROOT/'qa/detection-validation.json').read_text());assert detection['passed']
-    automatic=json.loads((ROOT/'qa/autodetect-validation.json').read_text());assert automatic['passed']
-    themes=json.loads((ROOT/'qa/theme-validation.json').read_text());assert themes['passed']
-    report=json.loads((ROOT/'validation.json').read_text());assert report['passed']
-    dll=(ROOT/'build/x64/ForeLexer.dll').read_bytes();assert sha(dll)==report['dll_sha256']
-    assert automatic['dll_sha256']==sha(dll), 'Automatic-detection tests belong to another DLL'
-    assert themes['dll_sha256']==sha(dll), 'Theme-switching tests belong to another DLL'
+def documentation_bytes(path):
+    """Keep links usable in either installed documentation directory layout."""
+    text=path.read_text(encoding='utf-8')
+    def replace(match):
+        target=match.group(1)
+        if ':' in target or target.startswith('#'):
+            return match.group(0)
+        location,separator,anchor=target.partition('#')
+        relative=posixpath.normpath((path.parent/ location).relative_to(ROOT).as_posix())
+        if not (ROOT/relative).exists():
+            return match.group(0)
+        url=f'https://github.com/rhyots/{SLUG}/blob/v{VERSION}/'+quote(relative)
+        return '('+url+(separator+anchor if separator else '')+')'
+    return re.sub(r'(?<=\])\(([^)]+)\)',replace,text).encode('utf-8')
+
+
+def release_documents():
+    documents={p.name:documentation_bytes(p) for p in sorted((ROOT/'docs').glob('*.md'))}
+    for name in ['CHANGELOG.md','CHANGELOG.ru.md','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.ru.md']:
+        path=ROOT/name
+        if path.exists():documents[name]=documentation_bytes(path)
+    return documents
+
+
+def native_evidence(architecture):
+    base=ROOT if architecture=='x64' else ROOT/'qa'/architecture
+    reports={'validation.json':base/'validation.json'}
+    for name in ['autodetect-validation.json','theme-validation.json']:
+        reports['qa/'+name]=(ROOT/'qa' if architecture=='x64' else base)/name
+    for name in ['core-validation.json','detection-validation.json']:
+        reports['qa/'+name]=ROOT/'qa'/name
+    return reports
+
+
+def validated_dll(reports,architecture):
+    for path in reports.values():assert json.loads(path.read_text(encoding='utf-8'))['passed']
+    dll=(ROOT/f'build/{architecture}/ForeLexer.dll').read_bytes()
+    report=json.loads(reports['validation.json'].read_text())
+    assert sha(dll)==report['dll_sha256'], 'Native tests belong to another DLL'
+    for name,label in [('autodetect-validation.json','Automatic-detection'),('theme-validation.json','Theme-switching')]:
+        assert json.loads(reports['qa/'+name].read_text())['dll_sha256']==sha(dll),label+' tests belong to another DLL'
     pe=inspect(dll)
-    assert pe['embedded_light_sha256']==sha((ROOT/'styles/ForeLexer-Light.xml').read_bytes())
-    assert pe['embedded_dark_sha256']==sha((ROOT/'styles/ForeLexer-Dark.xml').read_bytes())
-    binary={'plugins/ForeLexer/ForeLexer.dll':dll}
-    binary['THIRD_PARTY_NOTICES.ru.md']=(ROOT/'THIRD_PARTY_NOTICES.ru.md').read_bytes()
-    binary['docs/AUTOMATIC-THEMES.md']=(ROOT/'docs/AUTOMATIC-THEMES.md').read_bytes()
-    binary['qa/theme-validation.json']=(ROOT/'qa/theme-validation.json').read_bytes()
-    for p in sorted((ROOT/'styles').glob('*.xml')):binary['presets/'+p.name]=p.read_bytes()
-    for name in ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','CHANGELOG.md','install.ps1','validation.json','docs/TESTING.md','docs/AUTODETECTION.md','docs/PLATFORM-COLORS.md','examples/Fore-autodetect-demo.txt','qa/core-validation.json','qa/detection-validation.json','qa/autodetect-validation.json','qa/palette-sampling.json','qa/dark-palette-contrast.json','qa/installation-validation.json']:
-        binary[name]=(ROOT/name).read_bytes()
-    for language, filename in [('','INSTALLATION.md'),('.ru','INSTALLATION.ru.md')]:
-        text=(ROOT/'docs'/filename).read_text(encoding='utf-8')
-        text=text.replace('(INSTALLATION.md)', '(README.md)').replace('(INSTALLATION.ru.md)', '(README.ru.md)')
-        text=text.replace('(AUTODETECTION.md)', '(docs/AUTODETECTION.md)')
-        binary['README'+language+'.md']=text.encode('utf-8')
-    for p in (ROOT/'vendor').glob('LICENSE*'):binary['licenses/'+p.name]=p.read_bytes()
-    archive(out/(ASSET+'-x64.zip'),binary)
-    catalog={'ForeLexer.dll':dll}
-    catalog['doc/AUTOMATIC-THEMES.md']=(ROOT/'docs/AUTOMATIC-THEMES.md').read_bytes()
-    catalog['qa/theme-validation.json']=(ROOT/'qa/theme-validation.json').read_bytes()
-    catalog['examples/Fore-autodetect-demo.txt']=(ROOT/'examples/Fore-autodetect-demo.txt').read_bytes()
-    catalog['doc/AUTODETECTION.md']=(ROOT/'docs/AUTODETECTION.md').read_bytes()
-    catalog['doc/CHANGELOG.md']=(ROOT/'CHANGELOG.md').read_bytes()
-    catalog['doc/PLATFORM-COLORS.md']=(ROOT/'docs/PLATFORM-COLORS.md').read_bytes()
-    catalog['qa/palette-sampling.json']=(ROOT/'qa/palette-sampling.json').read_bytes()
-    catalog['qa/dark-palette-contrast.json']=(ROOT/'qa/dark-palette-contrast.json').read_bytes()
-    for p in sorted((ROOT/'styles').glob('*.xml')):catalog['presets/'+p.name]=p.read_bytes()
-    for name in ['LICENSE','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.ru.md']:
-        catalog['doc/'+name]=(ROOT/name).read_bytes()
-    for p in (ROOT/'vendor').glob('LICENSE*'):catalog['doc/licenses/'+p.name]=p.read_bytes()
-    catalog['doc/README.md']=(ROOT/'docs/PLUGINS-ADMIN-INSTALLATION.md').read_bytes()
-    asset=ASSET+'-plugins-admin-x64.zip'
+    assert pe['machine']=={'x64':'AMD64','x86':'I386'}[architecture], 'Wrong DLL architecture'
+    assert pe['file_version']==VERSION+'.0', 'Wrong DLL version'
+    for name,key in [('Light','embedded_light_sha256'),('Dark','embedded_dark_sha256')]:
+        assert pe[key]==sha((ROOT/f'styles/ForeLexer-{name}.xml').read_bytes())
+    return dll
+
+
+def package_binaries(out,architecture='x64'):
+    reports=native_evidence(architecture)
+    dll=validated_dll(reports,architecture)
+    common={'presets/'+p.name:p.read_bytes() for p in sorted((ROOT/'styles').glob('*.xml'))}
+    for name in ['Fore-demo.fore','Folding-edge-cases.fore','Fore-autodetect-demo.txt']:
+        common['examples/'+name]=(ROOT/'examples'/name).read_bytes()
+    common.update({name:path.read_bytes() for name,path in reports.items()})
+    documents=release_documents()
+    binary={**common,'plugins/ForeLexer/ForeLexer.dll':dll,'install.ps1':(ROOT/'install.ps1').read_bytes(),'LICENSE':(ROOT/'LICENSE').read_bytes()}
+    binary.update({'docs/'+name:data for name,data in documents.items()})
+    for name in ['CHANGELOG.md','CHANGELOG.ru.md','THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.ru.md']:
+        if name in documents:binary[name]=documents[name]
+    for language in ['', '.ru']:
+        binary['README'+language+'.md']=documentation_bytes(ROOT/f'docs/INSTALLATION{language}.md')
+    binary.update({'licenses/'+p.name:p.read_bytes() for p in (ROOT/'vendor').glob('LICENSE*')})
+    archive(out/(ASSET+f'-{architecture}.zip'),binary)
+    catalog={**common,'ForeLexer.dll':dll,'doc/LICENSE':(ROOT/'LICENSE').read_bytes()}
+    catalog.update({'doc/'+name:data for name,data in documents.items()})
+    for language in ['', '.ru']:
+        path=ROOT/f'docs/PLUGINS-ADMIN-INSTALLATION{language}.md'
+        if path.exists():catalog['doc/README'+language+'.md']=documentation_bytes(path)
+    catalog.update({'doc/licenses/'+p.name:p.read_bytes() for p in (ROOT/'vendor').glob('LICENSE*')})
+    asset=ASSET+f'-plugins-admin-{architecture}.zip'
     archive(out/asset,catalog)
     draft={
         'folder-name':'ForeLexer','display-name':NAME,'version':VERSION,
         'npp-compatible-versions':'[8.9.8.1,]',
         'id':sha((out/asset).read_bytes()),
         'repository':f'https://github.com/rhyots/{SLUG}/releases/download/v{VERSION}/{asset}',
-        'description':'Native highlighting and code folding for Foresight Platform Fore, based on Prognoz Platform Fore 8.1 documentation. Light/dark presets; content detection for plain TXT and extensionless documents. Windows x64; not Fore.NET.',
+        'description':f'Native highlighting and folding for Foresight / Prognoz Platform Fore. Automatic light/dark palettes, custom colors and conservative plain-text detection. Windows {architecture}; not Fore.NET.',
         'author':'Artyom Nikiforov (rhyots)',
         'homepage':f'https://github.com/rhyots/{SLUG}'
     }
-    (ROOT/'catalog/plugin-x64.draft.json').write_text(json.dumps(draft,indent=2)+'\n',encoding='utf-8',newline='\n')
+    (ROOT/f'catalog/plugin-{architecture}.draft.json').write_text(json.dumps(draft,indent=2)+'\n',encoding='utf-8',newline='\n')
 
 if __name__=='__main__':main()

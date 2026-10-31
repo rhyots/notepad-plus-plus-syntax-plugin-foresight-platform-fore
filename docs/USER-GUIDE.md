@@ -4,7 +4,7 @@
 
 ## Installation
 
-Download the manual `*-x64.zip` from [Releases](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/latest). Use Notepad++ **Windows x64**; 8.9.8.1 is the tested version. Save your work, close the editor and extract the entire archive before installing.
+Download the manual `*-x64.zip` or `*-x86.zip` from [Releases](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/latest). Match the architecture of **Notepad++ → ? → Debug Info**, not Windows; x64 and x86 were tested with 8.9.8.1. Save your work, close the editor and extract the entire archive before installing.
 
 With PowerShell 7, run `pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'` from the extracted folder. Use administrator rights for Program Files. For portable Notepad++, pass its EXE directory. The script checks architecture, backs up replaced files and removes only the competing `fore` extension from UDL definitions. Backups and receipts go to `ForeLexerBackups` in the configuration directory.
 
@@ -19,7 +19,7 @@ With PowerShell 7, run `pwsh -File install.ps1 -NotepadDirectory 'C:\Program Fil
 
 An XML in the installation directory's `plugins\Config\` takes precedence over the user-profile XML. Keep one intended active configuration. Do not import these XML files through “Define your language”: they configure an external lexer.
 
-The `*-plugins-admin-x64.zip` uses a different layout: its DLL is at ZIP root. It is prepared for catalog distribution; the plugin is not yet listed in Plugins Admin.
+The matching `*-plugins-admin-x64.zip` / `*-plugins-admin-x86.zip` uses a different layout: its DLL is at ZIP root. It is prepared for catalog distribution; the plugin is not yet listed in Plugins Admin.
 
 ## Opening Fore code
 
@@ -61,7 +61,7 @@ For manual removal, close the editor and remove its `plugins\ForeLexer` plugin f
 
 | Symptom | What to check |
 |---|---|
-| No Fore under F | Correct x64 DLL, folder `plugins\ForeLexer\ForeLexer.dll`, complete restart |
+| No Fore under F | Correct x64/x86 DLL, folder `plugins\ForeLexer\ForeLexer.dll`, complete restart |
 | XML error or no Fore styles | `ForeLexer.xml` location/name; avoid conflicting installation-wide and profile copies |
 | `.fore` is still plain text or a UDL | Competing UDL extension, then select Fore manually |
 | TXT stays Normal Text | Eligible filename, complete named blocks, first 128 KiB, no manual opt-out on that open document |

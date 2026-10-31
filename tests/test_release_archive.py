@@ -7,11 +7,11 @@ import zipfile
 import pytest
 import package
 from package import archive
-from release_files import ASSET, ROOT, SLUG, public_files
+from release_files import ASSET, ROOT, SLUG, VERSION, public_files
 
 
 def test_archive_preserves_payload_bytes_and_hashes(tmp_path):
-    payload = {'styles/palette.xml': b'first\r\nsecond\r\n', 'README.md': 'Fore — test\n'.encode()}
+    payload = {'styles/palette.xml': b'first\r\nsecond\r\n', 'README.md': 'Fore вЂ” test\n'.encode()}
     target = tmp_path/'release.zip'
     archive(target, payload)
     with zipfile.ZipFile(target) as result:
@@ -52,10 +52,59 @@ def release_tree(tmp_path, monkeypatch):
         path.write_text(json.dumps(report))
     monkeypatch.setattr(package, 'ROOT', tmp_path)
     monkeypatch.setattr(package, 'inspect', lambda data: {
+        'machine': 'I386' if data.endswith(b'x86') else 'AMD64',
+        'file_version': VERSION+'.0',
         'embedded_light_sha256': hashlib.sha256((tmp_path/'styles/ForeLexer-Light.xml').read_bytes()).hexdigest(),
         'embedded_dark_sha256': hashlib.sha256((tmp_path/'styles/ForeLexer-Dark.xml').read_bytes()).hexdigest(),
     })
     return tmp_path
+
+
+def test_x86_archive_uses_its_own_binary_and_native_evidence(release_tree):
+    dll = (release_tree/'build/x64/ForeLexer.dll').read_bytes()+b'x86'
+    binary = release_tree/'build/x86/ForeLexer.dll'
+    binary.parent.mkdir(parents=True)
+    binary.write_bytes(dll)
+    evidence = release_tree/'qa/x86'
+    evidence.mkdir(parents=True, exist_ok=True)
+    for name in ['validation.json', 'autodetect-validation.json', 'theme-validation.json']:
+        (evidence/name).write_text(json.dumps({'passed': True, 'dll_sha256': hashlib.sha256(dll).hexdigest()}))
+    out = release_tree/'dist'
+    out.mkdir()
+    package.package_binaries(out, architecture='x86')
+    target = out/(ASSET+'-plugins-admin-x86.zip')
+    with zipfile.ZipFile(target) as archive:
+        assert archive.read('ForeLexer.dll') == dll
+    entry = json.loads((release_tree/'catalog/plugin-x86.draft.json').read_text())
+    assert entry['id'] == hashlib.sha256(target.read_bytes()).hexdigest()
+    (evidence/'autodetect-validation.json').write_text(json.dumps({'passed': True, 'dll_sha256': 'wrong architecture evidence'}))
+    with pytest.raises(AssertionError, match='detection'):
+        package.package_binaries(out, architecture='x86')
+
+
+@pytest.mark.parametrize('field,value,message', [
+    ('machine', 'I386', 'architecture'),
+    ('file_version', '0.0.0.0', 'version'),
+    ('embedded_light_sha256', 'invalid', None),
+    ('embedded_dark_sha256', 'invalid', None),
+])
+def test_incompatible_binary_prevents_release(release_tree, monkeypatch, field, value, message):
+    original = package.inspect
+    monkeypatch.setattr(package, 'inspect', lambda data: {**original(data), field: value})
+    with pytest.raises(AssertionError, match=message):
+        package.package_binaries(release_tree)
+    assert not list(release_tree.glob('*.zip'))
+
+
+def test_archived_documentation_links_survive_directory_relocation(release_tree):
+    document = release_tree/'docs/INSTALLATION.md'
+    document.write_text('[guide](USER-GUIDE.md#installation) [source](../src/Plugin.cpp) '
+                        '[external](https://example.org) [anchor](#local) [absent](absent.md)', encoding='utf-8')
+    text = package.documentation_bytes(document).decode('utf-8')
+    prefix = f'https://github.com/rhyots/{SLUG}/blob/v{VERSION}/'
+    assert f'({prefix}docs/USER-GUIDE.md#installation)' in text
+    assert f'({prefix}src/Plugin.cpp)' in text
+    assert '[external](https://example.org) [anchor](#local) [absent](absent.md)' in text
 
 
 def test_binary_layouts_and_catalog_digest(release_tree):
@@ -66,7 +115,7 @@ def test_binary_layouts_and_catalog_digest(release_tree):
         assert manual.read('plugins/ForeLexer/ForeLexer.dll') == (release_tree/'build/x64/ForeLexer.dll').read_bytes()
         assert 'install.ps1' in manual.namelist()
         assert 'presets/ForeLexer-Dark.xml' in manual.namelist()
-        assert '(docs/AUTODETECTION.md)' in manual.read('README.md').decode()
+        assert '/docs/AUTODETECTION.md)' in manual.read('README.md').decode()
     catalog_zip = out/(ASSET+'-plugins-admin-x64.zip')
     with zipfile.ZipFile(catalog_zip) as catalog:
         assert catalog.read('ForeLexer.dll') == (release_tree/'build/x64/ForeLexer.dll').read_bytes()

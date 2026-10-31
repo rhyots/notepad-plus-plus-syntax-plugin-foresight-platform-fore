@@ -1,18 +1,21 @@
-# Fore in Notepad++ — first release
+# 1.1.0 — Fore for both x64 and x86 Notepad++
 
-Native highlighting, folding and automatic light/dark palettes for **Foresight Platform Fore / Prognoz Platform Fore**. Fore appears in **Language → F → Fore** and **Style Configurator → Fore**.
+[English](RELEASE-NOTES.md) | [Русский](RELEASE-NOTES.ru.md)
 
-- 66 reserved keywords, 12 built-in types, 11 style categories.
-- Fold methods with their declarations, classes, properties, loops and conditions.
-- Automatic content detection for eligible Normal Text `.txt`, extensionless files and new tabs; explicit language choices take priority.
-- Light/dark palettes follow the editor background; custom colors/fonts are preserved.
-- Installer with backups and migration of the `.fore` association from older UDL definitions.
-- English and Russian documentation, animated code previews, and a credited MIT-licensed community Fore example.
 
-**Download `NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-x64.zip` for manual installation.** Close Notepad++ and follow the included README. The `*-plugins-admin-x64.zip` is the catalog layout; the plugin is not yet listed in Plugins Admin. The explicit `*-source.zip` is the complete tested source tree. Verify each ZIP against its `.sha256` sidecar.
+Native syntax highlighting and folding for **Foresight Platform Fore / Prognoz Platform Fore**. This release brings the same light/dark themes, custom colors and conservative plain-text detection to 32-bit Notepad++.
 
-Tested: **Notepad++ 8.9.8.1 / Windows x64**. Rules: Prognoz Platform Fore 8.1. Later platform versions are not individually certified; Fore.NET/x86/ARM64 are not targets. No platform compilation or execution was tested. Local results include 381 native integration assertions, 17 detection scenarios and 40 theme checks. See the repository for the CI status and evidence.
+- **New x86 package**, tested in real Notepad++ 8.9.8.1 alongside x64. Select the editor's architecture, not Windows bitness.
+- **Complete English and Russian documentation**, with English `.md` and Russian `.ru.md` files throughout the repository and binary packages.
+- **Safe architecture matching** in the installer and packaging gates; x86 uses its own native evidence and correctly named lexer exports.
+- **Plugins Admin preparation**: separate x64/x86 catalog ZIPs, full-archive SHA-256 and documentation links that survive WinGUp relocation. [Catalog status](PLUGINS-ADMIN-READINESS.md).
 
-Original project code: **MIT License**. Third-party terms are preserved. Author: [Artyom Nikiforov (rhyots)](https://github.com/rhyots).
+Unchanged daily features: **Language → F → Fore**, normal Style Configurator, 66 keywords, 12 types, 11 style categories, structural folding and theme following in both editor views. Manual colors/fonts are preserved. Automatic detection is limited to Normal Text in TXT, extensionless files and new tabs; explicit language choice wins.
 
-[User guide](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/blob/main/docs/USER-GUIDE.md) · [Русское описание](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/blob/main/docs/RELEASE-NOTES.ru.md) · [Changelog](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/blob/main/CHANGELOG.md)
+Validation on **each architecture**: 381 native integration assertions, 17 detection cases, 40 theme checks and isolated installer validation. Shared core/detector checks: 53 and 104. Language rules come from Prognoz Platform Fore 8.1 help; later platform releases are not individually certified. Fore.NET and ARM64 are outside this release.
+
+Download `*-x64.zip` or `*-x86.zip` for manual installation, the matching `*-plugins-admin-*.zip` for the catalog layout, or `*-source.zip` for complete source. Each ZIP has a SHA-256 sidecar. Save work and close Notepad++ before updating. Existing published 1.0.0 assets remain unchanged.
+
+**MIT License** for original project code; third-party terms are retained. Author: [Artyom Nikiforov (rhyots)](https://github.com/rhyots).
+
+[User guide](USER-GUIDE.md) · [Russian notes](RELEASE-NOTES.ru.md) · [Changelog](../CHANGELOG.md)

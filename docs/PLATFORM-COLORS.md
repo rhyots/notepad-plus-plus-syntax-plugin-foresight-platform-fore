@@ -1,56 +1,40 @@
-# Светлая палитра по скриншоту платформы
+# Light palette sampled from the platform screenshot
 
-31.10.2026 пользователь предоставил скриншот редактора Fore. Предыдущая светлая
-палитра проекта использовала другие цвета и не воспроизводила этот образец.
+[English](PLATFORM-COLORS.md) | [Русский](PLATFORM-COLORS.ru.md)
 
-RGB измерены программной пипеткой в исходном PNG без масштабирования:
 
-| Текст на образце | Измеренный цвет | Настройка плагина |
+On 31 October 2026 the user supplied a screenshot of the Fore editor. The project's earlier light palette used different colors and did not reproduce that reference.
+
+RGB values were sampled programmatically from the original PNG without resizing:
+
+| Text in the reference | Sampled color | Plugin styles |
 |---|---|---|
-| Идентификаторы, обычный код | `#000000` | Default, Identifiers, Operators, Types, Numbers |
-| Ключевые слова Begin и As | `#008787` | Keywords |
-| Комментарии `//…` | `#008000` | Comments, Documentation Comments |
-| Строки с идентификатором объекта и Export | `#800000` | Strings, Characters |
+| Identifiers and ordinary code | `#000000` | Default, Identifiers, Operators, Types, Numbers |
+| Begin and As keywords | `#008787` | Keywords |
+| `//…` comments | `#008000` | Comments, Documentation Comments |
+| Strings containing the object identifier and Export | `#800000` | Strings, Characters |
 
-Константам True/False/Null назначен цвет ключевых слов, символьным литералам —
-цвет строк. Отдельные цвета чисел, встроенных типов, констант и символьных
-литералов этим скриншотом не подтверждены: это выбранное сопоставление категорий,
-а не измеренные настройки этих категорий в платформе.
+True/False/Null constants use the keyword color; character literals use the string color. Separate colors for numbers, built-in types, constants and character literals are not established by this screenshot: their mapping is a project choice, not a measurement of those platform categories.
 
-Ярко-красный `#FF0000` принадлежит нарисованной рамке. Для строк измерен
-тёмно-красный `#800000`.
+The bright red `#FF0000` belongs to the drawn rectangle. The sampled string color is dark red `#800000`.
 
-Из-за ClearType и сглаживания у границ букв есть много дополнительных цветов.
-Взяты повторяющиеся внутренние пиксели символов. Эти RGB точно присутствуют в
-изображении, но не доказывают совпадение с числами в настройках самой платформы.
-Шрифт, масштаб и способ сглаживания в Notepad++ могут отличаться.
+ClearType and antialiasing introduce many additional edge colors. Repeated interior glyph pixels were sampled. These RGB values are present in the image, but do not prove the numeric values of the platform's settings. Font, scale and antialiasing may differ in Notepad++.
 
-Координаты областей, число пикселей и SHA-256 исходного изображения:
-[palette-sampling.json](../qa/palette-sampling.json). Изображение пользователя в
-архив проекта не включено.
+Region coordinates, pixel counts and the original image SHA-256: [palette-sampling.json](../qa/palette-sampling.json). The user's image is not distributed in the project archive.
 
-Изменена светлая XML-палитра и её встроенная в DLL копия.
+Both the light XML preset and its embedded DLL copy were updated.
 
-## Адаптация для тёмного фона
+## Adaptation for a dark background
 
-Тёмная палитра сохраняет те же цветовые роли и оттенки бирюзового, зелёного и
-красного, повышая светлоту для фона `#1E1E1E`. Основной чёрный заменён светло-серым.
-Это адаптация, а не измеренные цвета тёмного режима самой платформы.
+The dark palette keeps the teal, green and red roles while increasing brightness for `#1E1E1E`. Ordinary black text becomes light gray. This is an adaptation, not a measurement of the platform's own dark mode.
 
-| Категория | Цвет | Контраст на `#1E1E1E` |
+| Category | Color | Contrast against `#1E1E1E` |
 |---|---|---|
-| Обычный код, типы, числа, операторы | `#D4D4D4` | 11.25:1 |
-| Ключевые слова и константы | `#4FD1D1` | 9.03:1 |
-| Комментарии | `#6EC76E` | 7.98:1 |
-| Строки и символьные литералы | `#F08080` | 6.43:1 |
+| Ordinary code, types, numbers, operators | `#D4D4D4` | 11.25:1 |
+| Keywords and constants | `#4FD1D1` | 9.03:1 |
+| Comments | `#6EC76E` | 7.98:1 |
+| Strings and character literals | `#F08080` | 6.43:1 |
 
-Контраст рассчитан по относительной яркости sRGB; сравнение с порогом 4.5:1
-выполнено до округления. Этот ориентир для обычного текста описан в
-[WCAG 2.2, Contrast Minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
-Это проверка пар цветов, а не заявление о соответствии всего приложения WCAG.
-Данные для всех 11 категорий и SHA-256 палитры:
-[dark-palette-contrast.json](../qa/dark-palette-contrast.json).
+Contrast is calculated from relative sRGB luminance; comparison with 4.5:1 uses unrounded values. This ordinary-text reference is described in [WCAG 2.2, Contrast Minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html). It checks color pairs; it does not certify the entire application as WCAG-conformant. All 11 categories and the preset SHA-256: [dark-palette-contrast.json](../qa/dark-palette-contrast.json).
 
-Фон наследуется от темы Notepad++. Теперь плагин автоматически выбирает
-Light/Dark по фону редактора: [автоматические темы](AUTOMATIC-THEMES.md).
-Для другого фона приведённые коэффициенты контраста следует пересчитать.
+The background is inherited from the Notepad++ theme. The plugin selects Light/Dark from the editor background: [automatic themes](AUTOMATIC-THEMES.md). Recalculate these ratios for other backgrounds.

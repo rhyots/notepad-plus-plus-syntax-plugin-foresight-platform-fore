@@ -1,4 +1,4 @@
-"""Audit the local catalog ZIP with the pinned official validator (offline download substitution)."""
+"""Audit a catalog ZIP with the pinned official validator, locally or by public download."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -18,7 +18,7 @@ COMMIT = '9139ebdaa0fc1d26497bad36040f015f84bcf49f'
 MANUAL_COMMIT = '41d96945ec8d11d4100356293f4f30e60c1418c0'
 SOURCES = {
     name: f'https://raw.githubusercontent.com/notepad-plus-plus/nppPluginList/{COMMIT}/{name}'
-    for name in ('pl.schema', 'validator.py', 'src/pl.x64.json')
+    for name in ('pl.schema', 'validator.py', 'src/pl.x64.json', 'src/pl.x86.json')
 }
 SOURCES['plugins.md'] = f'https://raw.githubusercontent.com/notepad-plus-plus/npp-usermanual/{MANUAL_COMMIT}/content/docs/plugins.md'
 
@@ -26,6 +26,8 @@ SOURCES['plugins.md'] = f'https://raw.githubusercontent.com/notepad-plus-plus/np
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--refresh', action='store_true', help='Download pinned official reference files into ignored build/')
+    parser.add_argument('--architecture', choices=['x64','x86'], default='x64')
+    parser.add_argument('--public-download', action='store_true', help='Use actual HTTPS downloads, without local response substitution')
     args = parser.parse_args()
     official = ROOT/'build/catalog-official'
     recorded = ROOT/'catalog/references.json'
@@ -43,18 +45,19 @@ def main():
         assert url not in known or known[url] == digest, f'Pinned official reference bytes changed: {name}'
         references.append({'file': name, 'url': url, 'sha256': digest})
     (ROOT/'catalog/references.json').write_text(json.dumps({'checked_on': '2026-10-31', 'sources': references}, indent=2)+'\n', encoding='utf-8', newline='\n')
-    package = ROOT/'dist'/(ASSET+'-plugins-admin-x64.zip')
+    package = ROOT/'dist'/(ASSET+f'-plugins-admin-{args.architecture}.zip')
     payload = package.read_bytes()
-    entry = json.loads((ROOT/'catalog/plugin-x64.draft.json').read_text(encoding='utf-8'))
+    entry = json.loads((ROOT/f'catalog/plugin-{args.architecture}.draft.json').read_text(encoding='utf-8'))
     assert entry['id'] == hashlib.sha256(payload).hexdigest()
     with zipfile.ZipFile(package) as z:
         assert 'ForeLexer.dll' in z.namelist(), 'The official validator requires the DLL at ZIP root'
         assert z.testzip() is None
         binary = inspect(z.read('ForeLexer.dll'))
     assert binary['file_version'] == entry['version']+'.0'
+    assert binary['machine'] == {'x64':'AMD64','x86':'I386'}[args.architecture]
     assert entry['display-name'] == NAME
     assert entry['folder-name'] == 'ForeLexer'
-    catalog = json.loads((official/'src/pl.x64.json').read_text(encoding='utf-8'))
+    catalog = json.loads((official/f'src/pl.{args.architecture}.json').read_text(encoding='utf-8'))
     for key in ('folder-name', 'display-name', 'repository'):
         assert entry[key] not in [item[key] for item in catalog['npp-plugins']], f'Catalog collision: {key}'
     deps = ROOT/'build/catalog-deps'
@@ -63,12 +66,12 @@ def main():
     # pywin32 uses the real Windows version API; no binary metadata is mocked.
     dll_directory = os.add_dll_directory(str(deps/'pywin32_system32')) if sys.platform == 'win32' else None
     import requests
-    sandbox = official/'local-fixture'
+    sandbox = official/('fixture-'+args.architecture)
     (sandbox/'src').mkdir(parents=True, exist_ok=True)
     (sandbox/'doc').mkdir(exist_ok=True)
     shutil.copyfile(official/'pl.schema', sandbox/'pl.schema')
-    fixture = {'name': 'npp-pluginList', 'version': catalog['version'], 'arch': '64', 'npp-plugins': [entry]}
-    (sandbox/'src/pl.x64.json').write_text(json.dumps(fixture), encoding='utf-8', newline='\n')
+    fixture = {'name': 'npp-pluginList', 'version': catalog['version'], 'arch': catalog['arch'], 'npp-plugins': [entry]}
+    (sandbox/f'src/pl.{args.architecture}.json').write_text(json.dumps(fixture), encoding='utf-8', newline='\n')
     original_get = requests.Session.get
     old_argv, old_cwd = sys.argv[:], Path.cwd()
     api_url = os.environ.pop('APPVEYOR_API_URL', None)
@@ -76,6 +79,11 @@ def main():
     def local_get(session, url, **kwargs):
         assert url == entry['repository'], 'Unexpected validator download'
         downloads.append(url)
+        if args.public_download:
+            response = original_get(session, url, **kwargs)
+            response.raise_for_status()
+            assert response.content == payload, 'Public asset bytes differ from tested package'
+            return response
         response = requests.Response()
         response.status_code = 200
         response._content = payload
@@ -83,7 +91,7 @@ def main():
         return response
     requests.Session.get = local_get
     try:
-        sys.argv = [str(official/'validator.py'), 'x64']
+        sys.argv = [str(official/'validator.py'), args.architecture]
         os.chdir(sandbox)
         try:
             runpy.run_path(str(official/'validator.py'), run_name='__main__')
@@ -99,14 +107,15 @@ def main():
             dll_directory.close()
     assert len(downloads) == 1
     report = {'passed': True, 'official_validator_commit': COMMIT,
-              'mode': 'Unmodified official validator and schema; single-entry fixture; HTTP GET supplied with local ZIP bytes; real Windows version API',
+              'mode': 'Unmodified official validator and schema; single-entry fixture; '+('real public HTTPS download' if args.public_download else 'HTTP GET supplied with local ZIP bytes')+'; real Windows version API',
               'archive': package.name, 'archive_sha256': entry['id'], 'dll_version': binary['file_version'],
-              'machine': binary['machine'], 'unique_against_official_x64_catalog': True,
-              'public_download_tested': False, 'contains_owner_placeholder': 'OWNER' in entry['repository'],
-              'ready_to_submit': False,
+              'machine': binary['machine'], 'architecture': args.architecture, 'unique_against_official_catalog': True,
+              'public_download_tested': args.public_download, 'contains_owner_placeholder': 'OWNER' in entry['repository'],
               'dependencies': {name: importlib.metadata.version(name) for name in ('requests', 'jsonschema', 'pywin32')}}
-    (ROOT/'qa/catalog-validation.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
-    print('CATALOG: official schema, ZIP root, SHA-256, Windows DLL version and uniqueness passed offline. Public download and actual Plugins Admin lifecycle remain pending.')
+    output = ROOT/'qa' if args.architecture == 'x64' else ROOT/'qa'/args.architecture
+    output.mkdir(parents=True, exist_ok=True)
+    (output/'catalog-validation.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
+    print('CATALOG PASS:', args.architecture, report['mode'])
 
 
 if __name__ == '__main__':

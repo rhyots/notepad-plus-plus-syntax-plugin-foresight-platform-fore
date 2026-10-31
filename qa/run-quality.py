@@ -6,6 +6,7 @@ import sys
 import os
 import tree_sitter_language_pack as pack
 
+os.environ['PYTHONUTF8'] = '1'
 pack.configure({'cache_dir': str(Path('build/ub-parser-cache').resolve())})
 module = sys.argv.pop(1)
 sys.argv[0] = module
