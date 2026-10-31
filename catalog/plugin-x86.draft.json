@@ -3,7 +3,7 @@
   "display-name": "Notepad++ Syntax Plugin for Foresight Platform Fore",
   "version": "1.1.0",
   "npp-compatible-versions": "[8.9.8.1,]",
-  "id": "55aec3c9109fecb253711c115190d350f631f79d3b5fddc393b1f695f3bc0bad",
+  "id": "dc49bb4e4994e141840be8aa66074056eb7edd0baeefc3e4391e1b4b02223c43",
   "repository": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x86.zip",
   "description": "Native highlighting and folding for Foresight / Prognoz Platform Fore. Automatic light/dark palettes, custom colors and conservative plain-text detection. Windows x86; not Fore.NET.",
   "author": "Artyom Nikiforov (rhyots)",

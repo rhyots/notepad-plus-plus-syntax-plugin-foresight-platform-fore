@@ -6,16 +6,16 @@
     {
       "core.autocrlf": "false",
       "all_source_bytes_identical": true,
-      "files": 199,
+      "files": 208,
       "crlf_byte_drift_rejected": true,
-      "audit_snapshot_source_zip_sha256": "7ff12ebd9afefa243240f336b95fb439014cdc680b51bd98a67c3af0d93d2204"
+      "audit_snapshot_source_zip_sha256": "e23ba1569c9d2fbebc48763e634c7937891dae9d022c2b7fd8ace1926f8c5ee1"
     },
     {
       "core.autocrlf": "true",
       "all_source_bytes_identical": true,
-      "files": 199,
+      "files": 208,
       "crlf_byte_drift_rejected": true,
-      "audit_snapshot_source_zip_sha256": "7ff12ebd9afefa243240f336b95fb439014cdc680b51bd98a67c3af0d93d2204"
+      "audit_snapshot_source_zip_sha256": "e23ba1569c9d2fbebc48763e634c7937891dae9d022c2b7fd8ace1926f8c5ee1"
     }
   ]
 }

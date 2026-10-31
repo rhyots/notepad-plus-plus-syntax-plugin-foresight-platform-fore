@@ -110,3 +110,13 @@ No separate worktrees were created. The previous kit remains local; build/dist, 
 7. The test Plugins Admin dialog was opened with the user's help. Accessibility reads and screenshots then failed with tool timeouts. The official WinGUp command-line backend is tested separately; GUI interaction is not inferred from backend success.
 
 Release-specific lifecycle evidence and catalog status are maintained in [PLUGINS-ADMIN-READINESS.md](PLUGINS-ADMIN-READINESS.md). Later measurements must identify their own source hashes; the initial metrics above are historical, not a certification of subsequently changed scripts.
+
+### Release 1.1.0 tooling results
+
+The final package tests passed **22/22**. Crapper measured **11 functions**, **100% function coverage** and **maximum CRAP 7** in `tools/package.py` and `tools/release_files.py`. Dryer found no candidates at 0.8 across `tools/*.py`. A complete Mutator run selected **86 sites: 85 killed, one equivalent survivor, none uncovered**. The survivor again changes ZIP timestamp seconds 0 → 1; an independent byte comparison confirms identical archives. The tool's survivor exit is retained, not presented as zero survivors.
+
+An initial mutation run encountered Windows child-output decoding errors. The launcher now sets `PYTHONUTF8=1`; all sites were rerun with UTF-8 child interpreters and the default ten-times-baseline timeout. The final report is [qa/ub-mode-1.1.0.json](../qa/ub-mode-1.1.0.json), with source hashes and [raw metrics](../qa/quality-results/v1.1.0). These results have the stated Python scope; unchanged lexer algorithms are covered by the separate native/editor tests.
+
+Windows also held a completed worker directory open during cleanup. The adapter validates that cleanup stays inside the private mutation workspace and retains a locked ignored copy instead of discarding test results. No additional Git worktrees were created; retained diagnostic copies are excluded from publication.
+
+The upstream timeout handler assumes POSIX SIGKILL. The Windows adapter supplies the signal token and checks termination of its own process tree. A real sleeping-child test passed in the normal user environment; the restricted automation profile denied the required process control. Run this optional quality audit in a normal PowerShell session.

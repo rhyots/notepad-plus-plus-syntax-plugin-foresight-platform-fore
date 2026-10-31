@@ -11,8 +11,11 @@ pack.configure({'cache_dir': str(Path('build/ub-parser-cache').resolve())})
 module = sys.argv.pop(1)
 sys.argv[0] = module
 if module == 'mutator' and sys.platform == 'win32':
+    import signal
+    # The POSIX-oriented runner passes this token to our Windows process-tree adapter.
+    signal.SIGKILL = 9
     def stop_test_group(pid, signal):
-        subprocess.run(['taskkill', '/PID', str(pid), '/T', '/F'], capture_output=True)
+        subprocess.run(['taskkill', '/PID', str(pid), '/T', '/F'], capture_output=True, check=True)
     os.killpg = stop_test_group
     import mutator.workers as workers
     excluded = {'build', 'dist', 'target', '.git', '.metrics', '__pycache__', '.pytest_cache', '.coverage'}
@@ -36,4 +39,19 @@ if module == 'mutator' and sys.platform == 'win32':
                 raise RuntimeError('Unmutated Windows overlay failed: '+baseline.stdout+baseline.stderr)
         return created
     workers.create_workers = checked_workers
+    original_delete = workers.delete_tree
+    worker_root = Path('target/mutation-workers').resolve()
+    def delete_or_retain_worker(path):
+        resolved = path.resolve()
+        if not resolved.is_relative_to(worker_root):
+            raise RuntimeError('Refusing cleanup outside mutation workspace: '+str(resolved))
+        try:
+            original_delete(path)
+        except OSError as error:
+            if error.winerror not in (5, 32, 145):
+                raise
+            # Windows may retain a handle to a completed worker's current directory.
+            # Keep that ignored copy; cleanup must not discard the mutation results.
+            print('Windows cleanup deferred for private worker:', resolved, file=sys.stderr)
+    workers.delete_tree = delete_or_retain_worker
 runpy.run_module(module, run_name='__main__')

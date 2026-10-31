@@ -1,6 +1,7 @@
 param(
     [string]$NotepadDirectory = 'C:\Program Files\Notepad++',
-    [Parameter(Mandatory)][string]$Archive
+    [Parameter(Mandatory)][string]$Archive,
+    [ValidateSet('x64','x86')][string]$Architecture = 'x64'
 )
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
@@ -12,8 +13,8 @@ foreach ($name in @('notepad++.exe','langs.model.xml','stylers.model.xml')) {
     Copy-Item -LiteralPath (Join-Path $NotepadDirectory $name) -Destination (Join-Path $testRoot $name)
 }
 Expand-Archive -LiteralPath $Archive -DestinationPath $plugin
-Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'notepad-test/plugins/ForeProbe/ForeProbe.dll') -Destination (Join-Path $probe 'ForeProbe.dll')
-Get-ChildItem -LiteralPath (Join-Path $PSScriptRoot 'notepad-test') -Filter '*.fore' -File | Copy-Item -Destination $testRoot
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot "notepad-test-$Architecture/plugins/ForeProbe/ForeProbe.dll") -Destination (Join-Path $probe 'ForeProbe.dll')
+Get-ChildItem -LiteralPath (Join-Path $PSScriptRoot "notepad-test-$Architecture") -Filter '*.fore' -File | Copy-Item -Destination $testRoot
 $minimal = '<NotepadPlus><GUIConfigs><GUIConfig name="langsExcluded" langMenuCompact="yes" /></GUIConfigs></NotepadPlus>'
 $utf8 = [Text.UTF8Encoding]::new($false)
 New-Item -ItemType File -Path (Join-Path $testRoot 'doLocalConf.xml') | Out-Null
@@ -36,7 +37,7 @@ Run-Probe
 if ((Get-FileHash -LiteralPath $config).Hash -ne $customHash) { throw 'Existing user XML was overwritten' }
 $report = [ordered]@{
     passed = $true
-    notepad = '8.9.8.1 x64'
+    notepad = "8.9.8.1 $Architecture"
     archive_sha256 = (Get-FileHash -LiteralPath $Archive -Algorithm SHA256).Hash.ToLowerInvariant()
     dll_sha256 = (Get-FileHash -LiteralPath (Join-Path $plugin 'ForeLexer.dll') -Algorithm SHA256).Hash.ToLowerInvariant()
     fresh_portable_configuration_created = $true
@@ -46,5 +47,6 @@ $report = [ordered]@{
     actual_plugins_admin_download_install_update_remove_tested = $false
 }
 $reportText = ($report | ConvertTo-Json).Replace("`r`n", "`n") + "`n"
-[IO.File]::WriteAllText((Join-Path $PSScriptRoot 'catalog-install-validation.json'), $reportText, $utf8)
+$reportDirectory = if ($Architecture -eq 'x64') {$PSScriptRoot} else {Join-Path $PSScriptRoot $Architecture}
+[IO.File]::WriteAllText((Join-Path $reportDirectory 'catalog-install-validation.json'), $reportText, $utf8)
 Write-Output 'CATALOG PAYLOAD: clean portable startup, custom XML preservation and real language/style registration passed. Regular APPDATA deployment and actual Plugins Admin lifecycle remain untested.'

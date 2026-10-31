@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "notepad": "8.9.8.1 x86",
+  "archive_sha256": "dc49bb4e4994e141840be8aa66074056eb7edd0baeefc3e4391e1b4b02223c43",
+  "dll_sha256": "2b0f72c241e137cbbb18683e897c2818c44261dceb9a56425006297e282523fc",
+  "fresh_portable_configuration_created": true,
+  "existing_custom_configuration_preserved": true,
+  "regular_appdata_installation_tested": false,
+  "language_menu_and_style_configurator_verified": true,
+  "actual_plugins_admin_download_install_update_remove_tested": false
+}

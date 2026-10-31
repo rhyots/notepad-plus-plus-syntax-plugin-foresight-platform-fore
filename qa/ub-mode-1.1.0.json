@@ -1,0 +1,72 @@
+{
+  "version": "1.1.0",
+  "checked_on": "2026-10-31",
+  "scope": [
+    "tools/package.py",
+    "tools/release_files.py"
+  ],
+  "tests_passed": 22,
+  "crapper": {
+    "functions": 11,
+    "coverage_percent": 100,
+    "maximum_crap": 7
+  },
+  "dryer": {
+    "scope": "tools/*.py",
+    "threshold": 0.8,
+    "duplicate_candidates": 0
+  },
+  "mutator": {
+    "mutate_all": true,
+    "timeout_factor": 10,
+    "max_workers": 2,
+    "results": [
+      {
+        "source": "tools/package.py",
+        "killed": 80,
+        "survived": 1,
+        "uncovered": 0,
+        "sites": 81
+      },
+      {
+        "source": "tools/release_files.py",
+        "killed": 5,
+        "survived": 0,
+        "uncovered": 0,
+        "sites": 5
+      }
+    ],
+    "equivalent_survivors": 1,
+    "all_non_equivalent_selected_mutants_killed": true
+  },
+  "windows_timeout_adapter": {
+    "passed": true,
+    "timed_out": true,
+    "exit_code": 124,
+    "elapsed_seconds": 0.23500000004423782
+  },
+  "tools": [
+    {
+      "repository": "https://github.com/unclebob/crapper",
+      "commit": "6fd92c4c9bcc56efb64a2f8743d5a2993bcfd42d"
+    },
+    {
+      "repository": "https://github.com/unclebob/dryer",
+      "commit": "66ff6d21a42c04afcad89c78a80066176d1294b0"
+    },
+    {
+      "repository": "https://github.com/unclebob/mutator",
+      "commit": "a5a0cb803b66e0cdb8bf471b3b08af701d424a41"
+    }
+  ],
+  "source_sha256": {
+    "tools/package.py": "a3631045b64e24fc76ff038d357df9f8c681f6b4de26d7fe3938ed0297159bc7",
+    "tools/release_files.py": "1ab87a256123b71260e754e41fb8dcea5ae70a3751c27b4ebd672ec5f6b77ee0",
+    "qa/run-quality.py": "a508c1ef377acd21ff3d6037c5678e8b1c14cde8f29a301faaea02f5fc48e7a2",
+    "tests/test_release_archive.py": "83f62b0977aab3963fe55b207e2c5f8048f0dd6e4ab92920573e48c50f61c496",
+    "tests/test_release_files.py": "51bb3df3559c158875e3c65fdbd59692405dd81bb0e7cfedfa4ac95d6802bdc9"
+  },
+  "boundaries": "Scoped Python audit, not C++/PowerShell CRAP or mutation coverage. The sole survivor changes ZIP timestamp seconds 0 to 1; complete archive bytes match.",
+  "utf8": "All child Python processes run in UTF-8 mode; complete run repeated after an earlier output-decoding error.",
+  "cleanup": "Windows-locked private mutation copies may be retained inside ignored target/mutation-workers after path validation; no source or user editor files are removed."
+}

@@ -8,7 +8,7 @@ Native syntax highlighting and folding for **Foresight Platform Fore / Prognoz P
 - **New x86 package**, tested in real Notepad++ 8.9.8.1 alongside x64. Select the editor's architecture, not Windows bitness.
 - **Complete English and Russian documentation**, with English `.md` and Russian `.ru.md` files throughout the repository and binary packages.
 - **Safe architecture matching** in the installer and packaging gates; x86 uses its own native evidence and correctly named lexer exports.
-- **Plugins Admin preparation**: separate x64/x86 catalog ZIPs, full-archive SHA-256 and documentation links that survive WinGUp relocation. [Catalog status](PLUGINS-ADMIN-READINESS.md).
+- **Plugins Admin preparation**: separate x64/x86 catalog ZIPs, full-archive SHA-256 and documentation links that survive WinGUp relocation. [Catalog status](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/blob/main/docs/PLUGINS-ADMIN-READINESS.md).
 
 Unchanged daily features: **Language → F → Fore**, normal Style Configurator, 66 keywords, 12 types, 11 style categories, structural folding and theme following in both editor views. Manual colors/fonts are preserved. Automatic detection is limited to Normal Text in TXT, extensionless files and new tabs; explicit language choice wins.
 

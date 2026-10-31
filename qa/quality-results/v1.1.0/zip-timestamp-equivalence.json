@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "seconds": [
+    0,
+    1
+  ],
+  "reason": "DOS timestamps have two-second resolution",
+  "archive_bytes_identical": true,
+  "sha256": "ab533ea2f23d6c3144e4ede95d0483fc2c81ffff6cf8896fce837ad538a64ccf"
+}

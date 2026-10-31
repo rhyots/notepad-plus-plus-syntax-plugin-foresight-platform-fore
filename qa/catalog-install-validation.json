@@ -1,8 +1,8 @@
 {
   "passed": true,
   "notepad": "8.9.8.1 x64",
-  "archive_sha256": "340c276ee73295e73cb56dcb57455318f85cf9d66a75dc61beac232ffa6169b4",
-  "dll_sha256": "95f01e727c0169502f521c2b6ba1ec2c7dbc4e47e161361936374057efe0a2cd",
+  "archive_sha256": "6178f4292090eb8efdbec3c89d0262596b199792745c352bb6f0832a0f146f7b",
+  "dll_sha256": "814687ee6deb3f5a5ddaf987cd165c083c45a3ef48993eb4a09708c53d26fba4",
   "fresh_portable_configuration_created": true,
   "existing_custom_configuration_preserved": true,
   "regular_appdata_installation_tested": false,
