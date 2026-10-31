@@ -120,3 +120,7 @@ An initial mutation run encountered Windows child-output decoding errors. The la
 Windows also held a completed worker directory open during cleanup. The adapter validates that cleanup stays inside the private mutation workspace and retains a locked ignored copy instead of discarding test results. No additional Git worktrees were created; retained diagnostic copies are excluded from publication.
 
 The upstream timeout handler assumes POSIX SIGKILL. The Windows adapter supplies the signal token and checks termination of its own process tree. A real sleeping-child test passed in the normal user environment; the restricted automation profile denied the required process control. Run this optional quality audit in a normal PowerShell session.
+
+### Publication and submission
+
+Published immutable Release 1.1.0 after six successful CI jobs. Re-downloaded all 11 assets, verified all ZIP manifests, ran the official validator against real public URLs for both architectures, and completed all six WinGUp lifecycle operations. Submitted [catalog PR #1258](https://github.com/notepad-plus-plus/nppPluginList/pull/1258) with only two entries. The working user installation was unchanged. Full frontend click-through remains unverified due to the recorded UI-tool failures. Post-publication evidence is committed to main without changing the release tag or ZIPs.

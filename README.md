@@ -51,7 +51,7 @@ These are animated code previews rendered from the plugin's actual lexer results
 
 Prefer copying files? Follow the [manual installation guide](docs/USER-GUIDE.md#manual-installation). No PowerShell is required for that method.
 
-The installer backs up existing files and removes only the competing `.fore` association from old UDL definitions. **Plugins Admin listing is pending**; use the manual release ZIP for this version.
+The installer backs up existing files and removes only the competing `.fore` association from old UDL definitions. **Plugins Admin listing is pending** ([PR #1258](https://github.com/notepad-plus-plus/nppPluginList/pull/1258)); use the manual release ZIP for this version.
 
 **Still seeing Normal Text?** An old Fore UDL can own the extension. Remove `fore` from its **Ext.** field, then reopen the file. [Troubleshooting](docs/USER-GUIDE.md#troubleshooting).
 

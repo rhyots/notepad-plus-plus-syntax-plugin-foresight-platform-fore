@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "version": "1.1.0",
+  "public_https_download": true,
+  "assets": [
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x64.zip",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x64.zip",
+      "bytes": 1230009,
+      "sha256": "6178f4292090eb8efdbec3c89d0262596b199792745c352bb6f0832a0f146f7b",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x64.zip.sha256",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x64.zip.sha256",
+      "bytes": 148,
+      "sha256": "4aead873451a8b0c9fd5ccf94096fd0e0cf41845bd2a8afbe3e214f62029ac2a",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x86.zip",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x86.zip",
+      "bytes": 1326777,
+      "sha256": "dc49bb4e4994e141840be8aa66074056eb7edd0baeefc3e4391e1b4b02223c43",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x86.zip.sha256",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-plugins-admin-x86.zip.sha256",
+      "bytes": 148,
+      "sha256": "56df6b209e85e46f04fc96746ad8394c2e1cfb956dfc8910fc5ff14caac4d75f",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip",
+      "bytes": 3220012,
+      "sha256": "bdbd7816e3b62474213569803865bb0776ad06ff26f120f73c579e94c71c68e2",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip.sha256",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-source.zip.sha256",
+      "bytes": 137,
+      "sha256": "d4e5f31e8df45d7e3191b243f341e5830c2c6eb504b116c3ae3b7a767b057433",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip",
+      "bytes": 1260663,
+      "sha256": "353d77cafc86cdf95b376dce665bb40d506a1c1264e7f1c53e09ee5d9323bbac",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip.sha256",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x64.zip.sha256",
+      "bytes": 134,
+      "sha256": "0300b054fc792e1a268fc2b7a33e5e51e8a0d51c91f3dd6f1aee09f8e9e9bd04",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip",
+      "bytes": 1357431,
+      "sha256": "1d4dda725567d24bcc3d87fb14c5a5b0b80e729c212705701d63087a3a613172",
+      "matches_local": true
+    },
+    {
+      "name": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip.sha256",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.1.0-x86.zip.sha256",
+      "bytes": 134,
+      "sha256": "b6c1bf17eaf9cdfc9919257105518b00bb29b8671a48cafd8f28993c13401e24",
+      "matches_local": true
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "url": "https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/download/v1.1.0/SHA256SUMS.txt",
+      "bytes": 701,
+      "sha256": "e0a30330db9509d07217aa5a61195a8e648fb3738de9fbe45549ea2b9fb9a826",
+      "matches_local": true
+    }
+  ],
+  "all_internal_zip_manifests_verified": true
+}

@@ -1,0 +1,22 @@
+{
+  "submitted": true,
+  "accepted": false,
+  "url": "https://github.com/notepad-plus-plus/nppPluginList/pull/1258",
+  "number": 1258,
+  "catalog_commit": "6fa21fd",
+  "release_tag": "v1.1.0",
+  "release_commit": "6bf9da49dd866608907af5abb65d83a877aca6c5",
+  "architectures": [
+    "x64",
+    "x86"
+  ],
+  "changed_files": [
+    "src/pl.x64.json",
+    "src/pl.x86.json"
+  ],
+  "additions": 22,
+  "deletions": 0,
+  "public_validator_passed": true,
+  "wingup_backend_lifecycle_passed": true,
+  "full_frontend_cycle_tested": false
+}

@@ -5,7 +5,7 @@
 
 Checked on 2026-10-31. **Notepad++ Syntax Plugin for Foresight Platform Fore 1.1.0**, Windows **x64 and x86**. ARM64 is excluded from the release and required test matrix.
 
-GitHub publication and acceptance into the [nppPluginList](https://github.com/notepad-plus-plus/nppPluginList) catalog are separate steps. Catalog inclusion does not make this plugin part of the Notepad++ core or default installation. **Submission is being prepared; maintainer acceptance is pending.**
+GitHub publication and acceptance into the [nppPluginList](https://github.com/notepad-plus-plus/nppPluginList) catalog are separate steps. Catalog inclusion does not make this plugin part of the Notepad++ core or default installation. **[PR #1258 submitted](https://github.com/notepad-plus-plus/nppPluginList/pull/1258); maintainer acceptance is pending.** Release [1.1.0](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/releases/tag/v1.1.0) is published.
 
 ## Official sources
 
@@ -39,7 +39,7 @@ The official instructions recommend portable Notepad++ plus official Debug Notep
 
 The test Plugins Admin dialog was opened and its Available/Updates/Installed tabs observed. Subsequent accessibility and screenshot operations failed with tool timeouts. Therefore a complete mouse-driven Plugins Admin cycle is **not claimed**.
 
-The official **WinGUp CLI**, the installation backend used by Plugins Admin, is exercised with public HTTPS release URLs and catalog SHA-256, followed by a real editor restart and the existing native integration probe. The initial x64 1.0.0 installation passed. The 1.0.0 → 1.1.0 update and x86 installation/removal are checked after publishing the immutable 1.1.0 assets; final results will be recorded on the repository's main branch.
+The official **WinGUp CLI**, the installation backend used by Plugins Admin, is exercised with public HTTPS release URLs and catalog SHA-256, followed by a real editor restart and the existing native integration probe. All six operations passed: x64 installation of 1.0.0, upgrade to 1.1.0 and removal; x86 first installation of 1.1.0, same-version update/reinstall and removal. No earlier public x86 release exists. The native probe confirmed the Fore menu, Style Configurator and About after install/update; removal eliminated both the DLL and Fore registration. User XML bytes were preserved. [Complete results and tool hashes](../qa/plugins-admin-lifecycle.json).
 
 The payload test independently checks first-run creation of `ForeLexer.xml`, preservation of customized XML, and actual registration in Language → F → Fore and Style Configurator. Native evidence is bound to DLL and palette hashes. A regular APPDATA deployment is not claimed by these portable tests. `-settingsDir` alone is not plugin-profile isolation: [upstream configuration code](https://github.com/notepad-plus-plus/notepad-plus-plus/blob/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/Parameters.cpp#L1330).
 
@@ -53,7 +53,7 @@ The manual describes relocation of `doc/` to `plugins/doc/ForeLexer/`; the teste
 4. Run the unmodified official validator and schema against actual public downloads; complete WinGUp install/update/remove checks and retain the method/limitations in evidence.
 5. Submit only the x64/x86 catalog entries. Acceptance and distribution remain the catalog maintainers' decision.
 
-Historical reports for 1.0.0 describe the earlier offline validator and extracted-payload checks. They are not substitutes for new-version public-download or lifecycle evidence. [Byte stability](BYTE-STABILITY.md) covers actual Git checkout tests and rejection of LF→CRLF drift.
+Historical reports on the v1.0.0 tag describe the earlier offline validator and extracted-payload checks. They are not substitutes for new-version public-download or lifecycle evidence. [Byte stability](BYTE-STABILITY.md) covers actual Git checkout tests and rejection of LF→CRLF drift.
 
 To repeat the pinned local audit on Windows:
 
@@ -63,3 +63,12 @@ python tools/catalog_audit.py --refresh
 ```
 
 `--refresh` downloads pinned references, not changing master. Refreshing the policy audit in the future requires deliberately updating those commits and repeating the checks.
+
+## Public verification results
+
+- All **11 release files** were downloaded again over public HTTPS and matched local bytes; internal SHA-256 manifests of all five ZIPs passed. [Report](../qa/public-release-validation.json).
+- The unmodified official validator used actual downloads, without HTTP substitution: [x64](../qa/catalog-validation.json), [x86](../qa/x86/catalog-validation.json).
+- The release is pinned to commit `6bf9da49dd866608907af5abb65d83a877aca6c5`; [all six CI jobs passed](https://github.com/rhyots/notepad-plus-plus-syntax-plugin-foresight-platform-fore/actions/runs/41202963252). Evidence obtained after publication is added to main; published ZIPs and the tag remain unchanged.
+- The PR changes only `src/pl.x64.json` and `src/pl.x86.json`: two entries, 22 added lines. Each catalog file's existing line endings are preserved; other plugins are untouched.
+
+Repeat public-download checks with `python tools/catalog_audit.py --architecture x64 --public-download` and `--architecture x86 --public-download`, with the corresponding final ZIPs available in `dist/`.
