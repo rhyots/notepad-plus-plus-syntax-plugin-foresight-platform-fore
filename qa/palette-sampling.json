@@ -1,0 +1,84 @@
+{
+  "source": "user-provided Foresight Platform editor screenshot; image not redistributed",
+  "source_sha256": "a85abfd8660ac6c98aba7755d221866ff3b142169f97cae91284a7480eb2fc9b",
+  "image_size": [
+    782,
+    499
+  ],
+  "method": "Exact RGB counts in selected text glyph regions; dominant interior pixels, excluding annotation border",
+  "samples": [
+    {
+      "label": "keyword Begin",
+      "rectangle_xyxy": [
+        53,
+        120,
+        98,
+        134
+      ],
+      "rgb_hex": "008787",
+      "exact_pixel_count": 43
+    },
+    {
+      "label": "keyword As",
+      "rectangle_xyxy": [
+        405,
+        173,
+        429,
+        190
+      ],
+      "rgb_hex": "008787",
+      "exact_pixel_count": 18
+    },
+    {
+      "label": "comment",
+      "rectangle_xyxy": [
+        52,
+        136,
+        320,
+        152
+      ],
+      "rgb_hex": "008000",
+      "exact_pixel_count": 141
+    },
+    {
+      "label": "identifier",
+      "rectangle_xyxy": [
+        86,
+        153,
+        320,
+        171
+      ],
+      "rgb_hex": "000000",
+      "exact_pixel_count": 156
+    },
+    {
+      "label": "string OBJ11495",
+      "rectangle_xyxy": [
+        275,
+        172,
+        356,
+        188
+      ],
+      "rgb_hex": "800000",
+      "exact_pixel_count": 55
+    },
+    {
+      "label": "string Export",
+      "rectangle_xyxy": [
+        180,
+        441,
+        364,
+        461
+      ],
+      "rgb_hex": "800000",
+      "exact_pixel_count": 82
+    }
+  ],
+  "caveat": "These are observed screenshot pixels. Font antialiasing/subpixel rendering can differ from the editor configuration RGB values.",
+  "inferred_styles": {
+    "types_numbers_identifiers_operators_default": "000000",
+    "boolean_and_null_constants": "008787",
+    "characters": "800000",
+    "documentation_comments": "008000"
+  }
+}

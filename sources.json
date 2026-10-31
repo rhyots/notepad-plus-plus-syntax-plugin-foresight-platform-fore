@@ -1,0 +1,247 @@
+{
+  "source_root": "not-distributed",
+  "source_root_note": "Paths are relative to a local Prognoz Platform 8.1 help root supplied through --help-root.",
+  "source_version": "Prognoz Platform 8.1, 2016-03-16",
+  "source_encoding": "windows-1251",
+  "scope": "Fore, not Fore.NET",
+  "reserved_keywords": [
+    "AND",
+    "AS",
+    "BEGIN",
+    "BREAK",
+    "CASE",
+    "CLASS",
+    "COMIMPORT",
+    "CONST",
+    "CONSTRUCTOR",
+    "CONTINUE",
+    "DEFAULT",
+    "DELEGATE",
+    "DISPOSE",
+    "DIV",
+    "DO",
+    "EACH",
+    "ELSE",
+    "ELSEIF",
+    "END",
+    "ENUM",
+    "EVENT",
+    "EXCEPT",
+    "FALSE",
+    "FINAL",
+    "FINALLY",
+    "FOR",
+    "FRIEND",
+    "FROM",
+    "FUNCTION",
+    "GET",
+    "IF",
+    "IMPORTS",
+    "IN",
+    "INHERITED",
+    "INTERFACE",
+    "IS",
+    "MOD",
+    "NAMESPACE",
+    "NEW",
+    "NOT",
+    "NULL",
+    "OF",
+    "ON",
+    "OR",
+    "PARAMARRAY",
+    "PRIVATE",
+    "PROPERTY",
+    "PROTECTED",
+    "PUBLIC",
+    "RAISE",
+    "REPEAT",
+    "RETURN",
+    "SELECT",
+    "SET",
+    "SHARED",
+    "STEP",
+    "SUB",
+    "THEN",
+    "TO",
+    "TRUE",
+    "TRY",
+    "UNTIL",
+    "VAR",
+    "WHILE",
+    "WITH",
+    "XOR"
+  ],
+  "built_in_types": [
+    "Array",
+    "Boolean",
+    "Char",
+    "Currency",
+    "DateTime",
+    "Decimal",
+    "Double",
+    "Integer",
+    "Object",
+    "String",
+    "TimeSpan",
+    "Variant"
+  ],
+  "documents": [
+    {
+      "path": "Fore/01_Dictionary/Fore_KeyWords.htm",
+      "sha256": "269a91b8868c8393d48353222d981db45e55a3be3dd54109964744a6805b7875"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_Ident.htm",
+      "sha256": "bb97af3aea95c04d5991163a8f3ed699e16c82f1a80f7bc998306fb788483361"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_Coment.htm",
+      "sha256": "5daa05fa6fae8b6faa69cc4d47ec25450e3b13b2014e354241f55869a72602d8"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_String.htm",
+      "sha256": "b0f28f437ce1242513fd19422efa72bca2e6093784f2b5c4766796a41cdaa5a8"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_SimConst.htm",
+      "sha256": "834c34c4d7648f0b9debe3e07f018ed7eb140bdd62d7df61f3997c1026c38c69"
+    },
+    {
+      "path": "Fore/01_Dictionary/Number.htm",
+      "sha256": "e274cb718abc858f03ebd622e2edcb7cb394f76e22307cb9d02be995d32036db"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_OperatorSign.htm",
+      "sha256": "58e6b30341a6649b5ff030e4f9c47c09a7bcbe0dd6ef1dc872dfa833449b079b"
+    },
+    {
+      "path": "Fore/01_Dictionary/Fore_SystemSim.htm",
+      "sha256": "cea738b70faeb3c253113999b0dc7163d4ac41ffe732e1fcfd029d41ddbb1257"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DataTypes.htm",
+      "sha256": "d749cf543120bb8286892b429a1a822b2d179bcc794702d48d0eb4c40e2c0f8b"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Synt_ProcAndFunc.htm",
+      "sha256": "0171ec755339da26a0fa1a45f1c7020a1789948d2d97ef7b35049aa90b06977e"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Interfaces.htm",
+      "sha256": "dbcf78b50f71ca36161ff30ac00503d10b5323ce8d99beb16299b5a8a3fc9f75"
+    },
+    {
+      "path": "Fore/06_SyntRules/Description_Property.htm",
+      "sha256": "ac12c0d73b21b24ebb084bd46187a1caa0b3cf5e5808fc7481cce69ab16431cc"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Deleg_Clesses.htm",
+      "sha256": "8880c350f8fa145a2647b192336f74432a5201f2680bba15dfaf96cb1a6eabec"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Enums.htm",
+      "sha256": "e7012c382789b1076c24624bd6ce5788918a62dd8de920fdaa3ef3c5bcc2a42b"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Namespace.htm",
+      "sha256": "e5ec6502c88496855f930f581968c89ffb9aef57e23a52c4ed2b8475027c3e56"
+    },
+    {
+      "path": "Fore/06_SyntRules/Fore_Deleg.htm",
+      "sha256": "db74bd8ca6d9a7cf5745632a4a62fedd7d11986b746e58f10ecaa5c524c26693"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_If.htm",
+      "sha256": "ae335f705fa6f5e21af43eda39c8eb2cc680ba96edfca6c66e0ee178454e1b44"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_For.htm",
+      "sha256": "8dfdae2603bc6d062c79ace9518e9374bfb81fa089fa68662060f674450b34f8"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_For_Each.htm",
+      "sha256": "30cbfde2830249d1a6c449b3fa5b21f0cbcc3a7d92380e3c3ff50984e6a36a2e"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_While.htm",
+      "sha256": "b808beb70d738e61540590ca39b3960fd885bae1a3d6486b0ea57a09bfc2ebe0"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_Repeat.htm",
+      "sha256": "396d263133a985aac41f59ca370d3f023edd00684f6dbc152bf7458c5b7200bf"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_Select_Case.htm",
+      "sha256": "8912142bf25707f4d5348e9912dceaa38e000cda782fe71c8240d33685d8f1fd"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_Try.htm",
+      "sha256": "381426e100ef123ba27a48d7fcdd62f42dc10882ba74ea49144c235fdb41f699"
+    },
+    {
+      "path": "Fore/08_Operators/Fore_With.htm",
+      "sha256": "5107eae4955430b136a342d97f0c18864751a1e7cdfe183486683a40c3b39aae"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Array.htm",
+      "sha256": "45b53db8d85814f31426197cdd77c990600561506333537b54df6c435c0f3e36"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Boolean.htm",
+      "sha256": "5cc01a06c49dc8d851ac6254d194f9d74538fe04c3ad974508fc7f78f4e64422"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Char.htm",
+      "sha256": "42abb2da6021e42f15cb5c0604744beff5db1e47a19a6205444209d47071ab3f"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Currency.htm",
+      "sha256": "7cc531882494a8db7dbab4a7dee5851cd19fae6724206c502e666326bb816b1e"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_DateTime.htm",
+      "sha256": "5e5df07c94e76e4a6fdc6ea4a7725049f5e3ce7378586715a4dc0354422fb02c"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Decimal.htm",
+      "sha256": "a646d33056df06bd70def228737bb798610dcf6161bf3dc7a60fc9f880fb2997"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Double.htm",
+      "sha256": "646b1a7ce8f496ae0d39177373e9e4ffb76148b35e735b82b6733976bc71e07e"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Integer.htm",
+      "sha256": "b74d0bcb007244f60f90359e9f80875d5ee9bec9f3fdd80ffe93f7da97ba6895"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Object.htm",
+      "sha256": "6d213d4afbd1678a47f75fb655246cad2fbf347aed8de5811dfd2bdbaa6e71b3"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_String.htm",
+      "sha256": "5cb35e3e812657a010dd41c74c5120fb47193247ff256fd655674f07c1f46e97"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_TimeSpan.htm",
+      "sha256": "a25a95a4c2ce95b895ec8b1e35a8e2fba1ad406c1266129cddc96e277b08d5e9"
+    },
+    {
+      "path": "Fore/03_dataTypes/Fore_DT_Variant.htm",
+      "sha256": "02fa1e2dc39b13d87460d1134c3022c6c82e5264eff7b29b917cb6493562e775"
+    }
+  ],
+  "udl_documentation": [
+    "https://github.com/notepad-plus-plus/npp-usermanual/blob/master/content/docs/user-defined-language-system.md",
+    "https://github.com/notepad-plus-plus/npp-usermanual/blob/master/content/docs/udl/folding_in_code.md",
+    "https://github.com/notepad-plus-plus/npp-usermanual/blob/master/content/docs/udl/delimiters.md"
+  ],
+  "folding_design": {
+    "body": "Begin to End Sub/Function/Constructor/Get/Set",
+    "declarations": "Class/Interface/Enum/Namespace to their compound End phrases",
+    "no_property_header_fold": "Old and new property syntax cannot be distinguished by UDL.",
+    "no_method_header_fold": "Interface signatures and delegates have no End Sub/Function.",
+    "no_case_branch_fold": "Select Case is folded as a whole; Case is a normal keyword."
+  }
+}

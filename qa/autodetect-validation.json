@@ -1,0 +1,126 @@
+{
+  "cases": [
+    {
+      "case": "txt on open",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "extensionless on open",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "TXT case insensitive",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "ordinary text",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "VB stays text",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "comments ignored",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "strings ignored",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "other plain extension excluded",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "Python language preserved",
+      "passed": true,
+      "language": "python",
+      "language_type": 22,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "paste into TXT",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "explicit Normal Text before paste",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "Normal Text via window command before paste",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "explicit C++ before paste",
+      "passed": true,
+      "language": "cpp",
+      "language_type": 3,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "new untitled buffer paste",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "manual return to text",
+      "passed": true,
+      "language": "null",
+      "language_type": 0,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "close and reopen resets suppression",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    },
+    {
+      "case": "existing Fore extension",
+      "passed": true,
+      "language": "Fore",
+      "language_type": 96,
+      "buffer_not_modified": true
+    }
+  ],
+  "passed": true,
+  "dll_sha256": "d6f7b0df62eb9634f5b6d0f795823fdfe91f671d5051953a85b167fb59ede177",
+  "environment": "Notepad++ 8.9.8.1 x64, isolated portable profile"
+}

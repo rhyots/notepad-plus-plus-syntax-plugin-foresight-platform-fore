@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "method": "Temporary local Git repository, actual add/clone/checkout; no remote or public repository created",
+  "platform": "win32",
+  "cases": [
+    {
+      "core.autocrlf": "false",
+      "all_source_bytes_identical": true,
+      "files": 109,
+      "crlf_byte_drift_rejected": true,
+      "audit_snapshot_source_zip_sha256": "91d91c972a0ef34301418578ea0ca0a071c2e6debfd13a06d1ac6caa099f359c"
+    },
+    {
+      "core.autocrlf": "true",
+      "all_source_bytes_identical": true,
+      "files": 109,
+      "crlf_byte_drift_rejected": true,
+      "audit_snapshot_source_zip_sha256": "91d91c972a0ef34301418578ea0ca0a071c2e6debfd13a06d1ac6caa099f359c"
+    }
+  ]
+}

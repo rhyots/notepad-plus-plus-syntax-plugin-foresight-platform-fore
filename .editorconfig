@@ -1,0 +1,21 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+
+[src/ForeWords.h]
+end_of_line = crlf
+
+[vendor/**]
+end_of_line = unset
+insert_final_newline = unset
+
+[examples/**]
+end_of_line = unset
+insert_final_newline = unset
+
+[qa/results/**]
+end_of_line = unset
+insert_final_newline = unset

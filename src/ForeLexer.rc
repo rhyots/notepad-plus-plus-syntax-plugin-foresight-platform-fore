@@ -1,0 +1,34 @@
+#include <winver.h>
+
+1 VERSIONINFO
+FILEVERSION 1,0,0,0
+PRODUCTVERSION 1,0,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0
+FILEOS VOS_NT_WINDOWS32
+FILETYPE VFT_DLL
+FILESUBTYPE 0
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "Artyom Nikiforov (rhyots)\0"
+            VALUE "FileDescription", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
+            VALUE "FileVersion", "1.0.0.0\0"
+            VALUE "InternalName", "ForeLexer\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 Artyom Nikiforov. GPL-3.0-or-later.\0"
+            VALUE "OriginalFilename", "ForeLexer.dll\0"
+            VALUE "ProductName", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
+            VALUE "ProductVersion", "1.0.0.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0409, 1200
+    END
+END
+
+// A clean Plugins Admin installation has no profile XML yet.
+101 RCDATA "../styles/ForeLexer-Light.xml"
+102 RCDATA "../styles/ForeLexer-Dark.xml"

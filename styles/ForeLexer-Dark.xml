@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<NotepadPlus>
+    <Languages>
+        <Language name="Fore" ext="fore" commentLine="//" commentStart="{" commentEnd="}" />
+    </Languages>
+    <LexerStyles>
+        <LexerType name="Fore" desc="Fore" ext="">
+            <WordsStyle name="DEFAULT" styleID="0" fgColor="D4D4D4" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="KEYWORDS" styleID="1" fgColor="4FD1D1" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="1" fontSize="" />
+            <WordsStyle name="BUILT-IN TYPES" styleID="2" fgColor="D4D4D4" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="CONSTANTS" styleID="3" fgColor="4FD1D1" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="NUMBERS" styleID="4" fgColor="D4D4D4" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="STRINGS" styleID="5" fgColor="F08080" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="CHARACTERS" styleID="6" fgColor="F08080" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="COMMENTS" styleID="7" fgColor="6EC76E" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="OPERATORS" styleID="8" fgColor="D4D4D4" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="IDENTIFIERS" styleID="9" fgColor="D4D4D4" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+            <WordsStyle name="DOCUMENTATION COMMENTS" styleID="10" fgColor="6EC76E" bgColor="1E1E1E" colorStyle="1" fontName="" fontStyle="0" fontSize="" />
+        </LexerType>
+    </LexerStyles>
+</NotepadPlus>

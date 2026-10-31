@@ -1,0 +1,85 @@
+{
+  "repository": "notepad-plus-plus/notepad-plus-plus",
+  "tag": "v8.9.8.1",
+  "commit": "dd40fe45598791e9aa38f3aeb200e10fb3d6338a",
+  "files": [
+    {
+      "file": "vendor/npp-sdk/PluginInterface.h",
+      "source_path": "PowerEditor/src/MISC/PluginsManager/PluginInterface.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/MISC/PluginsManager/PluginInterface.h",
+      "sha256": "33615003d321a654191d22d4e39a2188c9d42a3d837144f6f2039cc58cd7e1f4"
+    },
+    {
+      "file": "vendor/npp-sdk/Notepad_plus_msgs.h",
+      "source_path": "PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/MISC/PluginsManager/Notepad_plus_msgs.h",
+      "sha256": "16ba162dc282740d57e8caa20c2a310504f513e3663a30ce6d6be3ce353c09f1"
+    },
+    {
+      "file": "vendor/npp-sdk/Scintilla.h",
+      "source_path": "scintilla/include/Scintilla.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/scintilla/include/Scintilla.h",
+      "sha256": "4d098ac1db2ff88f534b5e2b7c8bf01894dd515351c43079e1086db88647d835"
+    },
+    {
+      "file": "vendor/npp-sdk/Sci_Position.h",
+      "source_path": "scintilla/include/Sci_Position.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/scintilla/include/Sci_Position.h",
+      "sha256": "8b72e5c0b677abafc97d90588b05ae9adfc568e6ee119f2e10967703ee230653"
+    },
+    {
+      "file": "vendor/npp-sdk/ILexer.h",
+      "source_path": "scintilla/include/ILexer.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/scintilla/include/ILexer.h",
+      "sha256": "b72dbe4fcbec4abe097376758ceb39a194f899c7ab9f1f231d074543b24683cd"
+    },
+    {
+      "file": "vendor/LICENSE.Notepad++.txt",
+      "source_path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/LICENSE",
+      "sha256": "2b94f58d89424af06d1a8e16775774757f1ecfb678203c3439af037a24f35dc6"
+    },
+    {
+      "file": "vendor/LICENSE.Scintilla.txt",
+      "source_path": "scintilla/License.txt",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/scintilla/License.txt",
+      "sha256": "185c5a37521316e940ead89cbf0b1ba5862d810c7c966e6c6a14a4a515b23625"
+    },
+    {
+      "file": "vendor/npp-sdk/SciLexer.h",
+      "source_path": "lexilla/include/SciLexer.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/lexilla/include/SciLexer.h",
+      "sha256": "4fe1d3edcae4e50dc2d8df6037896bab3908b6dfe38728f51639b7b9cdc15b04"
+    },
+    {
+      "file": "vendor/npp-sdk/menuCmdID.h",
+      "source_path": "PowerEditor/src/menuCmdID.h",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/PowerEditor/src/menuCmdID.h",
+      "sha256": "0b557be2da7ba2fd70a429c0bcc3b2974b0f0c311c477a647d9cb6c34a625719"
+    },
+    {
+      "file": "vendor/LICENSE.libcxx.txt",
+      "source_path": "lib/libcxx/LICENSE.TXT",
+      "url": "https://raw.githubusercontent.com/ziglang/zig/0.13.0/lib/libcxx/LICENSE.TXT",
+      "sha256": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b"
+    },
+    {
+      "file": "vendor/LICENSE.libcxxabi.txt",
+      "source_path": "lib/libcxxabi/LICENSE.TXT",
+      "url": "https://raw.githubusercontent.com/ziglang/zig/0.13.0/lib/libcxxabi/LICENSE.TXT",
+      "sha256": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c"
+    },
+    {
+      "file": "vendor/LICENSE.libunwind.txt",
+      "source_path": "lib/libunwind/LICENSE.TXT",
+      "url": "https://raw.githubusercontent.com/ziglang/zig/0.13.0/lib/libunwind/LICENSE.TXT",
+      "sha256": "b5efebcaca80879234098e52d1725e6d9eb8fb96a19fce625d39184b705f7b6d"
+    },
+    {
+      "file": "vendor/LICENSE.Lexilla.txt",
+      "source_path": "lexilla/License.txt",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/notepad-plus-plus/dd40fe45598791e9aa38f3aeb200e10fb3d6338a/lexilla/License.txt",
+      "sha256": "ac32743bd464c837e481beae20df65a9207f84d3ff1912f6003000343e9c753d"
+    }
+  ]
+}

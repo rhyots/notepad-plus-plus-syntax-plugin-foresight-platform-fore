@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": 104,
+  "compiler": "Zig 0.13.0",
+  "line_endings": [
+    "LF",
+    "CRLF",
+    "CR"
+  ]
+}

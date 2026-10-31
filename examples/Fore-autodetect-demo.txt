@@ -1,0 +1,123 @@
+// Fore: демонстрация подсветки и сворачивания по справке 8.1.
+// Внутри строк и комментариев слова If / End If не создают блоки.
+{
+    Многострочный комментарий.
+    Class Begin If For Try End Class End Sub End If End For End Try
+}
+
+Namespace UdlDemo
+
+    Enum Status
+        Idle = 0,
+        Running = 1,
+        Done = 2
+    End Enum Status;
+
+    // Эти сигнатуры не должны открывать сворачиваемые тела.
+    Interface ICounter
+        Sub Increment;
+        Function Current: Integer;
+    End Interface ICounter;
+
+    Class Counter: Object, ICounter
+    Private
+        _value: Integer;
+
+    Public Constructor Create;
+    Begin
+        _value := 0;
+    End Constructor Create;
+
+    Public Sub Increment;
+    Begin
+        _value := _value + 1;
+    End Sub Increment;
+
+    Public Function Current: Integer;
+    Begin
+        Return _value;
+    End Function Current;
+
+    // Старый синтаксис: End Property отсутствует.
+    Public Property CurrentValue: Integer Get Current;
+
+    // Новый синтаксис: сворачиваются тела Get/Set от Begin.
+    Public Property Value: Integer
+        Get
+        Begin
+            Return _value;
+        End Get
+        Set
+        Begin
+            _value := Value;
+        End Set
+    End Property Value;
+    End Class Counter;
+
+    Sub Main;
+    Var
+        i: Integer;
+        total: Double;
+        labelText: String;
+        ch: Char;
+        items: Array[0..2] Of Integer;
+        enabled: Boolean;
+        instance: ICounter;
+    Begin
+        total := 12.5E-2;
+        labelText := "Он сказал ""Привет""; If End If // { }";
+        labelText := "C:\temp\";
+        ch := 'A';
+        ch := #1040;
+        enabled := True And Not False;
+        instance := New Counter.Create As ICounter;
+
+        If enabled Then
+            For i := 0 To 2 Do
+                items[i] := i * 2;
+            End For;
+        ElseIf total <= 0 Then
+            total := 1;
+        Else
+            total := 2;
+        End If;
+
+        For Each i In items Do
+            total := total + i;
+        End For;
+
+        While total < 10 Do
+            total := total + 1;
+        End While;
+
+        Repeat
+            total := total - 1;
+        Until total = 5;
+
+        Select Case i
+            Case 0: labelText := "Ноль";
+            Case 1, 2: labelText := "Один или два";
+            Else labelText := "Другое";
+        End Select;
+
+        Try
+            instance.Increment;
+        Except
+            labelText := "Ошибка";
+        Finally
+            enabled := False;
+        End Try;
+
+        // Регистр не должен влиять на подсветку и сворачивание.
+        if Not enabled then
+            labelText := "Готово";
+        end if;
+    End Sub Main;
+
+End Namespace UdlDemo;
+
+// Этот блок должен сворачиваться независимо от Namespace выше.
+Sub AfterNamespace;
+Begin
+    Return;
+End Sub AfterNamespace;

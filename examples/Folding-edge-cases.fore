@@ -1,0 +1,71 @@
+// Набор лексических проверок UDL, не самостоятельная программа.
+// 1. Сигнатуры интерфейса, делегат, старое/новое свойство.
+Delegate Sub Handler;
+Interface IExample
+    Sub Run;
+    Function ReadValue: Integer;
+    Property OldValue: Integer Get ReadValue;
+    Property NewValue: Integer
+        Get
+    End Property NewValue;
+End Interface IExample;
+
+// 2. Вложенные процедуры: Var перед внешним Begin не уходит в чужой блок.
+Sub Outer;
+    Sub Inner;
+    Begin
+        Return;
+    End Sub Inner;
+Var value: Integer;
+Begin
+    Inner;
+End Sub Outer;
+
+// 3. Пробелы, табуляция, перенос между частями завершающей фразы.
+Sub Spacing;
+Begin
+    If(True)Then
+        While value > 0 Do
+            value := value - 1;
+        End    While;
+    End
+        If;
+End Sub Spacing;
+
+// 4. Полное имя, включающее ключевое слово как часть идентификатора.
+Sub Strings;
+Var s: String; c: Char;
+Begin
+    ClassName := 1;
+    BeforeIf := 2;
+    s := "";
+    s := """If End If""";
+    s := "{ // Begin Class End Class }";
+    s := "C:\folder\";
+    c := '''';
+    c := #39;
+    // If Begin End If End Sub
+    { If
+      Begin
+      End Sub
+      End If }
+    If True Then
+        s := "после комментария";
+    End If;
+End Sub Strings;
+
+// 5. With по документированному синтаксису с проверкой типа.
+Sub WithSample;
+Begin
+    With item: Object Do
+        item := Null;
+    End With;
+End Sub WithSample;
+
+// 6. Закрывающие слова с ; вплотную не должны оставлять открытый fold.
+Sub Last;
+Begin
+    If True Then
+        Return;
+    End If;
+End Sub Last;

@@ -1,0 +1,2091 @@
+{
+  "version": "1.0.0",
+  "checked_on": "2026-10-31",
+  "passed": true,
+  "checks": [
+    {
+      "name": "SDK: vendor/npp-sdk/PluginInterface.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/Notepad_plus_msgs.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/Scintilla.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/Sci_Position.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/ILexer.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.Notepad++.txt",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.Scintilla.txt",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/SciLexer.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/npp-sdk/menuCmdID.h",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.libcxx.txt",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.libcxxabi.txt",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.libunwind.txt",
+      "passed": true
+    },
+    {
+      "name": "SDK: vendor/LICENSE.Lexilla.txt",
+      "passed": true
+    },
+    {
+      "name": "Fore source dictionary",
+      "passed": true
+    },
+    {
+      "name": "Light: eleven native styles",
+      "passed": true
+    },
+    {
+      "name": "Light: native language registration",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: exponent",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: character code",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: quoted backslash",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-lf: doubled quotes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: triple quotes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: apostrophe",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-lf: whole identifiers",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: exponent",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: character code",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: quoted backslash",
+      "passed": true
+    },
+    {
+      "name": "Light/demo-crlf: doubled quotes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: triple quotes",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: apostrophe",
+      "passed": true
+    },
+    {
+      "name": "Light/edges-crlf: whole identifiers",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: fold headers after edit",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-before: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: fold headers after edit",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: inserted comment styled",
+      "passed": true
+    },
+    {
+      "name": "Light/edit-after: keywords recovered after edit",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/minesweeper: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/declension: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: style range",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Light/db-handler: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Light: Language > F > Fore",
+      "passed": true
+    },
+    {
+      "name": "Light: real Style Configurator opened",
+      "passed": true
+    },
+    {
+      "name": "Light: Fore listed in real Style Configurator",
+      "passed": true
+    },
+    {
+      "name": "Light: style customization works",
+      "passed": true
+    },
+    {
+      "name": "Dark: eleven native styles",
+      "passed": true
+    },
+    {
+      "name": "Dark: native language registration",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: exponent",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: character code",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: quoted backslash",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-lf: doubled quotes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: triple quotes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: apostrophe",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-lf: whole identifiers",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: exponent",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: character code",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: quoted backslash",
+      "passed": true
+    },
+    {
+      "name": "Dark/demo-crlf: doubled quotes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: exact fold headers",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: triple quotes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: apostrophe",
+      "passed": true
+    },
+    {
+      "name": "Dark/edges-crlf: whole identifiers",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: fold headers after edit",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-before: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: fold headers after edit",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: inserted comment styled",
+      "passed": true
+    },
+    {
+      "name": "Dark/edit-after: keywords recovered after edit",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/minesweeper: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/declension: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native Fore selected automatically",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: style config matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: DLL matches",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: all input bytes",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: style range",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: final fold depth zero",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 0",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 1",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 2",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 3",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 4",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 5",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 6",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 7",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 8",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 9",
+      "passed": true
+    },
+    {
+      "name": "Dark/db-handler: native colour 10",
+      "passed": true
+    },
+    {
+      "name": "Dark: Language > F > Fore",
+      "passed": true
+    },
+    {
+      "name": "Dark: real Style Configurator opened",
+      "passed": true
+    },
+    {
+      "name": "Dark: Fore listed in real Style Configurator",
+      "passed": true
+    },
+    {
+      "name": "Dark: style customization works",
+      "passed": true
+    },
+    {
+      "name": "Both themes and both line endings tested",
+      "passed": true
+    }
+  ],
+  "native_run_this_invocation": true,
+  "cases": [
+    {
+      "theme": "Light",
+      "file": "demo-lf",
+      "bytes": 3179,
+      "fold_headers": [
+        3,
+        8,
+        10,
+        17,
+        22,
+        26,
+        31,
+        36,
+        45,
+        46,
+        50,
+        57,
+        75,
+        76,
+        79,
+        81,
+        85,
+        89,
+        93,
+        97,
+        100,
+        103,
+        105,
+        107,
+        112,
+        120
+      ],
+      "input_sha256": "2137e9cc206bc313805b04636c42ba17013f38c623a3cc00edf78dadabde46b8"
+    },
+    {
+      "theme": "Light",
+      "file": "edges-lf",
+      "bytes": 1891,
+      "fold_headers": [
+        4,
+        8,
+        14,
+        15,
+        25,
+        27,
+        28,
+        36,
+        48,
+        52,
+        58,
+        60,
+        66,
+        68
+      ],
+      "input_sha256": "01aee3a6b75b215308f7d48c9f6fe402f4b747106ad3e6bb39946052b25d2db3"
+    },
+    {
+      "theme": "Light",
+      "file": "demo-crlf",
+      "bytes": 3302,
+      "fold_headers": [
+        3,
+        8,
+        10,
+        17,
+        22,
+        26,
+        31,
+        36,
+        45,
+        46,
+        50,
+        57,
+        75,
+        76,
+        79,
+        81,
+        85,
+        89,
+        93,
+        97,
+        100,
+        103,
+        105,
+        107,
+        112,
+        120
+      ],
+      "input_sha256": "13cff2ef569123b347844748fc7212fc379a7ebcae02b6af3cf931acbdd51757"
+    },
+    {
+      "theme": "Light",
+      "file": "edges-crlf",
+      "bytes": 1962,
+      "fold_headers": [
+        4,
+        8,
+        14,
+        15,
+        25,
+        27,
+        28,
+        36,
+        48,
+        52,
+        58,
+        60,
+        66,
+        68
+      ],
+      "input_sha256": "3cb9b1234c0775c0cb185b669c3a286a4121a75a8da25ebcd79fc8b56b15c16e"
+    },
+    {
+      "theme": "Light",
+      "file": "edit-before",
+      "bytes": 41,
+      "fold_headers": [
+        1
+      ],
+      "input_sha256": "f8183cb57641eb32a550580f945884fef4c818e793483c659d332c75f45ee35a"
+    },
+    {
+      "theme": "Light",
+      "file": "edit-after",
+      "bytes": 52,
+      "fold_headers": [
+        1,
+        3
+      ],
+      "input_sha256": "064936f6467bdd01e32e00667eb83a5bf651068a852c35cb8545416327aef643"
+    },
+    {
+      "theme": "Light",
+      "file": "minesweeper",
+      "bytes": 8473,
+      "fold_headers": [
+        21,
+        25,
+        31,
+        36,
+        41,
+        46,
+        52,
+        53,
+        59,
+        60,
+        72,
+        78,
+        92,
+        93,
+        99,
+        104,
+        106,
+        112,
+        116,
+        118,
+        127,
+        136,
+        144,
+        161,
+        172,
+        174,
+        178,
+        188,
+        195,
+        197,
+        205,
+        210,
+        221,
+        226,
+        227,
+        233,
+        238,
+        246,
+        249,
+        256,
+        274,
+        276,
+        278,
+        284
+      ],
+      "input_sha256": "373873ccc6ba8981f83b40fca028d2b43afc13f8b7b738d18e7d1c89d10c8e93"
+    },
+    {
+      "theme": "Light",
+      "file": "declension",
+      "bytes": 11888,
+      "fold_headers": [
+        4,
+        17,
+        19,
+        21,
+        23,
+        27,
+        31,
+        35,
+        36,
+        49,
+        67,
+        68,
+        82,
+        83,
+        100,
+        101,
+        102,
+        115,
+        116,
+        129,
+        130,
+        131,
+        132,
+        145,
+        146,
+        160,
+        161,
+        176,
+        177,
+        190,
+        191,
+        192,
+        205,
+        206,
+        220,
+        223,
+        225,
+        226,
+        240,
+        241,
+        243,
+        244,
+        257,
+        258,
+        271,
+        272,
+        285,
+        286,
+        300,
+        301,
+        302,
+        315,
+        316,
+        330,
+        332,
+        333,
+        335,
+        336,
+        350,
+        351,
+        352,
+        365,
+        366,
+        368,
+        369,
+        384,
+        385,
+        386,
+        399,
+        400,
+        413,
+        414,
+        427,
+        428,
+        452,
+        455
+      ],
+      "input_sha256": "4cf2d61d799a6b2a7c39f3c9c27a28f8c445bdeee1e507a8efd4507365c9a597"
+    },
+    {
+      "theme": "Light",
+      "file": "db-handler",
+      "bytes": 511,
+      "fold_headers": [
+        1,
+        2
+      ],
+      "input_sha256": "43f7371521dc623701159a2638e9355d8cd3857cd805ac4fe3acd20adb8ca81d"
+    },
+    {
+      "theme": "Dark",
+      "file": "demo-lf",
+      "bytes": 3179,
+      "fold_headers": [
+        3,
+        8,
+        10,
+        17,
+        22,
+        26,
+        31,
+        36,
+        45,
+        46,
+        50,
+        57,
+        75,
+        76,
+        79,
+        81,
+        85,
+        89,
+        93,
+        97,
+        100,
+        103,
+        105,
+        107,
+        112,
+        120
+      ],
+      "input_sha256": "2137e9cc206bc313805b04636c42ba17013f38c623a3cc00edf78dadabde46b8"
+    },
+    {
+      "theme": "Dark",
+      "file": "edges-lf",
+      "bytes": 1891,
+      "fold_headers": [
+        4,
+        8,
+        14,
+        15,
+        25,
+        27,
+        28,
+        36,
+        48,
+        52,
+        58,
+        60,
+        66,
+        68
+      ],
+      "input_sha256": "01aee3a6b75b215308f7d48c9f6fe402f4b747106ad3e6bb39946052b25d2db3"
+    },
+    {
+      "theme": "Dark",
+      "file": "demo-crlf",
+      "bytes": 3302,
+      "fold_headers": [
+        3,
+        8,
+        10,
+        17,
+        22,
+        26,
+        31,
+        36,
+        45,
+        46,
+        50,
+        57,
+        75,
+        76,
+        79,
+        81,
+        85,
+        89,
+        93,
+        97,
+        100,
+        103,
+        105,
+        107,
+        112,
+        120
+      ],
+      "input_sha256": "13cff2ef569123b347844748fc7212fc379a7ebcae02b6af3cf931acbdd51757"
+    },
+    {
+      "theme": "Dark",
+      "file": "edges-crlf",
+      "bytes": 1962,
+      "fold_headers": [
+        4,
+        8,
+        14,
+        15,
+        25,
+        27,
+        28,
+        36,
+        48,
+        52,
+        58,
+        60,
+        66,
+        68
+      ],
+      "input_sha256": "3cb9b1234c0775c0cb185b669c3a286a4121a75a8da25ebcd79fc8b56b15c16e"
+    },
+    {
+      "theme": "Dark",
+      "file": "edit-before",
+      "bytes": 41,
+      "fold_headers": [
+        1
+      ],
+      "input_sha256": "f8183cb57641eb32a550580f945884fef4c818e793483c659d332c75f45ee35a"
+    },
+    {
+      "theme": "Dark",
+      "file": "edit-after",
+      "bytes": 52,
+      "fold_headers": [
+        1,
+        3
+      ],
+      "input_sha256": "064936f6467bdd01e32e00667eb83a5bf651068a852c35cb8545416327aef643"
+    },
+    {
+      "theme": "Dark",
+      "file": "minesweeper",
+      "bytes": 8473,
+      "fold_headers": [
+        21,
+        25,
+        31,
+        36,
+        41,
+        46,
+        52,
+        53,
+        59,
+        60,
+        72,
+        78,
+        92,
+        93,
+        99,
+        104,
+        106,
+        112,
+        116,
+        118,
+        127,
+        136,
+        144,
+        161,
+        172,
+        174,
+        178,
+        188,
+        195,
+        197,
+        205,
+        210,
+        221,
+        226,
+        227,
+        233,
+        238,
+        246,
+        249,
+        256,
+        274,
+        276,
+        278,
+        284
+      ],
+      "input_sha256": "373873ccc6ba8981f83b40fca028d2b43afc13f8b7b738d18e7d1c89d10c8e93"
+    },
+    {
+      "theme": "Dark",
+      "file": "declension",
+      "bytes": 11888,
+      "fold_headers": [
+        4,
+        17,
+        19,
+        21,
+        23,
+        27,
+        31,
+        35,
+        36,
+        49,
+        67,
+        68,
+        82,
+        83,
+        100,
+        101,
+        102,
+        115,
+        116,
+        129,
+        130,
+        131,
+        132,
+        145,
+        146,
+        160,
+        161,
+        176,
+        177,
+        190,
+        191,
+        192,
+        205,
+        206,
+        220,
+        223,
+        225,
+        226,
+        240,
+        241,
+        243,
+        244,
+        257,
+        258,
+        271,
+        272,
+        285,
+        286,
+        300,
+        301,
+        302,
+        315,
+        316,
+        330,
+        332,
+        333,
+        335,
+        336,
+        350,
+        351,
+        352,
+        365,
+        366,
+        368,
+        369,
+        384,
+        385,
+        386,
+        399,
+        400,
+        413,
+        414,
+        427,
+        428,
+        452,
+        455
+      ],
+      "input_sha256": "4cf2d61d799a6b2a7c39f3c9c27a28f8c445bdeee1e507a8efd4507365c9a597"
+    },
+    {
+      "theme": "Dark",
+      "file": "db-handler",
+      "bytes": 511,
+      "fold_headers": [
+        1,
+        2
+      ],
+      "input_sha256": "43f7371521dc623701159a2638e9355d8cd3857cd805ac4fe3acd20adb8ca81d"
+    }
+  ],
+  "native_environment": "Notepad++ 8.9.8.1 x64, Windows",
+  "dll_sha256": "d6f7b0df62eb9634f5b6d0f795823fdfe91f671d5051953a85b167fb59ede177",
+  "source_fingerprints": {
+    "src/AutoDetect.cpp": "498fa0ee4204af47e19128a42d2d64455fe0ff8b3c3c1a22195707a25d1e5735",
+    "src/AutoDetect.h": "fcaa1697f2d886948f289925d3c768d7953d085687dfe09e4cfa3eb2b9afd018",
+    "src/ForeDetect.cpp": "1129e1b2adfa15d8db275041325fff6626236fa5c9bc3ec4d4556d40b261f84d",
+    "src/ForeDetect.h": "d4f8d36ecd3ea0052073145d9b3b187b9912a40c5993a54812f018a2e101d029",
+    "src/ForeLexer.cpp": "aa6494132b972fdaa3e908adccaf8098b0c0d0f66929a6980d8ac4dfcae2622d",
+    "src/ForeLexer.h": "332ac770f52171936397c092abbdf345a34440805bdc525d3d8b784f705e1fea",
+    "src/ForeLexer.rc": "a2250d9108832b8bfa1af6dcc0ba19bb02acba4b0404aac59644675051039532",
+    "src/ForePaletteData.h": "d6c47783576da4329c649bda37d485bc333dfda8ab22f97596a4ac8fb6acd357",
+    "src/ForeWords.h": "76334892a7d720e37fa4d56a29e12475a858b12bcf354f5d3bd172bfc2845cb6",
+    "src/Plugin.cpp": "03a229e2af3824f601943b5eb92ff35dc9c924473eae6f6f28bcca762be8fba5",
+    "src/ThemePalette.cpp": "9a01fd555fae5e1b60260d52f4133883f66bd099ec07fe005a21e606e88b7c7c",
+    "src/ThemePalette.h": "e8e876419c2ecd7cd3c30ff28b79556390b656cdaa9e223834519542bbeef298"
+  },
+  "fore_rules": "Prognoz Platform Fore 8.1 documentation; not Fore.NET",
+  "platform_compilation_tested": false,
+  "notepad_exe_sha256": "c52c9ed2ec6d0b5b3f243b29f2124f98db56b6ba92bb42a9af2665709464b3cf"
+}

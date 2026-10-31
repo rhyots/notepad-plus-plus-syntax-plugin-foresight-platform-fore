@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checked_on": "2026-10-31",
+  "environment": "isolated portable Notepad++ 8.9.8.1 x64",
+  "binary_matches_tested_release": true,
+  "native_xml_matches_light_preset": true,
+  "udl_backup_created": true,
+  "only_fore_extension_removed_from_udl": true,
+  "main_program_files_installation": "blocked by Windows filesystem ACL; no main DLL, XML or UDL extension modified"
+}

@@ -1,0 +1,25 @@
+{
+  "checked_on": "2026-10-31",
+  "sources": [
+    {
+      "file": "pl.schema",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/nppPluginList/9139ebdaa0fc1d26497bad36040f015f84bcf49f/pl.schema",
+      "sha256": "cbc4a5674c81d50f9a34a94d09a58e07345efc9b9abc733526899af253c9f287"
+    },
+    {
+      "file": "validator.py",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/nppPluginList/9139ebdaa0fc1d26497bad36040f015f84bcf49f/validator.py",
+      "sha256": "161e201999e00cec19485efa0cd6a3d1f076b9cebd260521b8766bc24a9cb5ba"
+    },
+    {
+      "file": "src/pl.x64.json",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/nppPluginList/9139ebdaa0fc1d26497bad36040f015f84bcf49f/src/pl.x64.json",
+      "sha256": "4c9be09b6cc87774481d816f78381cb165e83048de0e5f8b7bf82ee96a3cfe65"
+    },
+    {
+      "file": "plugins.md",
+      "url": "https://raw.githubusercontent.com/notepad-plus-plus/npp-usermanual/41d96945ec8d11d4100356293f4f30e60c1418c0/content/docs/plugins.md",
+      "sha256": "77b35f3dd31f468c3272194c4a264e83473a90c0621cd2aa0d98937f94d6cca6"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+name: Build and test Notepad++ Syntax Plugin for Foresight Platform Fore
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        autocrlf: ['false', 'true']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Set checkout conversion mode
+        run: git config --global core.autocrlf ${{ matrix.autocrlf }}
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Verify locked bytes and automation line endings
+        run: python tools/check_bytes.py
+      - name: Exercise real Git checkout and deterministic source packaging
+        run: python tools/checkout_audit.py
+      - run: cmake -S . -B build/cmake -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build build/cmake --config Release
+      - run: ctest --test-dir build/cmake -C Release --output-on-failure
+      - name: Inspect freshly built Windows DLL
+        if: runner.os == 'Windows'
+        run: python tools/inspect_binary.py --dll build/cmake/Release/ForeLexer.dll --report build/cmake/pe-validation.json
+      - name: Recheck archived native evidence
+        run: python tools/verify.py

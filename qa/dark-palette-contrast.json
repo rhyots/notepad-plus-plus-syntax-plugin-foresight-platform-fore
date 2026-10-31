@@ -1,0 +1,78 @@
+{
+  "passed": true,
+  "background_rgb_hex": "1E1E1E",
+  "minimum_ratio": 4.5,
+  "minimum_actual_ratio": 6.433815462073508,
+  "preset_sha256": "0b7c7c2e64af6d083da69155ad84385948fd09dcba45993c35e8e1b344111867",
+  "method": "sRGB relative luminance; (L_lighter+0.05)/(L_darker+0.05), unrounded threshold comparison",
+  "reference": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+  "scope": "Nominal foreground/background color contrast, not a claim of whole-application accessibility conformance. Actual background is inherited from the Notepad++ theme.",
+  "styles": [
+    {
+      "style_id": 0,
+      "name": "DEFAULT",
+      "rgb_hex": "D4D4D4",
+      "contrast_ratio": 11.247073869530501
+    },
+    {
+      "style_id": 1,
+      "name": "KEYWORDS",
+      "rgb_hex": "4FD1D1",
+      "contrast_ratio": 9.028882911976101
+    },
+    {
+      "style_id": 2,
+      "name": "BUILT-IN TYPES",
+      "rgb_hex": "D4D4D4",
+      "contrast_ratio": 11.247073869530501
+    },
+    {
+      "style_id": 3,
+      "name": "CONSTANTS",
+      "rgb_hex": "4FD1D1",
+      "contrast_ratio": 9.028882911976101
+    },
+    {
+      "style_id": 4,
+      "name": "NUMBERS",
+      "rgb_hex": "D4D4D4",
+      "contrast_ratio": 11.247073869530501
+    },
+    {
+      "style_id": 5,
+      "name": "STRINGS",
+      "rgb_hex": "F08080",
+      "contrast_ratio": 6.433815462073508
+    },
+    {
+      "style_id": 6,
+      "name": "CHARACTERS",
+      "rgb_hex": "F08080",
+      "contrast_ratio": 6.433815462073508
+    },
+    {
+      "style_id": 7,
+      "name": "COMMENTS",
+      "rgb_hex": "6EC76E",
+      "contrast_ratio": 7.984314444646768
+    },
+    {
+      "style_id": 8,
+      "name": "OPERATORS",
+      "rgb_hex": "D4D4D4",
+      "contrast_ratio": 11.247073869530501
+    },
+    {
+      "style_id": 9,
+      "name": "IDENTIFIERS",
+      "rgb_hex": "D4D4D4",
+      "contrast_ratio": 11.247073869530501
+    },
+    {
+      "style_id": 10,
+      "name": "DOCUMENTATION COMMENTS",
+      "rgb_hex": "6EC76E",
+      "contrast_ratio": 7.984314444646768
+    }
+  ]
+}

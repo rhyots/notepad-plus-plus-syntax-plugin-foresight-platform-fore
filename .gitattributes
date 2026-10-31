@@ -1,0 +1,19 @@
+* text=auto eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.ps1 text eol=lf
+*.xml text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+# These files are fingerprinted against native-test evidence. Preserve exact bytes.
+/src/** -text
+/styles/** -text
+/vendor/** -text
+/examples/** -text
+/qa/results/** -text
+*.dll -text
+*.exe -text
+*.zip -text

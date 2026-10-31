@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "official_validator_commit": "9139ebdaa0fc1d26497bad36040f015f84bcf49f",
+  "mode": "Unmodified official validator and schema; single-entry fixture; HTTP GET supplied with local ZIP bytes; real Windows version API",
+  "archive": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-plugins-admin-x64.zip",
+  "archive_sha256": "c2eea1dbdcd2f7ccf8e1de10c3a943702d71791bf5e949d0b51f1cf4cc374bdd",
+  "dll_version": "1.0.0.0",
+  "machine": "AMD64",
+  "unique_against_official_x64_catalog": true,
+  "public_download_tested": false,
+  "contains_owner_placeholder": true,
+  "ready_to_submit": false,
+  "dependencies": {
+    "requests": "2.34.2",
+    "jsonschema": "4.26.0",
+    "pywin32": "312"
+  }
+}
