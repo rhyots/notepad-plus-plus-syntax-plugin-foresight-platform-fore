@@ -8,14 +8,14 @@
       "all_source_bytes_identical": true,
       "files": 124,
       "crlf_byte_drift_rejected": true,
-      "audit_snapshot_source_zip_sha256": "6010005b4ee69d815d8399069e18fe9a44611a8fa67ee0a908b8af0ba00e7c40"
+      "audit_snapshot_source_zip_sha256": "7e582dd7a74421e993a6fd8041048960385a77894ff34eb915b44e34c1d929d7"
     },
     {
       "core.autocrlf": "true",
       "all_source_bytes_identical": true,
       "files": 124,
       "crlf_byte_drift_rejected": true,
-      "audit_snapshot_source_zip_sha256": "6010005b4ee69d815d8399069e18fe9a44611a8fa67ee0a908b8af0ba00e7c40"
+      "audit_snapshot_source_zip_sha256": "7e582dd7a74421e993a6fd8041048960385a77894ff34eb915b44e34c1d929d7"
     }
   ]
 }

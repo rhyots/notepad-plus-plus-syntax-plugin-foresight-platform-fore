@@ -111,4 +111,6 @@ python -m pytest -q tests/test_release_files.py tests/test_release_archive.py
 
 Основа правил — **Prognoz Platform Fore 8.1**, не Fore.NET. Пути и хеши справки: [sources.json](sources.json). Проприетарная справка и платформа не включены. `Fore` — идентификатор языка, `ForeLexer.dll` и `ForeLexer.xml` — технические имена установки.
 
-**GPL-3.0-or-later**. [LICENSE](LICENSE), [сторонние компоненты](THIRD_PARTY_NOTICES.md), [происхождение SDK](vendor/provenance.json).
+**MIT License** для собственного кода проекта, документации и примеров. Copyright (c) 2026 Artyom Nikiforov (rhyots). Полный текст: [LICENSE](LICENSE).
+
+Сторонние SDK и компоненты среды выполнения сохраняют собственные лицензии; MIT проекта их не заменяет. [Сторонние компоненты](THIRD_PARTY_NOTICES.md), [происхождение SDK](vendor/provenance.json).

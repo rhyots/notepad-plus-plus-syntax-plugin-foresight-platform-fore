@@ -44,7 +44,7 @@ Recorded results: **53/53 core assertions**, **377/377 native integration and de
 
 See `validation.json` and `docs/TESTING.md` (Russian). Programs were not compiled or executed inside either platform during validation.
 
-License: **GPL-3.0-or-later**. Complete source code, build tools, the full bilingual README, and native snapshots are supplied in the accompanying **NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip** archive. Third-party license texts in this binary archive are under `licenses/`.
+Project code, documentation and examples: **MIT License**. Third-party components retain their own licenses; see `THIRD_PARTY_NOTICES.md`. Complete source code, build tools, the full bilingual README, and native snapshots are supplied in the accompanying **NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip** archive. Third-party license texts in this binary archive are under `licenses/`.
 
 ## Automatic detection
 

@@ -17,7 +17,7 @@ BEGIN
             VALUE "FileDescription", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
             VALUE "FileVersion", "1.0.0.0\0"
             VALUE "InternalName", "ForeLexer\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 Artyom Nikiforov. GPL-3.0-or-later.\0"
+            VALUE "LegalCopyright", "Copyright (c) 2026 Artyom Nikiforov (rhyots). Project code: MIT License.\0"
             VALUE "OriginalFilename", "ForeLexer.dll\0"
             VALUE "ProductName", "Notepad++ Syntax Plugin for Foresight Platform Fore\0"
             VALUE "ProductVersion", "1.0.0.0\0"

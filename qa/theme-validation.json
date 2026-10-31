@@ -1,11 +1,12 @@
 {
   "passed": true,
   "environment": "Notepad++ 8.9.8.1 x64",
-  "dll_sha256": "a8cbdb02c8741d52805531b5e5662ec2ba885f498c57c6d4c94298d447af283e",
+  "dll_sha256": "95f01e727c0169502f521c2b6ba1ec2c7dbc4e47e161361936374057efe0a2cd",
   "method": "Real Style Configurator theme combo, both views, saved theme and actual restart",
   "runs": [
     {
       "variant": "standard",
+      "launch": 1,
       "result": {
         "startup_dark": false,
         "custom": false,
@@ -70,11 +71,11 @@
           }
         ],
         "passed": true
-      },
-      "launch": 1
+      }
     },
     {
       "variant": "standard",
+      "launch": 2,
       "result": {
         "startup_dark": true,
         "custom": false,
@@ -139,11 +140,11 @@
           }
         ],
         "passed": true
-      },
-      "launch": 2
+      }
     },
     {
       "variant": "custom",
+      "launch": 1,
       "result": {
         "startup_dark": false,
         "custom": true,
@@ -208,11 +209,11 @@
           }
         ],
         "passed": true
-      },
-      "launch": 1
+      }
     },
     {
       "variant": "custom",
+      "launch": 2,
       "result": {
         "startup_dark": true,
         "custom": true,
@@ -277,8 +278,7 @@
           }
         ],
         "passed": true
-      },
-      "launch": 2
+      }
     }
   ],
   "lexer_style_attributes_preserved": true

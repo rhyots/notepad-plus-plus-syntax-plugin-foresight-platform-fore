@@ -4,7 +4,7 @@
   "file_version": "1.0.0.0",
   "embedded_light_sha256": "0ebe24a0c4944633c2b98be604d77585d482242bbe06b88fa202c199e7d6f266",
   "embedded_dark_sha256": "0b7c7c2e64af6d083da69155ad84385948fd09dcba45993c35e8e1b344111867",
-  "dll_sha256": "a8cbdb02c8741d52805531b5e5662ec2ba885f498c57c6d4c94298d447af283e",
+  "dll_sha256": "95f01e727c0169502f521c2b6ba1ec2c7dbc4e47e161361936374057efe0a2cd",
   "exports": [
     "CreateLexer",
     "GetLexerCount",

@@ -116,4 +116,6 @@ Source and release packages are prepared locally. **No repository, Release or ca
 
 Rules are based on **Prognoz Platform Fore 8.1**, not Fore.NET. Document paths and hashes are listed in [sources.json](sources.json); proprietary help and platform binaries are not included. `Fore` is the editor language identifier; `ForeLexer.dll` and `ForeLexer.xml` are technical installation filenames.
 
-**GPL-3.0-or-later**. SDK and runtime notices are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), [LICENSE](LICENSE) and [vendor/provenance.json](vendor/provenance.json).
+**MIT License** for the original project code, documentation and examples. Copyright (c) 2026 Artyom Nikiforov (rhyots). See [LICENSE](LICENSE).
+
+Third-party SDK and runtime components retain their own licenses; the project's MIT license does not relicense them. Their notices and provenance are preserved in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [vendor/provenance.json](vendor/provenance.json).

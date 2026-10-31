@@ -59,7 +59,7 @@ pwsh -File install.ps1 -NotepadDirectory 'C:\Program Files\Notepad++'
 Отчёт находится в `validation.json`; подробности — в `docs/TESTING.md`.
 Компиляция или исполнение программ Prognoz/Foresight Platform Fore в самой платформе не проверялись.
 
-Лицензия: **GPL-3.0-or-later**. Полные исходники и инструменты сборки поставляются
+Собственный код, документация и примеры: **MIT License**. Сторонние компоненты сохраняют свои лицензии; см. `THIRD_PARTY_NOTICES.md`. Полные исходники и инструменты сборки поставляются
 соседним архивом **NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-source.zip**. Подробный README и сохранённые
 нативные снимки находятся в исходном архиве. Уведомления сторонних компонентов
 в этом бинарном архиве находятся в `licenses/`.

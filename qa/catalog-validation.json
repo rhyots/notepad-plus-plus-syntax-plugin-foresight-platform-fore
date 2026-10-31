@@ -3,7 +3,7 @@
   "official_validator_commit": "9139ebdaa0fc1d26497bad36040f015f84bcf49f",
   "mode": "Unmodified official validator and schema; single-entry fixture; HTTP GET supplied with local ZIP bytes; real Windows version API",
   "archive": "NotepadPlusPlus-Syntax-Plugin-Foresight-Platform-Fore-1.0.0-plugins-admin-x64.zip",
-  "archive_sha256": "ec78e9d9459b984110d89dfbb909d1529c2734fb31e190e449dbc457f9564f52",
+  "archive_sha256": "340c276ee73295e73cb56dcb57455318f85cf9d66a75dc61beac232ffa6169b4",
   "dll_version": "1.0.0.0",
   "machine": "AMD64",
   "unique_against_official_x64_catalog": true,
